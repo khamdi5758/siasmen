@@ -115,13 +115,12 @@
 				</tr>
 			@endif
 		</table>
-		{!! $data->links() !!}
 			
 	<!-- </div> -->
 <!-- </div> -->
 
 <script type="text/javascript">
-	//window.print();
+	window.print();
 </script>
 
 </div>

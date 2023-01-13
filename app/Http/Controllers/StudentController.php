@@ -77,6 +77,7 @@ class StudentController extends Controller
     public function edit(Student $student)
     {
         return view('studentspage.edit', compact('student'));
+        // $student->dump();
     }
 
     /**
@@ -89,30 +90,32 @@ class StudentController extends Controller
     
     public function update(Request $request, Student $student)
     {
-        $request->validate([
-            'student_name'      =>  'required',
-            'student_email'     =>  'required|email'
-        ]);
-        $destinationPath = 'images/';
-        
         $input =$request->all();
-        if ($image = $request->file('student_image')) {
-            $file_name = time() . '.' . request()->student_image->getClientOriginalExtension();
-            $image->move($destinationPath,$file_name);
-            $pathimgold = $destinationPath.$request->hidden_student_image;
-            if (file_exists($pathimgold)) {
-                @unlink($pathimgold);
-            }
-            $input['student_image'] = $file_name;
-        }else{
-            unset($input['image']);
-        }
 
-        // echo $pathimgold;
-        $student->update($input);
+        // $request->validate([
+        //     'student_name'      =>  'required',
+        //     'student_email'     =>  'required|email'
+        // ]);
+        // $destinationPath = 'images/';
+        
+        // if ($image = $request->file('student_image')) {
+        //     $file_name = time() . '.' . request()->student_image->getClientOriginalExtension();
+        //     $image->move($destinationPath,$file_name);
+        //     $pathimgold = $destinationPath.$request->hidden_student_image;
+        //     if (file_exists($pathimgold)) {
+        //         @unlink($pathimgold);
+        //     }
+        //     $input['student_image'] = $file_name;
+        // }else{
+        //     unset($input['student_image']);
+        // }
+        // $student->update($input);
+        // return redirect()->route('students.index')->with('success', 'Student Data has been updated successfully');
 
-        return redirect()->route('students.index')->with('success', 'Student Data has been updated successfully');
- 
+        // dd($request->student_image);
+
+            
+        dd($request);
     }
 
     /**

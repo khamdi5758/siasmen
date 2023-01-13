@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Lapharian;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
-use PDF;
 
 class LapharianController extends Controller
 {
@@ -25,11 +25,21 @@ class LapharianController extends Controller
     {
         // $data = DB::table('lapharians')->get();
         $data = Lapharian::all();
-        dd($data);
+        // $pdf = PDF::loadview('lapharian.halcetak',['data'=>$data]);
+        // return $pdf->stream();
+        return view('lapharian.halcetak',['data'=>$data] );
+        // dd($data);
         // $data = Lapharian::select('*')->get();
         // $pdf = PDF::loadView('lapharian.halcetak', ['data' => $data]);
         // return $pdf->stream('Laporan.pdf');
-         return view('lapharian.halcetak', compact('data'))->with('i', (request()->input('page', 1) - 1) * 5);
+        // $data = Lapharian::latest()->paginate(5);
+        //  return view('lapharian.halcetak', compact('data'))->with('i', (request()->input('page', 1) - 1) * 5);
+        // $data = Lapharian::all();
+        // foreach ($data as $row) {
+        //     echo $row->tanggal ."<br>";
+        //     echo $row->deskripsi_kegiatan."<br>";
+        //     echo $row->dokumentasi_kegiatan."<br>";
+        // }
     }
 
 
