@@ -242,7 +242,7 @@
             $('.edit').on('click', function() {
                 let id = $(this).data('id');
                 let idedit ;
-                // console.log(id);
+                console.log(id);
                 $.ajax({
                     data: {id : id},
                     url : "{{route('admmahasiswa.edit',"+data.id+")}}",

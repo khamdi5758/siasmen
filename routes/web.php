@@ -5,6 +5,7 @@ use App\Http\Controllers\LapharianController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ADMMahasiswaController;
 use App\Http\Controllers\ADMTuamController;
+use App\Http\Controllers\ADMDosenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +43,7 @@ Route::group(['prefix' => 'admin',  'as' => 'admin.'], function () {
     // Route::get('/tamhs', function () {
     //     return view('admin.tamhs');
     // });
-    Route::get('/dftrdos', function () {
-        return view('admin.daftardos');
-    });
+    Route::get('/dftrdos', [ADMDosenController::class,'index'])->name('dftrdos');
     Route::get('/pnltdos', function () {
         return view('admin.pnltdos');
     });
@@ -79,6 +78,7 @@ Route::resource('lapharian', LapharianController::class);
 Route::resource('students', StudentController::class);
 Route::resource('admmahasiswa', ADMMahasiswaController::class);
 Route::resource('admtuam', ADMTuamController::class);
+Route::resource('admdosen', ADMDosenController::class);
 
 
 // Auth::routes();

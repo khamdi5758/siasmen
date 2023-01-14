@@ -36,21 +36,21 @@ class ADMTuamController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'nim' => 'required',
             'judul' => 'required',
             'abstrak' => 'required',
             'dosen_pembimbing' => 'required',
         ]);
-
-        $tuam = new Tuam();
-        $tuam->nim = $request->nim;
-        $tuam->judul = $request->judul;
-        $tuam->abstrak = $request->abstrak;
-        $tuam->dosen_pembimbing = $request->dosen_pembimbing;
-        $tuam->save();
-        return redirect()->route('admin.tamhs')
-            ->with('success', 'Data berhasil dibuat!');
+        $input = $request->all();
+        Tuam::create($input);
+        return redirect()->route('admin.tamhs')->with('success', 'Data berhasil dibuat');
+        // $tuam = new Tuam();
+        // $tuam->nim = $request->nim;
+        // $tuam->judul = $request->judul;
+        // $tuam->abstrak = $request->abstrak;
+        // $tuam->dosen_pembimbing = $request->dosen_pembimbing;
+        // $tuam->save();
     }
 
     /**
@@ -70,10 +70,12 @@ class ADMTuamController extends Controller
      * @param  \App\Models\Tuam  $tuam
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        $data = Tuam::findOrFail($id);
-        dump($data);
+        $id = $_GET['id'];
+        $data = Tuam::find($id);
+        return json_encode($data);
+        // dump($data);
         // return view('tuam.edit', compact('data'));
     }
 
@@ -86,7 +88,19 @@ class ADMTuamController extends Controller
      */
     public function update(Request $request, Tuam $tuam)
     {
-        //
+        $request->validate([
+            'nim' => 'required',
+            'judul' => 'required',
+            'abstrak' => 'required',
+            'dosen_pembimbing' => 'required',
+        ]);
+        $id = $request->hidid;
+        $input =$request->all();
+
+
+        $tuam = Tuam::find($id);
+        $tuam->update($input);
+        return redirect()->route('admin.tamhs')->with('success', 'Data berhasil diupdate');
     }
 
     /**
@@ -97,9 +111,8 @@ class ADMTuamController extends Controller
      */
     public function destroy($id)
     {
-        $data = Tuam::findOrFail($id);
+        $data = Tuam::find($id);
         $data->delete();
-        return redirect()->route('admin.tamhs')
-            ->with('success', 'Data berhasil dihapus!');
+        return redirect()->route('admin.tamhs')->with('success', 'Data berhasil dihapus');
     }
 }
