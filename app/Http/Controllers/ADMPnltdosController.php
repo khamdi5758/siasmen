@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tuam;
+use App\Models\Pnltdosen;
 use Illuminate\Http\Request;
 
-class ADMTuamController extends Controller
+class ADMPnltdosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class ADMTuamController extends Controller
      */
     public function index()
     {
-        $data = Tuam::all();
-        return view('mahasiswa.tamhs',compact('data'));
+        $data = Pnltdosen::all();
+        return view('admin.pnltdos',compact('data'));
     }
 
     /**
@@ -37,29 +37,24 @@ class ADMTuamController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nim' => 'required',
+            'nip' => 'required',
             'judul' => 'required',
-            'abstrak' => 'required',
-            'dosen_pembimbing' => 'required',
+            'abstrak' => 'required'
         ]);
         $input = $request->all();
-        Tuam::create($input);
-        return redirect()->route('admin.tamhs')->with('success', 'Data berhasil dibuat');
-        // $tuam = new Tuam();
-        // $tuam->nim = $request->nim;
-        // $tuam->judul = $request->judul;
-        // $tuam->abstrak = $request->abstrak;
-        // $tuam->dosen_pembimbing = $request->dosen_pembimbing;
-        // $tuam->save();
+        $input = $request->all();
+        Pnltdosen::create($input);
+        return redirect()->route('admin.pnltdos')->with('success', 'Data berhasil dibuat');
+        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tuam  $tuam
+     * @param  \App\Models\Pnltdosen  $pnltdosen
      * @return \Illuminate\Http\Response
      */
-    public function show(Tuam $tuam)
+    public function show(Pnltdosen $pnltdosen)
     {
         //
     }
@@ -67,52 +62,47 @@ class ADMTuamController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tuam  $tuam
+     * @param  \App\Models\Pnltdosen  $pnltdosen
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit(Pnltdosen $pnltdosen)
     {
         $id = $_GET['id'];
-        $data = Tuam::find($id);
+        $data = Pnltdosen::find($id);
         return json_encode($data);
-        // dump($data);
-        // return view('tuam.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Tuam  $tuam
+     * @param  \App\Models\Pnltdosen  $pnltdosen
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tuam $tuam)
+    public function update(Request $request, Pnltdosen $pnltdosen)
     {
         $request->validate([
-            'nim' => 'required',
+            'nip' => 'required',
             'judul' => 'required',
-            'abstrak' => 'required',
-            'dosen_pembimbing' => 'required',
+            'abstrak' => 'required'
         ]);
         $id = $request->hidid;
         $input =$request->all();
-
-
-        $tuam = Tuam::find($id);
-        $tuam->update($input);
-        return redirect()->route('admin.tamhs')->with('success', 'Data berhasil diupdate');
+        $data = Pnltdosen::find($id);
+        $data->update($input);
+        return redirect()->route('admin.pnltdos')->with('success', 'Data berhasil diupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tuam  $tuam
+     * @param  \App\Models\Pnltdosen  $pnltdosen
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $data = Tuam::find($id);
+        $data = Pnltdosen::find($id);
         $data->delete();
-        return redirect()->route('admin.tamhs')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('admin.pnltdos')->with('success', 'Data berhasil dihapus');
     }
 }

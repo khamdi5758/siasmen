@@ -15,6 +15,29 @@
    <!-- TABLE STYLES-->
    <!-- @yield('tablestyle') -->
    <link href="{{asset('tmplt/js/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet" />
+
+   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 20%;
+            float: left;
+            margin-left: 2%;
+            margin-bottom: 30px;
+        }
+
+        .cardimg{
+            border-radius: 100%;
+        }
+        /* .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        } */
+
+        .containercard {
+            padding: 2px 16px;
+        }
+    </style>
 </head>
 <body>
     <div id="wrapper">

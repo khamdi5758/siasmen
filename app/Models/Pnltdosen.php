@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tuam extends Model
+class Pnltdosen extends Model
 {
     use HasFactory;
-    protected $table = "tuams";
+    protected $table = "pnltdosens";
     protected $fillable = [
-        'nim',
+        'nip',
         'judul',
-        'abstrak',
-        'dosen_pembimbing'
+        'abstrak'
     ];
 }
