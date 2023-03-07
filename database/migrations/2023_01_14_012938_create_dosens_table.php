@@ -20,6 +20,7 @@ class CreateDosensTable extends Migration
             $table->string('jenkel');
             $table->string('status');
             $table->string('pendidikan_terakhir');
+            $table->string('pangkat');
             $table->string('foto');
             $table->timestamps();
         });

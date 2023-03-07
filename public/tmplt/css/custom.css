@@ -377,3 +377,16 @@ line-height: 1.428571429;
 }
 
 
+.searchform-control{
+    width: 25%;
+}
+input[type=search]
+{
+  float: right;
+  border:1px solid #0af;
+  margin-bottom: 10px;
+}
+
+
+
+

@@ -9,6 +9,9 @@ use App\Http\Controllers\ADMDosenController;
 use App\Http\Controllers\ADMPnltdosController;
 use App\Http\Controllers\MHSTamhsController;
 use App\Http\Controllers\MHSDospemController;
+use App\Http\Controllers\DOSMhsbmbController;
+use App\Http\Controllers\DOSPnltdosController;
+
 
 
 /*
@@ -23,11 +26,8 @@ use App\Http\Controllers\MHSDospemController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homepage.index');
 });
-
-
-
 
 Route::group(['prefix' => 'admin',  'as' => 'admin.'], function () {
 
@@ -44,31 +44,37 @@ Route::group(['prefix' => 'admin',  'as' => 'admin.'], function () {
     Route::get('/tamhs', [ADMTuamController::class,'index'])->name('tamhs');
     Route::get('/dftrdos', [ADMDosenController::class,'index'])->name('dftrdos');
     Route::get('/pnltdos', [ADMPnltdosController::class,'index'])->name('pnltdos');
+    Route::get('/pnltdos/nipdosen', [ADMPnltdosController::class,'nipdosen'])->name('nipdosen');
   });
 
 
-Route::get('/mahasiswa', function () {
-    return view('mahasiswa.index');
-});
-Route::get('/mahasiswa/tamhs', [MHSTamhsController::class,'index'])->name('mhstamhs');
-Route::get('/mahasiswa/atamhs', function () {
-    return view('mahasiswa.atamhs');
-});
-Route::get('/mahasiswa/dospem', [MHSDospemController::class,'index'])->name('mhsdospemmhs');;
-
-
-
-Route::get('/dosen', function () {
-    return view('dosen.index');
-});
-Route::get('/dosen/mhsbim', function () {
-    return view('dosen.mhsbim');
-});
-Route::get('/dosen/pnltdos', function () {
-    return view('dosen.pnltdos');
+Route::group(['prefix' => 'mahasiswa',  'as' => 'mahasiswa.'], function () {
+    Route::get('/', function () {
+        return view('mahasiswa.index');
+    });
+    Route::get('/index', function () {
+        return view('mahasiswa.index');
+    });
+    Route::get('/tamhs', [MHSTamhsController::class,'index'])->name('mhstamhs');
+    Route::get('/atamhs', function () {
+        return view('mahasiswa.atamhs');
+    });
+    Route::get('/dospem', [MHSDospemController::class,'index'])->name('mhsdospemmhs');
 });
 
 
+
+Route::group(['prefix' => 'dosen',  'as' => 'dosen.'], function () {
+    Route::get('/', function () {
+        return view('dosen.index');
+    });
+    Route::get('/index', function () {
+        return view('dosen.index');
+    });
+    Route::get('/mhsbim', [ DOSMhsbmbController::class,'index'])->name('dossmhsbim');
+    Route::get('/pnltdos', [ DOSPnltdosController::class,'index'])->name('dosspnltdos');
+
+});
 
 
 Route::get('lapharian/cetak',[LapharianController::class,'cetak']);
@@ -78,6 +84,8 @@ Route::resource('admmahasiswa', ADMMahasiswaController::class);
 Route::resource('admtuam', ADMTuamController::class);
 Route::resource('admdosen', ADMDosenController::class);
 Route::resource('admpnltdosen', ADMPnltdosController::class);
+Route::resource('dosmhsbim', DOSMhsbmbController::class);
+Route::resource('dospnltdos', DOSPnltdosController::class);
 
 
 

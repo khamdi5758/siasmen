@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pnltdosen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ADMPnltdosController extends Controller
 {
@@ -12,10 +13,13 @@ class ADMPnltdosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
+        $nipdosen =  DB::table('dosens')->get();
         $data = Pnltdosen::all();
-        return view('admin.pnltdos',compact('data'));
+        // return $data->dos;
+        return view('admin.pnltdos',['data'=> $data,'dosen'=>$nipdosen]);
     }
 
     /**
@@ -56,7 +60,7 @@ class ADMPnltdosController extends Controller
      */
     public function show(Pnltdosen $pnltdosen)
     {
-        //
+        
     }
 
     /**

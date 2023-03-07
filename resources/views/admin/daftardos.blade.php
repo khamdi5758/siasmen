@@ -22,6 +22,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
+                            <input type="search" class="searchform-control light-table-filter" data-table="table-hover" placeholder="Mencari..." />
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
@@ -36,7 +37,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach($data as $item)
-                                        <tr class="gradeA">
+                                        <tr class="gradeU">
                                             <td>{{ $loop->iteration}}</td>
                                             <td>{{$item->nip}}</td>
                                             <td>{{$item->nama}}</td>
@@ -61,7 +62,7 @@
                             </div>
                             
                         </div>
-                    </div>
+</div>
 
 
 
@@ -254,7 +255,7 @@
     });
     
 </script>
-
+@yield('datatable')
 
 
 @endsection

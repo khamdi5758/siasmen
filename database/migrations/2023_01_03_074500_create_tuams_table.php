@@ -17,7 +17,8 @@ class CreateTuamsTable extends Migration
             $table->id();
             $table->string('nim');
             $table->string('judul');
-            $table->string('abstrak');
+            $table->text('abstrak');
+            $table->string('tahun');
             $table->string('dosen_pembimbing');
             $table->timestamps();
         });

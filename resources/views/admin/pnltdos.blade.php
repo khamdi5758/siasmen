@@ -15,7 +15,7 @@
 
 <div class="panel panel-default">
 <div class="ibox-tools">
-        <button class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#modal-add"><i class="fa fa-plus"></i>Tambah</button>
+        <button class="btn btn-primary btn-sm btn-flat add" data-toggle="modal" data-target="#modal-add"><i class="fa fa-plus"></i>Tambah</button>
 </div>
                         <div class="panel-heading">
                              Advanced Tables
@@ -35,7 +35,7 @@
                                 <tbody>
                                 @foreach($data as $item)
                                     <tr class="gradeU">
-                                        <td>{{ $loop->iteration}}</td>
+                                        <td>{{$loop->iteration}}</td>
                                         <td>{{$item->nip}}</td>
                                         <td>{{$item->judul}}</td>
                                         <td>{{$item->abstrak}}</td>
@@ -58,7 +58,7 @@
                             </div>
                             
                         </div>
-                    </div>
+</div>
 
 <!-- modal add data-->
 <div class="modal inmodal fade" id="modal-add" tabindex="-1" role="dialog" aria-hidden="true">
@@ -72,9 +72,15 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">NIP</label>
+                    <label class="col-lg-2 control-label">Nama</label>
                     <div class="col-lg-10">
-                        <input type="text" name="nip" placeholder="nip" class="form-control">
+                        <!-- <input type="text" name="nip" placeholder="nip" class="form-control"> -->
+                        <select class="form-control" name="nip">
+                            <option>pilih</option>
+                        @foreach($dosen as $dos)
+                            <option value="{{$dos->nip}}">{{$dos->nama}}</option> 
+                        @endforeach
+                        </select> 
                     </div>
                 </div>
                 <div class="form-group">
@@ -144,7 +150,6 @@
     </div>
 </div>
 
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
     $(function() {
@@ -170,6 +175,8 @@
                 });
                 
             });
+
+           
             
     });
     

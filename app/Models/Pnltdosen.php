@@ -12,6 +12,13 @@ class Pnltdosen extends Model
     protected $fillable = [
         'nip',
         'judul',
-        'abstrak'
+        'abstrak',
+        'tahun'
     ];
+
+    public function dos()
+    {
+        return $this->belongsTo(Dosen::class);
+    }
+    
 }

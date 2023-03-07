@@ -13,6 +13,7 @@ class Tuam extends Model
         'nim',
         'judul',
         'abstrak',
+        'tahun',
         'dosen_pembimbing'
     ];
 }

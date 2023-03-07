@@ -17,7 +17,9 @@ class CreatePnltdosensTable extends Migration
             $table->id();
             $table->string('nip');
             $table->string('judul');
-            $table->string('abstrak');
+            $table->text('abstrak');
+            $table->string('tahun');
+            $table->foreign('nip')->references('nip')->on('dosens');
             $table->timestamps();
         });
     }

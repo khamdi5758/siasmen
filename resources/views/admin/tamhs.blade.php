@@ -72,9 +72,15 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">NIM</label>
+                    <label class="col-lg-2 control-label">Nama</label>
                     <div class="col-lg-10">
-                        <input type="text" name="nim" placeholder="nim" class="form-control">
+                        <!-- <input type="text" name="nim" placeholder="nim" class="form-control"> -->
+                        <select class="form-control" name="nip">
+                            <option>pilih</option>
+                        @foreach($mhs as $mhs)
+                            <option value="{{$mhs->nim}}">{{$mhs->nama}}</option>
+                        @endforeach
+                        </select> 
                     </div>
                 </div>
                 <div class="form-group">
@@ -174,10 +180,8 @@
                         $('#judul').val(data.judul);
                         $('#abstrak').val(data.abstrak);
                         $('#dosen_pembimbing').val(data.dosen_pembimbing);
-                        
                         let idedit = data.id; 
                         document.getElementById("editform").action="{{ url('admtuam') }}/"+idedit;
-                                               
                     }
                 });
                 

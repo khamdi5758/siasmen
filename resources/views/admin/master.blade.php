@@ -10,6 +10,7 @@
     <link href="{{asset('tmplt/css/font-awesome.css')}}" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
     <link href="{{asset('tmplt/css/custom.css')}}" rel="stylesheet" />
+    <script type="text/javascript" src="{{asset('tmplt/js/search.js')}}"></script>
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
    <!-- TABLE STYLES-->
@@ -110,6 +111,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
     <script src="{{asset('tmplt/js/bootstrap.min.js')}}"></script>
     <!-- METISMENU SCRIPTS -->
     <script src="{{asset('tmplt/js/jquery.metisMenu.js')}}"></script>
+    @section('datatable')
     <!-- DATA TABLE SCRIPTS -->
     <!-- @yield('Scriptdt') -->
     <script src="{{asset('tmplt/js/dataTables/jquery.dataTables.js')}}"></script>
@@ -119,6 +121,7 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                 $('#dataTables-example').dataTable();
             });
     </script>
+    @endsection
       <!-- CUSTOM SCRIPTS -->
     <script src="{{asset('tmplt/js/custom.js')}}"></script>
 </body>
