@@ -71,9 +71,11 @@ font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-d
                     <li>
                         <a class="@yield('ontamhs')-menu" href="{{ url('mahasiswa/tamhs') }}"><i class="fa fa-desktop fa-3x"></i>Tugas Akhir Mahasiswa</a>
                     </li>
-
                     <li>
                         <a class="@yield('onatamhs')-menu" href="{{ url('mahasiswa/atamhs') }}"><i class="fa fa-desktop fa-3x"></i>Ajukan Tugas Akhir</a>
+                    </li>
+                    <li>
+                        <a class="@yield('onpnltdos')-menu" href="{{ url('mahasiswa/mhspnltdos') }}"><i class="fa fa-desktop fa-3x"></i>penelitian dosen</a>
                     </li>
 					<li>
                         <a class="@yield('ondospem')-menu" href="{{ url('mahasiswa/dospem') }}"><i class="fa fa-desktop fa-3x"></i>Dosen pembimbing</a>

@@ -18,7 +18,7 @@ class ADMPnltdosController extends Controller
     {
         $nipdosen =  DB::table('dosens')->get();
         $data = Pnltdosen::all();
-        // return $data->dos;
+        // return $data->dos();
         return view('admin.pnltdos',['data'=> $data,'dosen'=>$nipdosen]);
     }
 
@@ -41,12 +41,14 @@ class ADMPnltdosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nip' => 'required',
+            'dosens_id' => 'required',
             'judul' => 'required',
-            'abstrak' => 'required'
+            'abstrak' => 'required',
+            'tahun' => 'required'
         ]);
         $input = $request->all();
-        $input = $request->all();
+        // dd($input);
+        // $input = $request->all();
         Pnltdosen::create($input);
         return redirect()->route('admin.pnltdos')->with('success', 'Data berhasil dibuat');
         
@@ -73,7 +75,8 @@ class ADMPnltdosController extends Controller
     {
         $id = $_GET['id'];
         $data = Pnltdosen::find($id);
-        return json_encode($data);
+        $datadosen = $data->dosens;
+        return json_encode([$data,$datadosen]);
     }
 
     /**
@@ -86,9 +89,10 @@ class ADMPnltdosController extends Controller
     public function update(Request $request, Pnltdosen $pnltdosen)
     {
         $request->validate([
-            'nip' => 'required',
+            'dosens_id' => 'required',
             'judul' => 'required',
-            'abstrak' => 'required'
+            'abstrak' => 'required',
+            'tahun' => 'required'
         ]);
         $id = $request->hidid;
         $input =$request->all();

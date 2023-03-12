@@ -27,20 +27,26 @@
                         <tr>
                             <th>no</th>
                             <th>nim</th>
+                            <th>nama</th>
                             <th>judul</th>
                             <th>abstrak</th>
+                            <th>tahun</th>
                             <th>dosen pembimbing</th>
-                            <th>action<th>
+                            <th>action</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($data as $item)
                         <tr class="gradeU">
                             <td>{{ $loop->iteration}}</td>
-                            <td>{{$item->nim}}</td>
+                            <!-- <td>{{$item->mahasiswas_id}}</td> -->
+                            <td>{{$item->mahasiswas->nim}}</td>
+                            <td>{{$item->mahasiswas->nama}}</td>
                             <td>{{$item->judul}}</td>
                             <td>{{$item->abstrak}}</td>
-                            <td>{{$item->dosen_pembimbing}}</td>
+                            <td>{{$item->tahun}}</td>
+                            <!-- <td>{{$item->dosens_id}}</td> -->
+                            <td>{{$item->dosens->nama}}</td>
                             <td>
                             <form action="{{ route('admtuam.destroy', $item->id) }}" method="post">
                                     @csrf
@@ -75,10 +81,10 @@
                     <label class="col-lg-2 control-label">Nama</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="nim" placeholder="nim" class="form-control"> -->
-                        <select class="form-control" name="nip">
+                        <select class="form-control" name="mahasiswas_id">
                             <option>pilih</option>
                         @foreach($mhs as $mhs)
-                            <option value="{{$mhs->nim}}">{{$mhs->nama}}</option>
+                            <option value="{{$mhs->id}}">{{$mhs->nim}}-{{$mhs->nama}}</option>
                         @endforeach
                         </select> 
                     </div>
@@ -98,9 +104,21 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-lg-2 control-label">tahun</label>
+                    <div class="col-lg-10">
+                        <input type="text" name="tahun" placeholder="tahun" class="form-control"> 
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-lg-2 control-label">dosen pembimbing</label>
                     <div class="col-lg-10">
-                        <input type="text" name="dosen_pembimbing" placeholder="dosen_pembimbing" class="form-control">
+                        <!-- <input type="text" name="dosen_pembimbing" placeholder="dosen_pembimbing" class="form-control"> -->
+                        <select class="form-control" name="dosens_id">
+                            <option>pilih</option>
+                        @foreach($dosens as $dos)
+                            <option value="{{$dos->id}}">{{$dos->nip}}-{{$dos->nama}}</option> 
+                        @endforeach
+                        </select> 
                     </div>
                 </div>
             </div>
@@ -126,10 +144,12 @@
             @method('PUT')
             <div class="modal-body">
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">NIM</label>
+                    <label class="col-lg-2 control-label">Nama</label>
                     <div class="col-lg-10">
                         <input type="hidden" name="hidid" id="idedit" class="form-control">
-                        <input type="text" name="nim" placeholder="nim" id="nim" class="form-control">
+                        <input type="hidden" name="mahasiswas_id" placeholder="nim" id="idmahasiswa" class="form-control">
+                        <!-- <input type="hidden" name="dosens_id" placeholder="nim" id="iddosen" class="form-control"> -->
+                        <input type="text" placeholder="nama" id="nama" class="form-control"  disabled>
                     </div>
                 </div>
                 <div class="form-group">
@@ -147,9 +167,21 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-lg-2 control-label">tahun</label>
+                    <div class="col-lg-10">
+                        <input type="text" name="tahun" id="tahun" placeholder="tahun" class="form-control"> 
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-lg-2 control-label">dosen pembimbing</label>
                     <div class="col-lg-10">
-                        <input type="text" name="dosen_pembimbing" id="dosen_pembimbing" placeholder="dosen_pembimbing" class="form-control">
+                        <!-- <input type="text" name="dosen_pembimbing" id="dosen_pembimbing" placeholder="dosen_pembimbing" class="form-control"> -->
+                        <select class="form-control" name="dosens_id" id="iddosen">
+                            <option>pilih</option>
+                        @foreach($dosens as $dos)
+                            <option value="{{$dos->id}}">{{$dos->nip}}-{{$dos->nama}}</option> 
+                        @endforeach
+                        </select> 
                     </div>
                 </div>
             </div>
@@ -173,13 +205,16 @@
                     url : "{{route('admtuam.edit',"+data.id+")}}",
                     type: 'get',
                     dataType: 'json',
-                    success: function(data)
+                    success: function([data,datamahasiswa,datadosen])
                     {
                         $('#idedit').val(data.id);
-                        $('#nim').val(data.nim);
+                        $('#idmahasiswa').val(data.mahasiswas_id);
+                        $('#iddosen').val(data.dosens_id);
+                        $('#nama').val(datamahasiswa.nama);
                         $('#judul').val(data.judul);
                         $('#abstrak').val(data.abstrak);
-                        $('#dosen_pembimbing').val(data.dosen_pembimbing);
+                        $('#tahun').val(data.tahun);
+                        // $('#dosen_pembimbing').val(datadosen.nama);
                         let idedit = data.id; 
                         document.getElementById("editform").action="{{ url('admtuam') }}/"+idedit;
                     }

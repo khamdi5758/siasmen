@@ -10,13 +10,13 @@ class Pnltdosen extends Model
     use HasFactory;
     protected $table = "pnltdosens";
     protected $fillable = [
-        'nip',
+        'dosens_id',
         'judul',
         'abstrak',
         'tahun'
     ];
 
-    public function dos()
+    public function dosens()
     {
         return $this->belongsTo(Dosen::class);
     }

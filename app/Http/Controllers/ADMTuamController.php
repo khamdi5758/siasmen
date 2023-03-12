@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tuam;
+use App\Models\Mahasiswa;
+use App\Models\Dosen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,9 +17,12 @@ class ADMTuamController extends Controller
      */
     public function index()
     {
-        $mhs =  DB::table('mahasiswas')->get();
+        // $mhs =  DB::table('mahasiswas')->get();
+        // $dosen =  DB::table('dosens')->get();
+        $mhs = Mahasiswa::all() ;
+        $dosen =  Dosen::all();
         $data = Tuam::all();
-        return view('admin.tamhs',['data' => $data, 'mhs' => $mhs]);
+        return view('admin.tamhs',['data' => $data, 'mhs' => $mhs,'dosens'=>$dosen]);
     }
 
     /**
@@ -39,12 +44,15 @@ class ADMTuamController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nim' => 'required',
+            'mahasiswas_id' => 'required',
+            'dosens_id' => 'required',
             'judul' => 'required',
             'abstrak' => 'required',
-            'dosen_pembimbing' => 'required',
+            'tahun' => 'required',
+            
         ]);
         $input = $request->all();
+        // dd($input);
         Tuam::create($input);
         return redirect()->route('admin.tamhs')->with('success', 'Data berhasil dibuat');
         // $tuam = new Tuam();
@@ -76,7 +84,9 @@ class ADMTuamController extends Controller
     {
         $id = $_GET['id'];
         $data = Tuam::find($id);
-        return json_encode($data);
+        $datamahasiswa = $data->mahasiswas;
+        $datadosen = $data->dosens;
+        return json_encode([$data,$datamahasiswa,$datadosen]);
         // dump($data);
         // return view('tuam.edit', compact('data'));
     }
@@ -91,10 +101,11 @@ class ADMTuamController extends Controller
     public function update(Request $request, Tuam $tuam)
     {
         $request->validate([
-            'nim' => 'required',
+            'mahasiswas_id' => 'required',
+            'dosens_id' => 'required',
             'judul' => 'required',
             'abstrak' => 'required',
-            'dosen_pembimbing' => 'required',
+            'tahun' => 'required',
         ]);
         $id = $request->hidid;
         $input =$request->all();

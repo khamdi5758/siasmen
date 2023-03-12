@@ -13,15 +13,34 @@ class CreateTuamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tuams', function (Blueprint $table) {
-            $table->id();
-            $table->string('nim');
-            $table->string('judul');
-            $table->text('abstrak');
-            $table->string('tahun');
-            $table->string('dosen_pembimbing');
-            $table->timestamps();
-        });
+        // Schema::create('tuams', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->unsignedBigInteger('mahasiswa_id');
+        //     $table->foreign('mahasiswa_id')->references('id')->on('mahasiswas')->onUpdate('cascade')->onDelete('cascade');
+        //     $table->string('judul');
+        //     $table->text('abstrak');
+        //     $table->string('tahun');
+        //     $table->unsignedBigInteger('dosens_id');
+        //     // $table->foreign('dosens_id')->references('id')->on('dosens')->onUpdate('cascade')->onDelete('cascade');
+        //     $table->timestamps();
+        // });
+
+        // Schema::table('tuams', function($table){
+        //     $table->foreign('mahasiswa_id')
+        //          ->constrained()
+        //         ->references('id')->on('mahasiswas')
+        //         ->onUpdate('cascade')
+        //         ->onDelete('cascade');
+                
+        // });
+        // Schema::table('tuams', function($table){
+        //     $table->foreign('dosens_id')
+        //          ->constrained()
+        //         ->references('id')->on('dosens')
+        //         ->onUpdate('cascade')
+        //         ->onDelete('cascade');
+
+        // });
     }
 
     /**
@@ -31,6 +50,11 @@ class CreateTuamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tuams');
+        // Schema::dropIfExists('tuams');
+        // Schema::table('tuams',function (Blueprint $table) {
+        //     $table->dropForeign(['mahasiswa_id','dosens_id']);
+        //     $table->dropColumn('mahasiswa_id');
+        //     $table->dropColumn('dosens_id');
+        // });
     }
 }

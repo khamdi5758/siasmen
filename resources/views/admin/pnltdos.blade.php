@@ -27,26 +27,31 @@
                                     <tr>
                                         <th>no</th>
                                         <th>nip</th>
+                                        <th>nama</th>
                                         <th>judul</th>
                                         <th>abstrak</th>
-                                        <th>action<th>
+                                        <th>tahun</th>
+                                        <th>action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($data as $item)
                                     <tr class="gradeU">
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$item->nip}}</td>
+                                        <td>{{$item->dosens->nip}}</td>
+                                        <td>{{$item->dosens->nama}}</td>
                                         <td>{{$item->judul}}</td>
                                         <td>{{$item->abstrak}}</td>
+                                        <td>{{$item->tahun}}</td>
+
                                         <td>
                                         <form action="{{ route('admpnltdosen.destroy', $item->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <a href="#" data-id="{{ $item->id }}" data-toggle="modal" data-target="#modal-edit" class="btn btn-warning btn-sm edit"> Edit </a>
                                                 &nbsp;
-                                                <a href="{{ route('admpnltdosen.show', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
-                                                &nbsp;
+                                                <!-- <a href="{{ route('admpnltdosen.show', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
+                                                &nbsp; -->
                                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda Yakin?')">Delete</button>
                                             </form>
                                         </td>
@@ -75,10 +80,10 @@
                     <label class="col-lg-2 control-label">Nama</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="nip" placeholder="nip" class="form-control"> -->
-                        <select class="form-control" name="nip">
+                        <select class="form-control" name="dosens_id">
                             <option>pilih</option>
                         @foreach($dosen as $dos)
-                            <option value="{{$dos->nip}}">{{$dos->nama}}</option> 
+                            <option value="{{$dos->id}}">{{$dos->nip}}-{{$dos->nama}}</option> 
                         @endforeach
                         </select> 
                     </div>
@@ -95,6 +100,12 @@
                     <div class="col-lg-10">
                         <!-- <input type="text" name="abstrak" placeholder="abstrak" class="form-control"> -->
                         <textarea name="abstrak" rows="10" cols="60" placeholder="abstrak"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">tahun</label>
+                    <div class="col-lg-10">
+                        <input type="text" name="tahun" placeholder="tahun" class="form-control">
                     </div>
                 </div>
             </div>
@@ -120,10 +131,12 @@
             @method('PUT')
             <div class="modal-body">
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">NIP</label>
+                    <label class="col-lg-2 control-label">nama</label>
                     <div class="col-lg-10">
                         <input type="hidden" name="hidid" id="idedit" class="form-control">
-                        <input type="text" name="nip" placeholder="nip" id="nip" class="form-control">
+                        <input type="hidden" name="dosens_id" placeholder="dosensid" id="dosens_id" class="form-control">
+                        <!-- <input type="text"  placeholder="nip" id="nip" class="form-control"> -->
+                        <input type="text"  placeholder="nama" id="nama" class="form-control">    
                     </div>
                 </div>
                 <div class="form-group">
@@ -138,6 +151,12 @@
                     <div class="col-lg-10">
                         <!-- <input type="text" name="abstrak" placeholder="abstrak" class="form-control"> -->
                         <textarea name="abstrak" rows="10" cols="60" id="abstrak" placeholder="abstrak"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">tahun</label>
+                    <div class="col-lg-10">
+                        <input type="text" name="tahun" id="tahun" placeholder="tahun" class="form-control">
                     </div>
                 </div>
             </div>
@@ -161,12 +180,14 @@
                     url : "{{route('admpnltdosen.edit',"+data.id+")}}",
                     type: 'get',
                     dataType: 'json',
-                    success: function(data)
+                    success: function([data,datadosen])
                     {
                         $('#idedit').val(data.id);
-                        $('#nip').val(data.nip);
+                        $('#dosens_id').val(data.dosens_id);
+                        $('#nama').val(datadosen.nama);
                         $('#judul').val(data.judul);
                         $('#abstrak').val(data.abstrak);
+                        $('#tahun').val(data.tahun);
                         console.log(data);
                         let idedit = data.id; 
                         document.getElementById("editform").action="{{ url('admpnltdosen') }}/"+idedit;

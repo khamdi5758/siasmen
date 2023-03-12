@@ -8,12 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Tuam extends Model
 {
     use HasFactory;
-    protected $table = "tuams";
+    protected $table = "tamhs";
     protected $fillable = [
-        'nim',
+        'mahasiswas_id',
+        'dosens_id',
         'judul',
         'abstrak',
-        'tahun',
-        'dosen_pembimbing'
+        'tahun'
     ];
+
+    public function mahasiswas()
+    {
+        return $this->belongsTo(Mahasiswa::class);
+    }
+
+    public function dosens()
+    {
+        return $this->belongsTo(Dosen::class);
+    }
+
+
 }

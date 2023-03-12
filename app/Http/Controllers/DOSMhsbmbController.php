@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dosen;
+use App\Models\Mahasiswa;
+use App\Models\Tuam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 
 class DOSMhsbmbController extends Controller
 {
@@ -14,8 +18,10 @@ class DOSMhsbmbController extends Controller
      */
     public function index()
     {
-        $data = DB::table('tuams')->get();
-        return view('dosen.mhsbim',compact('data'));
+        $mhs = Mahasiswa::all() ;
+        $dosen =  Dosen::all();
+        $data = Tuam::all();
+        return view('dosen.mhsbim',['data' => $data, 'mhs' => $mhs,'dosens'=>$dosen]);
     }
 
     /**

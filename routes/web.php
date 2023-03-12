@@ -9,10 +9,11 @@ use App\Http\Controllers\ADMDosenController;
 use App\Http\Controllers\ADMPnltdosController;
 use App\Http\Controllers\MHSTamhsController;
 use App\Http\Controllers\MHSDospemController;
+use App\Http\Controllers\MHSPnltdosController;
 use App\Http\Controllers\DOSMhsbmbController;
 use App\Http\Controllers\DOSPnltdosController;
-
-
+use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,16 @@ use App\Http\Controllers\DOSPnltdosController;
 Route::get('/', function () {
     return view('homepage.index');
 });
+
+Route::controller(LoginController::class)->group(function ()
+{
+    Route::get('login','index')->name('login');
+    Route::post('login/proses','proses');
+
+});
+// Route::get('login',[LoginController::class,'index'])->name('login');
+
+// Route::middleware(['auth', 'user-access:admin'])->group(function () {
 
 Route::group(['prefix' => 'admin',  'as' => 'admin.'], function () {
 
@@ -47,7 +58,10 @@ Route::group(['prefix' => 'admin',  'as' => 'admin.'], function () {
     Route::get('/pnltdos/nipdosen', [ADMPnltdosController::class,'nipdosen'])->name('nipdosen');
   });
 
+// });
 
+
+// Route::middleware(['auth', 'user-access:mahasiswa'])->group(function () {
 Route::group(['prefix' => 'mahasiswa',  'as' => 'mahasiswa.'], function () {
     Route::get('/', function () {
         return view('mahasiswa.index');
@@ -59,11 +73,15 @@ Route::group(['prefix' => 'mahasiswa',  'as' => 'mahasiswa.'], function () {
     Route::get('/atamhs', function () {
         return view('mahasiswa.atamhs');
     });
+    Route::get('/mhspnltdos', [MHSPnltdosController::class,'index'])->name('mhspnltdos');
+    // Route::get('/mhspnltdos', function () {
+    //     return view('mahasiswa.pnltdos');
+    // });
     Route::get('/dospem', [MHSDospemController::class,'index'])->name('mhsdospemmhs');
 });
+// });
 
-
-
+// Route::middleware(['auth', 'user-access:dosen'])->group(function () {
 Route::group(['prefix' => 'dosen',  'as' => 'dosen.'], function () {
     Route::get('/', function () {
         return view('dosen.index');
@@ -75,6 +93,7 @@ Route::group(['prefix' => 'dosen',  'as' => 'dosen.'], function () {
     Route::get('/pnltdos', [ DOSPnltdosController::class,'index'])->name('dosspnltdos');
 
 });
+// });
 
 
 Route::get('lapharian/cetak',[LapharianController::class,'cetak']);
@@ -94,3 +113,7 @@ Route::resource('dospnltdos', DOSPnltdosController::class);
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

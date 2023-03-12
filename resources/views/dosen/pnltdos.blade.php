@@ -27,18 +27,22 @@
                                     <tr>
                                         <th>no</th>
                                         <th>nip</th>
+                                        <th>nama</th>
                                         <th>judul</th>
                                         <th>abstrak</th>
-                                        <th>action<th>
+                                        <th>tahun</th>
+                                        <th>action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($data as $item)
                                     <tr class="gradeU">
                                         <td>{{ $loop->iteration}}</td>
-                                        <td>{{$item->nip}}</td>
+                                        <td>{{$item->dosens->nip}}</td>
+                                        <td>{{$item->dosens->nama}}</td>
                                         <td>{{$item->judul}}</td>
                                         <td>{{$item->abstrak}}</td>
+                                        <td>{{$item->tahun}}</td>
                                         <td>
                                         <form action="{{ route('dospnltdos.destroy', $item->id) }}" method="post">
                                                 @csrf
@@ -72,23 +76,35 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">NIP</label>
+                    <label class="col-lg-2 control-label">nama</label>
                     <div class="col-lg-10">
-                        <input type="text" name="nip" placeholder="nip" class="form-control">
+                        <!-- <input type="text" name="nip" placeholder="nip" class="form-control"> -->
+                        <select class="form-control" name="dosens_id">
+                            <option>pilih</option>
+                        @foreach($dosen as $dos)
+                            <option value="{{$dos->id}}">{{$dos->nip}}-{{$dos->nama}}</option> 
+                        @endforeach
+                        </select> 
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">judul</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="judul" placeholder="judul" class="form-control"> -->
-                        <textarea name="judul" rows="3" cols="60" placeholder="judul"></textarea>
+                        <textarea name="judul" rows="3" cols="55%" placeholder="judul"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">abstrak</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="abstrak" placeholder="abstrak" class="form-control"> -->
-                        <textarea name="abstrak" rows="10" cols="60" placeholder="abstrak"></textarea>
+                        <textarea name="abstrak" rows="10" cols="55%" placeholder="abstrak"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">tahun</label>
+                    <div class="col-lg-10">
+                        <input type="text" name="tahun" placeholder="tahun" class="form-control">
                     </div>
                 </div>
             </div>
@@ -114,24 +130,36 @@
             @method('PUT')
             <div class="modal-body">
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">NIP</label>
+                    <label class="col-lg-2 control-label">nama</label>
                     <div class="col-lg-10">
-                        <input type="hidden" name="hidid" id="idedit" class="form-control">
-                        <input type="text" name="nip" placeholder="nip" id="nip" class="form-control">
+                         <input type="hidden" name="hidid" id="idedit" class="form-control">
+                        <!-- <input type="text" name="nip" placeholder="nip" class="form-control"> -->
+                        <select class="form-control" name="dosens_id" id="iddosen">
+                            <option>pilih</option>
+                        @foreach($dosen as $dos)
+                            <option value="{{$dos->id}}">{{$dos->nip}}-{{$dos->nama}}</option> 
+                        @endforeach
+                        </select> 
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">judul</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="judul" placeholder="judul" class="form-control"> -->
-                        <textarea name="judul" rows="3" cols="60" id="judul" placeholder="judul"></textarea>
+                        <textarea name="judul" rows="3" cols="55%" id="judul" placeholder="judul"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">abstrak</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="abstrak" placeholder="abstrak" class="form-control"> -->
-                        <textarea name="abstrak" rows="10" cols="60" id="abstrak" placeholder="abstrak"></textarea>
+                        <textarea name="abstrak" rows="10" cols="55%" id="abstrak" placeholder="abstrak"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">tahun</label>
+                    <div class="col-lg-10">
+                        <input type="text" name="tahun" id="tahun" placeholder="tahun" class="form-control">
                     </div>
                 </div>
             </div>
@@ -156,12 +184,13 @@
                     url : "{{route('dospnltdos.edit',"+data.id+")}}",
                     type: 'get',
                     dataType: 'json',
-                    success: function(data)
+                    success: function([data,datadosen])
                     {
                         $('#idedit').val(data.id);
-                        $('#nip').val(data.nip);
+                        $('#iddosen').val(data.dosens_id);
                         $('#judul').val(data.judul);
                         $('#abstrak').val(data.abstrak);
+                        $('#tahun').val(data.tahun);
                         console.log(data);
                         let idedit = data.id; 
                         document.getElementById("editform").action="{{ url('dospnltdos') }}/"+idedit;

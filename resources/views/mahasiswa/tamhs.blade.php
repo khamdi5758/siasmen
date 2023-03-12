@@ -24,20 +24,22 @@
                         <tr>
                             <th>no</th>
                             <th>nim</th>
+                            <th>nama</th>
                             <th>judul</th>
                             <th>abstrak</th>
                             <th>dosen pembimbing</th>
-                            <th>action<th>
+                            <th>action</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($data as $item)
                         <tr class="gradeU">
                             <td>{{ $loop->iteration}}</td>
-                            <td>{{$item->nim}}</td>
+                            <td>{{$item->mahasiswas->nim}}</td>
+                            <td>{{$item->mahasiswas->nama}}</td>
                             <td>{{$item->judul}}</td>
                             <td>{{$item->abstrak}}</td>
-                            <td>{{$item->dosen_pembimbing}}</td>
+                            <td>{{$item->dosens->nama}}</td>
                             <td>
                                 <a href="{{ route('admtuam.show', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
                             </td>

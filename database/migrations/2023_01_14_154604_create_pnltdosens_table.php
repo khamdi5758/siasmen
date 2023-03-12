@@ -15,11 +15,11 @@ class CreatePnltdosensTable extends Migration
     {
         Schema::create('pnltdosens', function (Blueprint $table) {
             $table->id();
-            $table->string('nip');
+            $table->unsignedBigInteger('dosens_id');
             $table->string('judul');
             $table->text('abstrak');
             $table->string('tahun');
-            $table->foreign('nip')->references('nip')->on('dosens');
+            $table->foreign('dosens_id')->references('id')->on('dosens');
             $table->timestamps();
         });
     }
@@ -32,5 +32,9 @@ class CreatePnltdosensTable extends Migration
     public function down()
     {
         Schema::dropIfExists('pnltdosens');
+        Schema::table('pnltdosens',function (Blueprint $table) {
+            $table->dropForeign(['dosens_id']);
+            $table->dropColumn('dosens_id');
+        });
     }
 }

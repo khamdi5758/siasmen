@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dosen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Pnltdosen;
+
+use function GuzzleHttp\Promise\all;
 
 class DOSPnltdosController extends Controller
 {
@@ -15,8 +18,9 @@ class DOSPnltdosController extends Controller
      */
     public function index()
     {
+        $datadosen = Dosen::all();
         $data = Pnltdosen::all();
-        return view('dosen.pnltdos', compact('data'));
+        return view('dosen.pnltdos', ['data'=> $data,'dosen'=>$datadosen]);
     }
 
     /**
@@ -38,11 +42,11 @@ class DOSPnltdosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nip' => 'required',
+            'dosens_id' => 'required',
             'judul' => 'required',
-            'abstrak' => 'required'
+            'abstrak' => 'required',
+            'tahun' => 'required'
         ]);
-        $input = $request->all();
         $input = $request->all();
         Pnltdosen::create($input);
         return redirect()->route('dosen.dosspnltdos')->with('success', 'Data berhasil dibuat');
@@ -69,7 +73,8 @@ class DOSPnltdosController extends Controller
     {
         $id = $_GET['id'];
         $data = Pnltdosen::find($id);
-        return json_encode($data);
+        $datadosen = $data->dosens;
+        return json_encode([$data,$datadosen]);
     }
 
     /**
@@ -82,13 +87,15 @@ class DOSPnltdosController extends Controller
     public function update(Request $request, Pnltdosen $pnltdosen)
     {
         $request->validate([
-            'nip' => 'required',
+            'dosens_id' => 'required',
             'judul' => 'required',
-            'abstrak' => 'required'
+            'abstrak' => 'required',
+            'tahun' => 'required'
         ]);
         $id = $request->hidid;
         $input = $request->all();
         $data = Pnltdosen::find($id);
+        // dd($data);
         $data->update($input);
         return redirect()->route('dosen.dosspnltdos')->with('success', 'Data berhasil diupdate');
     }
