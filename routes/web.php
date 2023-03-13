@@ -13,6 +13,11 @@ use App\Http\Controllers\MHSPnltdosController;
 use App\Http\Controllers\DOSMhsbmbController;
 use App\Http\Controllers\DOSPnltdosController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RedirectController;
+use App\Http\Controllers\SuperadminController;
+use App\Http\Controllers\PegawaiController;
+
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -30,16 +35,43 @@ Route::get('/', function () {
     return view('homepage.index');
 });
 
-Route::controller(LoginController::class)->group(function ()
-{
-    Route::get('login','index')->name('login');
-    Route::post('login/proses','proses');
+
+//  jika user belum login
+Route::group(['middleware' => 'guest'], function() {
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/', [AuthController::class, 'dologin']);
 
 });
+
+// untuk superadmin dan pegawai
+Route::group(['middleware' => ['auth', 'checkrole:1,2,3']], function() {
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/redirect', [RedirectController::class, 'cek']);
+});
+
+
+// untuk superadmin
+// Route::group(['middleware' => ['auth', 'checkrole:1']], function() {
+//     Route::get('/superadmin', [SuperadminController::class, 'index']);
+// });
+
+// untuk pegawai
+// Route::group(['middleware' => ['auth', 'checkrole:2']], function() {
+//     Route::get('/pegawai', [PegawaiController::class, 'index']);
+// });
+
+
+// Route::controller(LoginController::class)->group(function ()
+// {
+//     Route::get('login','index')->name('login');
+//     Route::post('login/proses','proses');
+
+// });
 // Route::get('login',[LoginController::class,'index'])->name('login');
 
 // Route::middleware(['auth', 'user-access:admin'])->group(function () {
-
+Route::group(['middleware' => ['auth', 'checkrole:1']], function() {
+    
 Route::group(['prefix' => 'admin',  'as' => 'admin.'], function () {
 
     // Route::get('/test', [AdminIndexController::class, 'index'])->name('test'); 
@@ -57,10 +89,11 @@ Route::group(['prefix' => 'admin',  'as' => 'admin.'], function () {
     Route::get('/pnltdos', [ADMPnltdosController::class,'index'])->name('pnltdos');
     Route::get('/pnltdos/nipdosen', [ADMPnltdosController::class,'nipdosen'])->name('nipdosen');
   });
+});
 
 // });
 
-
+Route::group(['middleware' => ['auth', 'checkrole:3']], function() {
 // Route::middleware(['auth', 'user-access:mahasiswa'])->group(function () {
 Route::group(['prefix' => 'mahasiswa',  'as' => 'mahasiswa.'], function () {
     Route::get('/', function () {
@@ -79,8 +112,9 @@ Route::group(['prefix' => 'mahasiswa',  'as' => 'mahasiswa.'], function () {
     // });
     Route::get('/dospem', [MHSDospemController::class,'index'])->name('mhsdospemmhs');
 });
-// });
+});
 
+Route::group(['middleware' => ['auth', 'checkrole:2']], function() {
 // Route::middleware(['auth', 'user-access:dosen'])->group(function () {
 Route::group(['prefix' => 'dosen',  'as' => 'dosen.'], function () {
     Route::get('/', function () {
@@ -93,7 +127,7 @@ Route::group(['prefix' => 'dosen',  'as' => 'dosen.'], function () {
     Route::get('/pnltdos', [ DOSPnltdosController::class,'index'])->name('dosspnltdos');
 
 });
-// });
+});
 
 
 Route::get('lapharian/cetak',[LapharianController::class,'cetak']);
@@ -116,4 +150,4 @@ Route::resource('dospnltdos', DOSPnltdosController::class);
 
 // Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
