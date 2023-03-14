@@ -31,10 +31,11 @@ class CreatePnltdosensTable extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('pnltdosens');
-        Schema::table('pnltdosens',function (Blueprint $table) {
-            $table->dropForeign(['dosens_id']);
-            $table->dropColumn('dosens_id');
-        });
+        // Schema::table('pnltdosens',function (Blueprint $table) {
+        //     $table->dropForeign(['dosens_id']);
+        //     $table->dropColumn('dosens_id');
+        // });
     }
 }

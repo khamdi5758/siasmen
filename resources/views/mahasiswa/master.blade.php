@@ -8,6 +8,8 @@
     <link href="{{ asset('tmplt/css/bootstrap.css') }}" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
     <link href="{{asset('tmplt/css/font-awesome.css')}}" rel="stylesheet" />
+    <!-- MORRIS CHART STYLES-->
+    <link href="{{asset('tmplt')}}/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
     <link href="{{asset('tmplt/css/custom.css')}}" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
@@ -55,12 +57,11 @@
 padding: 15px 50px 5px 50px;
 float: right;
 font-size: 16px;"> 
-<!-- Last access : 30 May 2014 &nbsp; 
-<a href="#" class="btn btn-danger square-btn-adjust">Logout</a>  -->
-<form action="/logout" method="post">
-    @csrf
-    <button type="submit" class="btn btn-danger square-btn-adjust">Logout</button>
-</form>
+@auth
+<input type="hidden" id="username" value="{{auth()->user()->username}}">
+{{auth()->user()->name}}
+<a href="/logout" class="btn btn-danger square-btn-adjust">Logout</a> 
+@endauth
 </div>
         </nav>   
            <!-- /. NAV TOP  -->
@@ -143,6 +144,9 @@ font-size: 16px;">
     <script src="{{asset('tmplt/js/bootstrap.min.js')}}"></script>
     <!-- METISMENU SCRIPTS -->
     <script src="{{asset('tmplt/js/jquery.metisMenu.js')}}"></script>
+    <!-- MORRIS CHART SCRIPTS -->
+    <script src="{{asset('tmplt')}}/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="{{asset('tmplt')}}/js/morris/morris.js"></script>
     <!-- DATA TABLE SCRIPTS -->
     <!-- @yield('Scriptdt') -->
     <script src="{{asset('tmplt/js/dataTables/jquery.dataTables.js')}}"></script>
@@ -154,6 +158,10 @@ font-size: 16px;">
     </script>
       <!-- CUSTOM SCRIPTS -->
     <script src="{{asset('tmplt/js/custom.js')}}"></script>
-    
+    <script>
+        let user;
+        user = document.getElementById("username").value;
+        console.log(user);
+    </script>
 </body>
 </html>

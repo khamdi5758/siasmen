@@ -7,9 +7,9 @@
 	<!-- BOOTSTRAP STYLES-->
     <link href="{{ asset('tmplthome/css/bootstrap.css') }}" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
-    <link href="{{asset('tmplthome/css/font-awesome.css')}}" rel="stylesheet" />
+    <!-- <link href="{{asset('tmplthome/css/font-awesome.css')}}" rel="stylesheet" /> -->
         <!-- CUSTOM STYLES-->
-    <link href="{{asset('tmplthome/css/custom.css')}}" rel="stylesheet" />
+    <!-- <link href="{{asset('tmplthome/css/custom.css')}}" rel="stylesheet" /> -->
 </head>
 <body>
 

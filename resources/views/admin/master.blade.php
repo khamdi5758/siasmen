@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin | @yield('title')</title>
 	<!-- BOOTSTRAP STYLES-->
-    <link href="{{ asset('tmplt/css/bootstrap.css') }}" rel="stylesheet" />
+    <link href="{{ asset('tmplt') }}/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
-    <link href="{{asset('tmplt/css/font-awesome.css')}}" rel="stylesheet" />
+    <link href="{{asset('tmplt')}}/css/font-awesome.css" rel="stylesheet" />
+    <!-- MORRIS CHART STYLES-->
+    <link href="{{asset('tmplt')}}/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
-    <link href="{{asset('tmplt/css/custom.css')}}" rel="stylesheet" />
-    <script type="text/javascript" src="{{asset('tmplt/js/search.js')}}"></script>
+    <link href="{{asset('tmplt')}}/css/custom.css" rel="stylesheet" />
+    <script type="text/javascript" src="{{asset('tmplt')}}/js/search.js"></script>
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
    <!-- TABLE STYLES-->
    <!-- @yield('tablestyle') -->
-   <link href="{{asset('tmplt/js/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet" />
+   <link href="{{asset('tmplt')}}/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <div id="wrapper">
@@ -34,12 +36,18 @@ padding: 15px 50px 5px 50px;
 float: right;
 font-size: 16px;"> 
 <!-- Last access : 30 May 2014 &nbsp;  -->
-<!-- <a href="#" class="btn btn-danger square-btn-adjust">Logout</a>  -->
-<form action="/logout" method="post">
+@auth
+<input type="hidden" id="username" value="{{auth()->user()->username}}">
+{{auth()->user()->name}}
+<a href="/logout" class="btn btn-danger square-btn-adjust">Logout</a> 
+
+
+
+<!-- <form action="/logout" method="post">
     @csrf
     <button type="submit" class="btn btn-danger square-btn-adjust">Logout</button>
-</form>
-
+</form> -->
+@endauth
 </div>
         </nav>   
            <!-- /. NAV TOP  -->
@@ -114,17 +122,20 @@ font-size: 16px;">
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
-    <script src="{{asset('tmplt/js/jquery-1.10.2.js')}}"></script>
+    <script src="{{asset('tmplt')}}/js/jquery-1.10.2.js"></script>
       <!-- BOOTSTRAP SCRIPTS -->
-    <script src="{{asset('tmplt/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('tmplt')}}/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
-    <script src="{{asset('tmplt/js/jquery.metisMenu.js')}}"></script>
+    <script src="{{asset('tmplt')}}/js/jquery.metisMenu.js"></script>
+    <!-- MORRIS CHART SCRIPTS -->
+    <script src="{{asset('tmplt')}}/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="{{asset('tmplt')}}/js/morris/morris.js"></script>
     @section('datatable')
     <!-- DATA TABLE SCRIPTS -->
     <!-- @yield('Scriptdt') -->
-    <script src="{{asset('tmplt/js/dataTables/jquery.dataTables.js')}}"></script>
-    <script src="{{asset('tmplt/js/dataTables/dataTables.bootstrap.js')}}"></script>
-        <script>
+    <script src="{{asset('tmplt')}}/js/dataTables/jquery.dataTables.js"></script>
+    <script src="{{asset('tmplt')}}/js/dataTables/dataTables.bootstrap.js"></script>
+    <script>
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
             });
@@ -132,5 +143,10 @@ font-size: 16px;">
     @endsection
       <!-- CUSTOM SCRIPTS -->
     <script src="{{asset('tmplt/js/custom.js')}}"></script>
+    <script>
+        let user;
+        user = document.getElementById("username").value;
+        console.log(user);
+    </script>
 </body>
 </html>
