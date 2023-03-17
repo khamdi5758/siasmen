@@ -33,10 +33,13 @@
   <div style="color: white;
 padding: 15px 50px 5px 50px;
 float: right;
-font-size: 16px;"> 
+font-size: 16px;">  	
+
 @auth
-<input type="hidden" id="username" value="{{auth()->user()->username}}">
-{{auth()->user()->name}}
+
+<input type="hidden" id="username" value="{{auth()->user()->tampilnmuser(auth()->user()->username,auth()->user()->type)->id}}">
+{{auth()->user()->tampilnmuser(auth()->user()->username,auth()->user()->type)->nama}}
+&nbsp;
 <a href="/logout" class="btn btn-danger square-btn-adjust">Logout</a> 
 @endauth
 </div>
@@ -48,17 +51,19 @@ font-size: 16px;">
 				<li class="text-center">
                     <img src="{{asset('tmplt/img/find_user.png')}}" class="user-image img-responsive"/>
 					</li>
-				
-					
+			
                     <li>
                         <a class="@yield('ondashboard')-menu" href="{{ url('dosen') }}"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a class="@yield('onmhsbim')-menu" href="{{ url('dosen/mhsbim') }}"><i class="fa fa-desktop fa-3x"></i>Mahasiswa Bimbingan</a>
+                        <a class="@yield('onmhsbim')-menu" href="{{ url('dosen/mhsbim') }}/{{auth()->user()->tampilnmuser(auth()->user()->username,auth()->user()->type)->id}}"><i class="fa fa-desktop fa-3x"></i>Mahasiswa Bimbingan</a>
                     </li>
 
                     <li>
                         <a class="@yield('onpnltdos')-menu" href="{{ url('dosen/pnltdos') }}"><i class="fa fa-desktop fa-3x"></i>penelitian</a>
+                    </li>
+                    <li>
+                        <a class="@yield('onpnltsaya')-menu" href="{{ url('dosen/pnltsaya') }}/{{auth()->user()->tampilnmuser(auth()->user()->username,auth()->user()->type)->id}}"><i class="fa fa-desktop fa-3x"></i>penelitian saya</a>
                     </li>
 					<!-- <li>
                         <a class="@yield('ondospem')-menu" href="{{ url('mahasiswa/dospem') }}"><i class="fa fa-desktop fa-3x"></i>Dosen pembimbing</a>

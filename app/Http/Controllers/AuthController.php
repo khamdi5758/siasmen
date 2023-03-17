@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Dosen;
+use App\Models\Mahasiswa;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -12,9 +17,11 @@ class AuthController extends Controller
     }
 
     public function dologin(Request $request) {
+        $user = Auth::user();
         // validasi
         $credentials = $request->validate([
-            'email' => 'required|email',
+            // 'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required'
         ]);
 
@@ -36,6 +43,8 @@ class AuthController extends Controller
             } else if (auth()->user()->type === 2) {
                 // jika user dosen
                 return redirect()->intended('/dosen');
+                // return redirect()->intended('/dosen',['userdos'=>$userdos]);
+                // return redirect()->route('/dosen');
             } else if (auth()->user()->type === 3) {
                 // jika user mahasiswa
                 return redirect()->intended('/mahasiswa');

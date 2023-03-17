@@ -1,7 +1,7 @@
-@extends('admin.master')
-@section('title', 'daftar dosen')
+@extends('dosen.master')
+@section('title', 'penelitian saya')
 @section('onactivedos','active')
-@section('onpnltdos','active')
+@section('onpnltsaya','active')
 
 @section('content')
 
@@ -15,7 +15,7 @@
 
 <div class="panel panel-default">
 <div class="ibox-tools">
-        <button class="btn btn-primary btn-sm btn-flat add" data-toggle="modal" data-target="#modal-add"><i class="fa fa-plus"></i>Tambah</button>
+        <button class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#modal-add"><i class="fa fa-plus"></i>Tambah</button>
 </div>
                         <div class="panel-heading">
                              Advanced Tables
@@ -26,8 +26,6 @@
                                 <thead>
                                     <tr>
                                         <th>no</th>
-                                        <th>nip</th>
-                                        <th>nama</th>
                                         <th>judul</th>
                                         <th>abstrak</th>
                                         <th>tahun</th>
@@ -37,21 +35,18 @@
                                 <tbody>
                                 @foreach($data as $item)
                                     <tr class="gradeU">
-                                        <td>{{$loop->iteration}}</td>
-                                        <td>{{$item->dosens->nip}}</td>
-                                        <td>{{$item->dosens->nama}}</td>
+                                        <td>{{ $loop->iteration}}</td>
                                         <td>{{$item->judul}}</td>
                                         <td>{{$item->abstrak}}</td>
                                         <td>{{$item->tahun}}</td>
-
                                         <td>
-                                        <form action="{{ route('admpnltdosen.destroy', $item->id) }}" method="post">
+                                        <form action="{{ route('dospnltdos.destroy', $item->id) }}" method="post">
                                                 @csrf
                                                 @method('delete')
                                                 <a href="#" data-id="{{ $item->id }}" data-toggle="modal" data-target="#modal-edit" class="btn btn-warning btn-sm edit"> Edit </a>
                                                 &nbsp;
-                                                <!-- <a href="{{ route('admpnltdosen.show', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
-                                                &nbsp; -->
+                                                <a href="{{ route('dospnltdos.show', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
+                                                &nbsp;
                                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda Yakin?')">Delete</button>
                                             </form>
                                         </td>
@@ -63,12 +58,12 @@
                             </div>
                             
                         </div>
-</div>
+                    </div>
 
 <!-- modal add data-->
 <div class="modal inmodal fade" id="modal-add" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-xs">
-        <form name="frm_add" id="frm_add" class="form-horizontal" action="{{ route('admpnltdosen.store') }}" method="POST" enctype="multipart/form-data">
+        <form name="frm_add" id="frm_add" class="form-horizontal" action="{{ route('dospnltdos.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
             <div class="modal-content">
             <div class="modal-header">
@@ -76,30 +71,25 @@
                 <h4 class="modal-title">Tambah Data</h4>
             </div>
             <div class="modal-body">
-                <div class="form-group">
-                    <label class="col-lg-2 control-label">Nama</label>
+                <!-- <div class="form-group">
+                    <label class="col-lg-2 control-label">nama</label>
                     <div class="col-lg-10">
-                        <!-- <input type="text" name="nip" placeholder="nip" class="form-control"> -->
-                        <select class="form-control" name="dosens_id">
-                            <option>pilih</option>
-                        @foreach($dosen as $dos)
-                            <option value="{{$dos->id}}">{{$dos->nip}}-{{$dos->nama}}</option> 
-                        @endforeach
-                        </select> 
+                        
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">judul</label>
+                        <label class="col-lg-2 control-label">judul</label>
                     <div class="col-lg-10">
-                        <!-- <input type="text" name="judul" placeholder="judul" class="form-control"> -->
-                        <textarea name="judul" rows="3" cols="56%" placeholder="judul"></textarea>
+                            <input type="hidden" id="iddosenadd" name="dosens_id" class="form-control">
+                            <!-- <input type="text" name="judul" placeholder="judul" class="form-control"> -->
+                        <textarea name="judul" rows="3" cols="55%" placeholder="judul"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">abstrak</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="abstrak" placeholder="abstrak" class="form-control"> -->
-                        <textarea name="abstrak" rows="10" cols="56%" placeholder="abstrak"></textarea>
+                        <textarea name="abstrak" rows="10" cols="55%" placeholder="abstrak"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -131,26 +121,25 @@
             @method('PUT')
             <div class="modal-body">
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">nama</label>
+                    <!-- <label class="col-lg-2 control-label">nama</label> -->
                     <div class="col-lg-10">
-                        <input type="hidden" name="hidid" id="idedit" class="form-control">
-                        <input type="hidden" name="dosens_id" placeholder="dosensid" id="dosens_id" class="form-control">
-                        <!-- <input type="text"  placeholder="nip" id="nip" class="form-control"> -->
-                        <input type="text"  placeholder="nama" id="nama" class="form-control">    
+                         <input type="hidden" name="hidid" id="idedit" class="form-control">
+                        <!-- <input type="text" name="nip" placeholder="nip" class="form-control"> -->
+                        <input type="hidden" id="iddosen" name="dosens_id" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">judul</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="judul" placeholder="judul" class="form-control"> -->
-                        <textarea name="judul" rows="3" cols="56%" id="judul" placeholder="judul"></textarea>
+                        <textarea name="judul" rows="3" cols="55%" id="judul" placeholder="judul"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">abstrak</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="abstrak" placeholder="abstrak" class="form-control"> -->
-                        <textarea name="abstrak" rows="10" cols="56%" id="abstrak" placeholder="abstrak"></textarea>
+                        <textarea name="abstrak" rows="10" cols="55%" id="abstrak" placeholder="abstrak"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -169,6 +158,7 @@
     </div>
 </div>
 
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
     $(function() {
@@ -177,27 +167,27 @@
                 let id = $(this).data('id');
                 $.ajax({
                     data: {id : id},
-                    url : "{{route('admpnltdosen.edit',"+data.id+")}}",
+                    url : "{{route('dospnltdos.edit',"+data.id+")}}",
                     type: 'get',
                     dataType: 'json',
                     success: function([data,datadosen])
                     {
                         $('#idedit').val(data.id);
-                        $('#dosens_id').val(data.dosens_id);
-                        $('#nama').val(datadosen.nama);
+                        $('#iddosen').val(data.dosens_id);
                         $('#judul').val(data.judul);
                         $('#abstrak').val(data.abstrak);
                         $('#tahun').val(data.tahun);
                         console.log(data);
                         let idedit = data.id; 
-                        document.getElementById("editform").action="{{ url('admpnltdosen') }}/"+idedit;
+                        document.getElementById("editform").action="{{ url('dospnltdos') }}/"+idedit;
                                                
                     }
                 });
                 
             });
-
-           
+            let user;
+            user = document.getElementById("username").value;
+            $('#iddosenadd').val(user);
             
     });
     

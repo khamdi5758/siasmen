@@ -121,10 +121,11 @@ Route::group(['prefix' => 'dosen',  'as' => 'dosen.'], function () {
         return view('dosen.index');
     });
     Route::get('/index', function () {
-        return view('dosen.index');
+        return view('dosen.index')->name('index');
     });
-    Route::get('/mhsbim', [ DOSMhsbmbController::class,'index'])->name('dossmhsbim');
+    Route::get('/mhsbim/{id}', [ DOSMhsbmbController::class,'show'])->name('dossmhsbim');
     Route::get('/pnltdos', [ DOSPnltdosController::class,'index'])->name('dosspnltdos');
+    Route::get('/pnltsaya/{id}', [ DOSPnltdosController::class,'pnltsaya']);
 
 });
 });

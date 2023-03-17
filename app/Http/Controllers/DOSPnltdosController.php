@@ -33,6 +33,13 @@ class DOSPnltdosController extends Controller
         //
     }
 
+    public function pnltsaya($id)
+    {
+        $data = Pnltdosen::where('dosens_id', $id)->get();
+        // dd($data);
+        return view('dosen.pnltsaya', ['data'=> $data]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *

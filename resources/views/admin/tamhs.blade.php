@@ -93,14 +93,14 @@
                     <label class="col-lg-2 control-label">judul</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="judul" placeholder="judul" class="form-control"> -->
-                        <textarea name="judul" rows="3" cols="60" placeholder="judul"></textarea>
+                        <textarea name="judul" rows="3" cols="56%" placeholder="judul"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">abstrak</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="abstrak" placeholder="abstrak" class="form-control"> -->
-                        <textarea name="abstrak" rows="10" cols="60" placeholder="abstrak"></textarea>
+                        <textarea name="abstrak" rows="10" cols="56%" placeholder="abstrak"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -156,14 +156,14 @@
                     <label class="col-lg-2 control-label">judul</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="judul" placeholder="judul" class="form-control"> -->
-                        <textarea name="judul" rows="3" cols="60" id="judul" placeholder="judul"></textarea>
+                        <textarea name="judul" rows="3" cols="56%" id="judul" placeholder="judul"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">abstrak</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="abstrak" placeholder="abstrak" class="form-control"> -->
-                        <textarea name="abstrak" rows="10" cols="60" id="abstrak" placeholder="abstrak"></textarea>
+                        <textarea name="abstrak" rows="10" cols="56%" id="abstrak" placeholder="abstrak"></textarea>
                     </div>
                 </div>
                 <div class="form-group">

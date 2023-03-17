@@ -53,7 +53,9 @@ class DOSMhsbmbController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Tuam::where('dosens_id', $id)->get();
+        // dd($data);
+        return view('dosen.mhsbim',['data' => $data]);
     }
 
     /**

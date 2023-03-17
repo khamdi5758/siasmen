@@ -59,7 +59,8 @@ float: right;
 font-size: 16px;"> 
 @auth
 <input type="hidden" id="username" value="{{auth()->user()->username}}">
-{{auth()->user()->name}}
+{{auth()->user()->tampilnmuser(auth()->user()->username,auth()->user()->type)->nama}}
+&nbsp;
 <a href="/logout" class="btn btn-danger square-btn-adjust">Logout</a> 
 @endauth
 </div>

@@ -16,7 +16,7 @@ class AddTrigger2 extends Migration
     {
         DB::unprepared('CREATE TRIGGER inusermhs AFTER INSERT ON `mahasiswas` FOR EACH ROW
                     BEGIN
-                    INSERT INTO `users`(`username`, `email`, `email_verified_at`, `password`, `type`, `remember_token`, `created_at`, `updated_at`) VALUES (new.nim,null,null,"12345qwert",3,null,null,null);
+                    INSERT INTO `users`(`username`, `email`, `email_verified_at`, `password`, `type`, `remember_token`, `created_at`, `updated_at`) VALUES (new.nim,null,null,"$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi",3,null,null,null);
                     END
         ');
     }

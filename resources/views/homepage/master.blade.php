@@ -44,7 +44,8 @@
 				</ul>
 				
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#" data-toggle="modal" data-target="#modallogin">Login</a></li>					
+					<!-- <li><a href="#" data-toggle="modal" data-target="#modallogin">Login</a></li>					 -->
+					<li><a href="/login" >Login</a></li>					
 					<!-- <li><button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#myModal">Daftar</button></li> -->
 				</ul>
 			</div><!-- /.navbar-collapse -->
