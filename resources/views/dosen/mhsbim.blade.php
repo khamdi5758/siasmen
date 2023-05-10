@@ -19,44 +19,58 @@
                         <div class="panel-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                        <tr>
-                            <th>no</th>
-                            <th>nim</th>
-                            <th>nama</th>
-                            <th>judul</th>
-                            <th>abstrak</th>
-                            <th>dosen pembimbing</th>
-                            <!-- <th>action<th> -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($data as $item)
-                        <tr class="gradeU">
-                            <td>{{ $loop->iteration}}</td>
-                            <td>{{$item->mahasiswas->nim}}</td>
-                            <td>{{$item->mahasiswas->nama}}</td>
-                            <td>{{$item->judul}}</td>
-                            <td>{{$item->abstrak}}</td>
-                            <td>{{$item->dosens->nama}}</td>
-                            <!-- <td>
-                            <form action="{{ route('admtuam.destroy', $item->id) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <a href="#" data-id="{{ $item->id }}" data-toggle="modal" data-target="#modal-edit" class="btn btn-warning btn-sm edittamhs"> Edit </a>
-                                    &nbsp;
-                                    <a href="{{ route('admtuam.show', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
-                                    &nbsp;
-                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda Yakin?')">Delete</button>
-                                </form>
-                            </td> -->
-                        </tr>
-                    @endforeach
-                    </tbody>
+                                    @foreach($data as $item)
+                                    <tr>
+                                        <th>no</th>
+                                        <td>{{$loop->iteration}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>nim</th>
+                                        <td>{{$item->mahasiswas->nim}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>nama</th>   
+                                        <td>{{$item->mahasiswas->nama}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>judul</th>   
+                                        <td>{{$item->judul}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>deskripsi judul</th>   
+                                        <td>{{$item->deskjudul}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>terima sebagai pembimbing ?</th>   
+                                        <td>
+                                        <form name="frm_edit" id="editform" class="form-horizontal" action="{{ route('dosmhsbim.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                            <div class="form-group">
+                                                <div class="col-lg-2">
+                                                    <input type="hidden" name="idptuakmhs"  value="{{$item->id}}">
+                                                    <select class="form-control" name="status" id="status">
+                                                        <option>.....</option>
+                                                        <option value="1">ya</option>
+                                                        <option value="0">tidak</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                 </table>
+                                            <div class="modal-footer">
+                                                <!-- <input type="hidden" name="id" id="id"> -->
+                                                <!-- <button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button> -->
+                                                <a href="{{route('dosen.dosmhsbim')}}" class="btn btn-danger">Kembali</a>
+                                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                            </div>
+                                        </form>
                             </div>
-                            
+                                        
                         </div>
-                    </div>
+</div>
+
 
 @endsection

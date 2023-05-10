@@ -21,8 +21,8 @@
                              Advanced Tables
                         </div>
                         <div class="panel-body">
+                            <!-- <input type="search" class="searchform-control light-table-filter" data-table="table-hover" placeholder="Mencari..." /> -->
                             <div class="table-responsive">
-                            <input type="search" class="searchform-control light-table-filter" data-table="table-hover" placeholder="Mencari..." />
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
@@ -120,6 +120,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-lg-2 control-label">pangkat</label>
+                    <div class="col-lg-10">
+                        <input type="text" name="pangkat" placeholder="pangkat" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-lg-2 control-label">foto</label>
                     <div class="col-lg-10">
                         <input type="file" name="foto" />
@@ -151,8 +157,8 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">NIP</label>
                     <div class="col-lg-10">
-                        <input type="text" name="hidid" id = "idedit" placeholder="id" class="form-control">
-                        <input type="text" name="niP" id = "nip" placeholder="nip" class="form-control">
+                        <input type="hidden" name="hidid" id = "idedit" placeholder="id" class="form-control">
+                        <input type="text" name="nip" id = "nip" placeholder="nip" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
@@ -190,6 +196,12 @@
                     <label class="col-lg-2 control-label">pendidikan terakhir</label>
                     <div class="col-lg-10">
                         <input type="text" name="pendidikan_terakhir" placeholder="perguruan tinggi" id="pendidikan_terakhir" class="form-control">
+                    </div>
+                </div>              
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">pangkat</label>
+                    <div class="col-lg-10">
+                        <input type="text" name="pangkat" placeholder="pangkat" id="pangkat" class="form-control">
                     </div>
                 </div>              
                 <div class="form-group">
@@ -232,6 +244,7 @@
                         // $('#jenkel').val(data.jenkel);
                         $('#status').val(data.status);
                         $('#pendidikan_terakhir').val(data.pendidikan_terakhir);
+                        $('#pangkat').val(data.pangkat);
                         $('#foto2').val(data.foto);
                                                                       
                         if (data.jenkel == "Laki-Laki") {
@@ -255,7 +268,6 @@
     });
     
 </script>
-@yield('datatable')
 
 
 @endsection

@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title', 'daftar dosen')
+@section('title', 'penelitian dosen')
 @section('onactivedos','active')
 @section('onpnltdos','active')
 
@@ -21,8 +21,10 @@
                              Advanced Tables
                         </div>
                         <div class="panel-body">
+                            <input type="search" class="searchform-control light-table-filter" data-table="table-hover" placeholder="Mencari..." />
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <!-- <table class="table table-striped table-bordered table-hover" id="dataTables-example"> -->
+                                <table class="table table-striped table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>no</th>
@@ -177,18 +179,20 @@
                 let id = $(this).data('id');
                 $.ajax({
                     data: {id : id},
-                    url : "{{route('admpnltdosen.edit',"+data.id+")}}",
+                    // url : "{{route('admpnltdosen.edit',"+data.id+")}}",
+                    url : "{{ route('admpnltdosen.index') }}" +'/' + id +'/edit',
                     type: 'get',
                     dataType: 'json',
                     success: function([data,datadosen])
                     {
+                        console.log(data);
                         $('#idedit').val(data.id);
                         $('#dosens_id').val(data.dosens_id);
                         $('#nama').val(datadosen.nama);
                         $('#judul').val(data.judul);
                         $('#abstrak').val(data.abstrak);
                         $('#tahun').val(data.tahun);
-                        console.log(data);
+                        $('#table').dataTable();
                         let idedit = data.id; 
                         document.getElementById("editform").action="{{ url('admpnltdosen') }}/"+idedit;
                                                

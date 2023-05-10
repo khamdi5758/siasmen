@@ -74,6 +74,7 @@ class ADMPnltdosController extends Controller
     public function edit(Pnltdosen $pnltdosen)
     {
         $id = $_GET['id'];
+        // echo $id;
         $data = Pnltdosen::find($id);
         $datadosen = $data->dosens;
         return json_encode([$data,$datadosen]);

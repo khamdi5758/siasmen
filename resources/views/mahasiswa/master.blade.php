@@ -3,6 +3,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>mahasiswa | @yield('title')</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="{{ asset('tmplt/css/bootstrap.css') }}" rel="stylesheet" />
@@ -70,7 +71,7 @@ font-size: 16px;">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
-                    <img src="{{asset('tmplt/img/find_user.png')}}" class="user-image img-responsive"/>
+                    <img src="{{ asset('images') }}/{{auth()->user()->tampilnmuser(auth()->user()->username,auth()->user()->type)->foto}}"  class="user-image img-responsive"/>
 					</li>
 				
 					
@@ -89,6 +90,17 @@ font-size: 16px;">
 					<li>
                         <a class="@yield('ondospem')-menu" href="{{ url('mahasiswa/dospem') }}"><i class="fa fa-desktop fa-3x"></i>Dosen pembimbing</a>
                     </li>	
+                    <li class="@yield('onactivepengaturanakun')">
+                        <a href="#" i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_user.png')}}" width="50px" height="50px"></i> pengaturan akun <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="@yield('onubahprofile')-menu" href="{{ url('mahasiswa/ubahprofile') }}">ubah profil</a>
+                            </li>
+                            <li>
+                                <a class="@yield('onubahpassword')-menu" href="{{ url('mahasiswa/ubahpassword') }}">ganti password</a>
+                            </li>
+                        </ul>
+                    </li>
                     <!-- <li>
                         <a  href="table.html"><i class="fa fa-table fa-3x"></i> Table Examples</a>
                     </li> -->

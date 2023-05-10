@@ -37,13 +37,13 @@ class ADMDosenController extends Controller
      */
     public function store(Request $request)
     {
-        
         $request->validate([
             'nip'          =>  'required',
             'nama'         =>  'required',
             'jenkel'         =>  'required',
             'status'         =>  'required',
             'pendidikan_terakhir'         =>  'required',
+            'pangkat'         =>  'required',
             'foto'         =>  'required'
         ]);
         $input =$request->all();
@@ -93,13 +93,15 @@ class ADMDosenController extends Controller
     public function update(Request $request, Dosen $dosen)
     {
         
-        // $request->validate([
-        //     'nip'          =>  'required',
-        //     'nama'         =>  'required',
-        //     'jenkel'         =>  'required',
-        //     'status'         =>  'required',
-        //     'pendidikan_terakhir'         =>  'required'
-        // ]);
+        $request->validate([
+            'nip'          =>  'required',
+            'nama'         =>  'required',
+            'jenkel'         =>  'required',
+            'status'         =>  'required',
+            'pendidikan_terakhir'         =>  'required',
+            'pangkat'         =>  'required'
+
+        ]);
         $id = $request->hidid;
         $input =$request->all();
         $destinationPath = 'images/';

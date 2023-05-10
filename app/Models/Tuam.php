@@ -27,5 +27,4 @@ class Tuam extends Model
         return $this->belongsTo(Dosen::class);
     }
 
-
 }

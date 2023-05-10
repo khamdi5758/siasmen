@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Dosen;
 use App\Models\Mahasiswa;
+use App\Models\Ptuakmhs;
+use App\Models\User;
 use App\Models\Tuam;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use function PHPUnit\Framework\isNull;
 
 class DOSMhsbmbController extends Controller
 {
@@ -20,8 +24,24 @@ class DOSMhsbmbController extends Controller
     {
         $mhs = Mahasiswa::all() ;
         $dosen =  Dosen::all();
-        $data = Tuam::all();
-        return view('dosen.mhsbim',['data' => $data, 'mhs' => $mhs,'dosens'=>$dosen]);
+        // $data = Tuam::all();
+        $user = auth()->user();
+        $iddos = User::tampildatuser($user->username, $user->type)->id;
+        $ptuakmhs = Ptuakmhs::where('dosens_id', $iddos)->whereNotNull('konfdospil')->get();
+        $data = Ptuakmhs::where('dosens_id', $iddos)->whereNull('konfdospil')->get();
+        // $jsonData = json_decode($data, true); // true digunakan untuk mengembalikan array asosiatif
+        // for ($i=0; $i < count($jsonData); $i++) { 
+        //     $konfdospil = $jsonData[$i]['konfdospil'];
+        //     if ($konfdospil != null) {
+        //         echo "sudah dikonfirmasi ";
+        //     }else {
+        //         echo "belom dikonfirmasi ";
+        //     }
+
+        // }
+        // echo $data;
+        // $calmhsbim = 
+        return view('dosen.mhsbimm',['data' => $data, 'mhs' => $mhs,'dosens'=>$dosen,'ptuakmhs'=>$ptuakmhs]);
     }
 
     /**
@@ -51,11 +71,16 @@ class DOSMhsbmbController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // public function show(Ptuakmhs $ptuakmhs)
+    // {
+    //     // return $ptuakmhs;
+    //     // return view('dosen.mhsbim',['data' => $ptuakmhs]);
+    //     return view('dosen.mhsbim', compact('ptuakmhs'));
+    // }
     public function show($id)
     {
-        $data = Tuam::where('dosens_id', $id)->get();
-        // dd($data);
-        return view('dosen.mhsbim',['data' => $data]);
+        $data = ptuakmhs::where('id', $id)->get();
+        return view('dosen.mhsbim',compact('data'));
     }
 
     /**
@@ -78,7 +103,10 @@ class DOSMhsbmbController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dataptuakmhs = Ptuakmhs::find($id);
+        $dataptuakmhs->konfdospil = $request->status;
+        $dataptuakmhs->save();
+        return redirect('dosmhsbim');
     }
 
     /**

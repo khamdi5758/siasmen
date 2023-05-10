@@ -3,6 +3,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>homepage</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="{{ asset('tmplthome/css/bootstrap.css') }}" rel="stylesheet" />

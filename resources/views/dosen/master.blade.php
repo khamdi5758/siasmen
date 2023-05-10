@@ -3,6 +3,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>dosen | @yield('title')</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="{{ asset('tmplt/css/bootstrap.css') }}" rel="stylesheet" />
@@ -49,14 +50,14 @@ font-size: 16px;">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
-                    <img src="{{asset('tmplt/img/find_user.png')}}" class="user-image img-responsive"/>
+                <img src="{{ asset('images')}}/{{auth()->user()->tampilnmuser(auth()->user()->username,auth()->user()->type)->foto}}"  class="user-image img-responsive"/>
 					</li>
 			
                     <li>
                         <a class="@yield('ondashboard')-menu" href="{{ url('dosen') }}"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a class="@yield('onmhsbim')-menu" href="{{ url('dosen/mhsbim') }}/{{auth()->user()->tampilnmuser(auth()->user()->username,auth()->user()->type)->id}}"><i class="fa fa-desktop fa-3x"></i>Mahasiswa Bimbingan</a>
+                        <a class="@yield('onmhsbim')-menu" href="{{ url('dosen/mhsbim') }}"><i class="fa fa-desktop fa-3x"></i>Mahasiswa Bimbingan</a>
                     </li>
 
                     <li>
@@ -64,6 +65,17 @@ font-size: 16px;">
                     </li>
                     <li>
                         <a class="@yield('onpnltsaya')-menu" href="{{ url('dosen/pnltsaya') }}/{{auth()->user()->tampilnmuser(auth()->user()->username,auth()->user()->type)->id}}"><i class="fa fa-desktop fa-3x"></i>penelitian saya</a>
+                    </li>
+                    <li class="@yield('onactivepengaturanakun')">
+                        <a href="#"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_user.png')}}" width="50px" height="50px"></i> pengaturan akun <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="@yield('onubahprofile')-menu" href="{{ url('dosen/ubahprofile') }}">ubah profil</a>
+                            </li>
+                            <li>
+                                <a class="@yield('onubahpassword')-menu" href="{{ url('dosen/ubahpassword') }}">ganti password</a>
+                            </li>
+                        </ul>
                     </li>
 					<!-- <li>
                         <a class="@yield('ondospem')-menu" href="{{ url('mahasiswa/dospem') }}"><i class="fa fa-desktop fa-3x"></i>Dosen pembimbing</a>

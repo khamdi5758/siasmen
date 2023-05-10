@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->exec('C:/Python311/python.exe C:/xampp/htdocs/siasmen/public/pyscript/dathash.py')->everyThirtyMinutes();
         // $schedule->command('inspire')->hourly();
     }
 

@@ -21,20 +21,22 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h3>Basic Form Examples</h3>
-                            <form role="form">
+                            <form role="form" action="{{ url('mahasiswa/rekomdos') }}" method="POST">
+                            @csrf
                                 <div class="form-group">
-                                    <label>Text Input</label>
-                                    <input class="form-control" />
+                                    <label>judul</label>
+                                    <input class="form-control" name="judul" />
                                 </div>
                                 <div class="form-group">
-                                    <label>Text area</label>
-                                    <textarea class="form-control" rows="3"></textarea>
+                                    <label>abstrak</label>
+                                    <textarea class="form-control" name="abstrak" rows="3"></textarea>
                                 </div>
-                                    <a href="#tabel" class="btn btn-primary" data-toggle="collapse">Klik Disini</a>
+                                    <!-- <a href="#tabel" class="btn btn-primary" data-toggle="collapse">Klik Disini</a> -->
+                                    <!-- <button type="submit" class="btn btn-default">Submit Button</button> -->
                                     <button type="submit" class="btn btn-default" data-toggle="collapse" data-target="#tabel" >Submit Button</button>
                                     <button type="reset" class="btn btn-primary">Reset Button</button>
                             </form>
-                            <br />
+                            <br/>
                     </div>
                 </div>
             </div>
@@ -44,7 +46,7 @@
 
     <br>
 
-<div id="tabel" class="collapse">
+<!-- <div id="tabel">
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -56,22 +58,15 @@
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
-                                            <th>Rendering engine</th>
-                                            <th>Browser</th>
-                                            <th>Platform(s)</th>
-                                            <th>Engine version</th>
-                                            <th>CSS grade</th>
+                                            <th>id</th>
+                                            <th>nip</th>
+                                            <th>nama</th>
+                                            <th>jenkel</th>
+                                            <th>action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="gradeX">
-                                            <td>Misc</td>
-                                            <td>Links</td>
-                                            <td>Text only</td>
-                                            <td class="center">-</td>
-                                            <td class="center">X</td>
-                                        </tr>
-                                        
+                                    
                                     </tbody>
                                 </table>
                             </div>
@@ -82,6 +77,6 @@
 </div>
 
     
-</div>
+</div> -->
 
 @endsection

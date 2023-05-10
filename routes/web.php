@@ -17,8 +17,16 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RedirectController;
 use App\Http\Controllers\SuperadminController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\ADMPtuakmhsController;
+use App\Http\Controllers\ADMUbahProfController;
+use App\Http\Controllers\MHSUbahProfController;
+use App\Http\Controllers\MHSUbahPasswController;
+use App\Http\Controllers\DOSUbahProfController;
+use App\Http\Controllers\DOSUbahPasswController;
 
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Ptuakmhs;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,9 +93,13 @@ Route::group(['prefix' => 'admin',  'as' => 'admin.'], function () {
     Route::get('/dftrmhs', [ADMMahasiswaController::class,'index'])->name('dftrmhs');
     Route::get('/admmahasiswa/edit', [ADMMahasiswaController::class, 'edit'])->name('editdftrmhs');
     Route::get('/tamhs', [ADMTuamController::class,'index'])->name('tamhs');
+    Route::get('/ptuakmhs', [ADMPtuakmhsController::class,'index'])->name('ptuakmhs');
     Route::get('/dftrdos', [ADMDosenController::class,'index'])->name('dftrdos');
     Route::get('/pnltdos', [ADMPnltdosController::class,'index'])->name('pnltdos');
     Route::get('/pnltdos/nipdosen', [ADMPnltdosController::class,'nipdosen'])->name('nipdosen');
+    Route::get('/ubahprofile', [ADMUbahProfController::class,'index'])->name('admubahprofile');
+    Route::get('/ubahpass', [ADMPnltdosController::class,'index'])->name('ubahpass');
+    // Route::get('/pnltdos/nipdosen', [ADMPnltdosController::class,'nipdosen'])->name('nipdosen');
   });
 });
 
@@ -101,10 +113,34 @@ Route::group(['prefix' => 'mahasiswa',  'as' => 'mahasiswa.'], function () {
     });
     Route::get('/index', function () {
         return view('mahasiswa.index');
-    });
+    })->name('indexmhs');
     Route::get('/tamhs', [MHSTamhsController::class,'index'])->name('mhstamhs');
+    Route::post('/rekomdos', [MHSTamhsController::class,'rekomdos']);
+    Route::get('/statustuak', [MHSTamhsController::class,'halstatusta'])->name('mhssatusta');
+    Route::get('/coba', [MHSTamhsController::class,'coba']);
+    Route::get('/cobaaa', [MHSTamhsController::class,'cobaaa']);
+    Route::get('/ubahprofile', [MHSUbahProfController::class,'index'])->name('mhsubahprofile');
+    Route::get('/ubahpassword', [MHSUbahPasswController::class,'index'])->name('mhsubahpassword');
     Route::get('/atamhs', function () {
-        return view('mahasiswa.atamhs');
+        $user = auth()->user();
+        $iduser = User::tampildatuser($user->username, $user->type)->id;
+        $data = Ptuakmhs::where('mahasiswas_id', $iduser)->get();
+        if ($data->isNotEmpty()) {
+            $konfdos = $data[0]['konfdospil'];
+            $konfadmin = $data[0]['konfadmin'];
+            if ($konfdos == null and $konfadmin == null){
+                return view('mahasiswa.statusta',['data' => $data]);
+            } else if ($konfdos != null and $konfadmin == null) {
+                return view('mahasiswa.statusta',['data' => $data]);
+            } else if ($konfdos == null and $konfadmin != null) {
+                return view('mahasiswa.statusta',['data' => $data]);
+            }else{
+                return view('mahasiswa.statusta',['data' => $data]);
+            }
+        }else{
+            return view('mahasiswa.atamhs');
+        }
+        
     });
     Route::get('/mhspnltdos', [MHSPnltdosController::class,'index'])->name('mhspnltdos');
     // Route::get('/mhspnltdos', function () {
@@ -121,11 +157,14 @@ Route::group(['prefix' => 'dosen',  'as' => 'dosen.'], function () {
         return view('dosen.index');
     });
     Route::get('/index', function () {
-        return view('dosen.index')->name('index');
-    });
-    Route::get('/mhsbim/{id}', [ DOSMhsbmbController::class,'show'])->name('dossmhsbim');
+        return view('dosen.index');
+    })->name('indexdos');
+    Route::get('/mhsbim/', [ DOSMhsbmbController::class,'index'])->name('dosmhsbim');
+    // Route::get('/mhsbimm/{id}', [ DOSMhsbmbController::class,'show'])->name('dossmhsbim');
     Route::get('/pnltdos', [ DOSPnltdosController::class,'index'])->name('dosspnltdos');
     Route::get('/pnltsaya/{id}', [ DOSPnltdosController::class,'pnltsaya']);
+    Route::get('/ubahprofile', [DOSUbahProfController::class,'index'])->name('dosubahprofile');
+    Route::get('/ubahpassword', [DOSUbahPasswController::class,'index'])->name('dosubahpassword');
 
 });
 });
@@ -136,10 +175,18 @@ Route::resource('lapharian', LapharianController::class);
 Route::resource('students', StudentController::class);
 Route::resource('admmahasiswa', ADMMahasiswaController::class);
 Route::resource('admtuam', ADMTuamController::class);
+Route::resource('admptuakmhs', ADMPtuakmhsController::class);
 Route::resource('admdosen', ADMDosenController::class);
 Route::resource('admpnltdosen', ADMPnltdosController::class);
+Route::resource('admubahprofile', ADMUbahProfController::class);
 Route::resource('dosmhsbim', DOSMhsbmbController::class);
 Route::resource('dospnltdos', DOSPnltdosController::class);
+Route::resource('mhstamhs', MHSTamhsController::class);
+Route::resource('mhsubahprofile', MHSUbahProfController::class);
+Route::resource('mhsubahpassword', MHSUbahPasswController::class);
+Route::resource('dosubahprofile',DOSUbahProfController::class);
+Route::resource('dosubahpassword', DOSUbahPasswController::class);
+
 
 
 

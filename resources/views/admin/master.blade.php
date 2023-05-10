@@ -3,6 +3,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Admin | @yield('title')</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="{{ asset('tmplt') }}/css/bootstrap.css" rel="stylesheet" />
@@ -58,6 +59,7 @@ font-size: 16px;">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
                     <img src="{{asset('tmplt/img/find_user.png')}}" class="user-image img-responsive"/>
+                    
 					</li>
 				
 					
@@ -82,7 +84,7 @@ font-size: 16px;">
 					
 					                   
                     <li class="@yield('onactivemhs')">
-                        <a href="{{ url('admin/dftrmhs') }}"><i class="fa fa-sitemap fa-3x"></i> MAHASISWA <span class="fa arrow"></span></a>
+                        <a href="{{ url('admin/dftrmhs') }}"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_mhs.png')}}" width="50px" height="50px"></i> MAHASISWA <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a class="@yield('ondftrmhs')-menu" href="{{ url('admin/dftrmhs') }}">Daftar Mahasiswa</a>
@@ -90,10 +92,13 @@ font-size: 16px;">
                             <li>
                                 <a class="@yield('ontamhs')-menu" href="{{ url('admin/tamhs') }}">Tugas Akhir Mahasiswa</a>
                             </li>
+                            <li>
+                                <a class="@yield('onptuakmhs')-menu" href="{{ url('admin/ptuakmhs') }}">Pengajuan Tugas Akhir Mahasiswa</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="@yield('onactivedos')">
-                        <a href="{{ url('admin/dftrdos') }}"><i class="fa fa-sitemap fa-3x"></i> Dosen <span class="fa arrow"></span></a>
+                        <a href="{{ url('admin/dftrdos') }}"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_dosen.png')}}" width="50px" height="50px"></i> Dosen <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a class="@yield('ondftrdos')-menu" href="{{ url('admin/dftrdos') }}">Daftar Dosen</a>
@@ -103,6 +108,17 @@ font-size: 16px;">
                             </li>
                         </ul>
                     </li>  
+                    <!-- <li class="@yield('onactivedos')">
+                        <a href="{{ url('admin/dftrdos') }}"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_user.png')}}" width="50px" height="50px"></i> pengaturan akun <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="@yield('ondftrdos')-menu" href="{{ url('admin/dftrdos') }}">ubah profil</a>
+                            </li>
+                            <li>
+                                <a class="@yield('onpnltdos')-menu" href="{{ url('admin/pnltdos') }}">ganti password</a>
+                            </li>
+                        </ul>
+                    </li>   -->
                     <!-- <li>
                         <a class="active-menu"  href="blank.html"><i class="fa fa-square-o fa-3x"></i> Blank Page</a>
                     </li>	 -->
@@ -132,7 +148,6 @@ font-size: 16px;">
     <!-- MORRIS CHART SCRIPTS -->
     <script src="{{asset('tmplt')}}/js/morris/raphael-2.1.0.min.js"></script>
     <script src="{{asset('tmplt')}}/js/morris/morris.js"></script>
-    @section('datatable')
     <!-- DATA TABLE SCRIPTS -->
     <!-- @yield('Scriptdt') -->
     <script src="{{asset('tmplt')}}/js/dataTables/jquery.dataTables.js"></script>
@@ -142,7 +157,6 @@ font-size: 16px;">
                 $('#dataTables-example').dataTable();
             });
     </script>
-    @endsection
       <!-- CUSTOM SCRIPTS -->
     <script src="{{asset('tmplt/js/custom.js')}}"></script>
     <script>
