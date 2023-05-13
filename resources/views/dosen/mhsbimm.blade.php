@@ -42,7 +42,7 @@
                                         <td>
                                                 <!-- <a href="#" data-id="{{ $item->id }}" data-toggle="modal" data-target="#modal-edit" class="btn btn-warning btn-sm edittamhs"> Edit </a> -->
                                                 &nbsp;
-                                                <a href="{{ route('dosmhsbim.show', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
+                                                <a href="{{ route('dosmhsbim.edit', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
                                                 &nbsp;
                                         </td>
                                     </tr>
@@ -66,8 +66,9 @@
                                         <th>nim</th>
                                         <th>nama</th>
                                         <th>judul</th>
-                                        <th>deskjudul</th>
-                                        <th>dosen pembimbing</th>
+                                        <!-- <th>deskjudul</th>
+                                        <th>dosen pembimbing</th> -->
+                                        <th>action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -77,10 +78,16 @@
                                         <td>{{$item->mahasiswas->nim}}</td>
                                         <td>{{$item->mahasiswas->nama}}</td>
                                         <td>{{$item->judul}}</td>
-                                        <td>{{$item->deskjudul}}</td>
-                                        <td>{{$item->dosens->nama}}</td>
+                                        <!-- <td>{{$item->deskjudul}}</td>
+                                        <td>{{$item->dosens->nama}}</td> -->
                                         <!-- <td>{{$item->abstrak}}</td> -->
                                         <!-- <td>{{$item->dosens->nama}}</td> -->
+                                        <td>
+                                                <!-- <a href="#" data-id="{{ $item->id }}" data-toggle="modal" data-target="#modal-edit" class="btn btn-warning btn-sm edittamhs"> Edit </a> -->
+                                                &nbsp;
+                                                <a href="{{ route('dosmhsbim.show', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
+                                                &nbsp;
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

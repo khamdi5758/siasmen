@@ -69,9 +69,10 @@ class ADMTuamController extends Controller
      * @param  \App\Models\Tuam  $tuam
      * @return \Illuminate\Http\Response
      */
-    public function show(Tuam $tuam)
+    public function show($id)
     {
-        //
+        $data = Tuam::find($id);
+        return view('admin.showtamhs', ['tuam'=>$data]);
     }
 
     /**

@@ -137,7 +137,8 @@ class MHSTamhsController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Tuam::find($id);
+        return view('mahasiswa.showtamhs', ['tuam'=>$data]);
     }
 
     /**

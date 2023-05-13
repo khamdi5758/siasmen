@@ -37,12 +37,24 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$item->dosens->nip}}</td>
                                         <td>{{$item->dosens->nama}}</td>
-                                        <td>{{$item->judul}}</td>
-                                        <td>{{$item->abstrak}}</td>
+                                        <td>
+                                            <!-- {{$item->judul}} -->
+                                            <?php
+                                                $judul_singkat = substr($item->judul, 0, 150) . '...';
+                                                echo $judul_singkat;
+                                            ?>
+                                        </td>
+                                        <td>
+                                            <!-- {{$item->abstrak}} -->
+                                            <?php
+                                                $abstrak_singkat = substr($item->abstrak, 0, 150) . '...';
+                                                echo $abstrak_singkat;
+                                            ?>
+                                        </td>
                                         <td>{{$item->tahun}}</td>
 
                                         <td>
-                                            <a href="{{ route('admpnltdosen.show', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
+                                            <a href="{{ route('mhspnltdos.show', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
                                             &nbsp;
                                         <!-- <form action="{{ route('admpnltdosen.destroy', $item->id) }}" method="post">
                                                 @csrf

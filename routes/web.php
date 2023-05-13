@@ -182,6 +182,7 @@ Route::resource('admubahprofile', ADMUbahProfController::class);
 Route::resource('dosmhsbim', DOSMhsbmbController::class);
 Route::resource('dospnltdos', DOSPnltdosController::class);
 Route::resource('mhstamhs', MHSTamhsController::class);
+Route::resource('mhspnltdos', MHSPnltdosController::class);
 Route::resource('mhsubahprofile', MHSUbahProfController::class);
 Route::resource('mhsubahpassword', MHSUbahPasswController::class);
 Route::resource('dosubahprofile',DOSUbahProfController::class);

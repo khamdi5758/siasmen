@@ -65,9 +65,10 @@ class DOSPnltdosController extends Controller
      * @param  \App\Models\Pnltdosen  $pnltdosen
      * @return \Illuminate\Http\Response
      */
-    public function show(Pnltdosen $pnltdosen)
+    public function show($id)
     {
-        //
+        $data = Pnltdosen::find($id);
+        return view('dosen.showpnltdos', ['data'=>$data]);
     }
 
     /**

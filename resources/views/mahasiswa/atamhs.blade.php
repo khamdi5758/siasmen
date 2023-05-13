@@ -1,5 +1,6 @@
 @extends('mahasiswa.master')
 @section('title', 'daftar mahasiswa')
+@section('onactivetuakmhs','active')
 @section('onatamhs','active')
 
 @section('content')
@@ -28,7 +29,7 @@
                                     <input class="form-control" name="judul" />
                                 </div>
                                 <div class="form-group">
-                                    <label>abstrak</label>
+                                    <label>deskripsi judul</label>
                                     <textarea class="form-control" name="abstrak" rows="3"></textarea>
                                 </div>
                                     <!-- <a href="#tabel" class="btn btn-primary" data-toggle="collapse">Klik Disini</a> -->

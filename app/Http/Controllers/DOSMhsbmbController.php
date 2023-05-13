@@ -91,7 +91,8 @@ class DOSMhsbmbController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = ptuakmhs::where('id', $id)->get();
+        return view('dosen.clnmhsbim',compact('data'));
     }
 
     /**

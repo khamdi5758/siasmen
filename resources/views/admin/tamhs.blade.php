@@ -42,8 +42,19 @@
                             <!-- <td>{{$item->mahasiswas_id}}</td> -->
                             <td>{{$item->mahasiswas->nim}}</td>
                             <td>{{$item->mahasiswas->nama}}</td>
-                            <td>{{$item->judul}}</td>
-                            <td>{{$item->abstrak}}</td>
+                            <td>
+                                <?php
+                                    $judul_singkat = substr($item->judul, 0, 150) . '...';
+                                    echo $judul_singkat;
+                                ?>
+
+                            </td>
+                            <td>
+                                <?php
+                                    $abstrak_singkat = substr($item->abstrak, 0, 150) . '...';
+                                    echo $abstrak_singkat;
+                                ?>
+                            </td>
                             <td>{{$item->tahun}}</td>
                             <!-- <td>{{$item->dosens_id}}</td> -->
                             <td>{{$item->dosens->nama}}</td>

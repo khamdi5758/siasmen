@@ -60,9 +60,11 @@ class ADMPnltdosController extends Controller
      * @param  \App\Models\Pnltdosen  $pnltdosen
      * @return \Illuminate\Http\Response
      */
-    public function show(Pnltdosen $pnltdosen)
+    public function show($id)
     {
-        
+        $data = Pnltdosen::find($id);
+        // var_dump($data);
+        return view('admin.showpnltdos', ['data'=>$data]);
     }
 
     /**

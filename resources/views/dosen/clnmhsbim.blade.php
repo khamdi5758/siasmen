@@ -40,15 +40,33 @@
                                         <th>deskripsi judul</th>   
                                         <td>{{$item->deskjudul}}</td>
                                     </tr>
+                                    <tr>
+                                        <th>terima sebagai pembimbing ?</th>   
+                                        <td>
+                                        <form name="frm_edit" id="editform" class="form-horizontal" action="{{ route('dosmhsbim.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
+                                            <div class="form-group">
+                                                <div class="col-lg-2">
+                                                    <input type="hidden" name="idptuakmhs"  value="{{$item->id}}">
+                                                    <select class="form-control" name="status" id="status">
+                                                        <option>.....</option>
+                                                        <option value="1">ya</option>
+                                                        <option value="0">tidak</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
                                     @endforeach
                                 </table>
                                             <div class="modal-footer">
                                                 <!-- <input type="hidden" name="id" id="id"> -->
                                                 <!-- <button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button> -->
                                                 <a href="{{route('dosen.dosmhsbim')}}" class="btn btn-danger">Kembali</a>
-                                                
+                                                <button type="submit" class="btn btn-primary">Simpan</button>
                                             </div>
-                                    
+                                        </form>
                             </div>
                                         
                         </div>

@@ -78,20 +78,42 @@ font-size: 16px;">
                     <li>
                         <a class="@yield('ondashboard')-menu" href="{{ url('mahasiswa') }}"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a class="@yield('ontamhs')-menu" href="{{ url('mahasiswa/tamhs') }}"><i class="fa fa-desktop fa-3x"></i>Tugas Akhir Mahasiswa</a>
                     </li>
                     <li>
                         <a class="@yield('onatamhs')-menu" href="{{ url('mahasiswa/atamhs') }}"><i class="fa fa-desktop fa-3x"></i>Ajukan Tugas Akhir</a>
+                    </li> -->
+                    <li>
+                        <a class="@yield('onpnltdos')-menu" href="{{ url('mahasiswa/mhspnltdos') }}"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_peneliti.png')}}" width="50px" height="50px"></i>penelitian dosen</a>
                     </li>
                     <li>
-                        <a class="@yield('onpnltdos')-menu" href="{{ url('mahasiswa/mhspnltdos') }}"><i class="fa fa-desktop fa-3x"></i>penelitian dosen</a>
-                    </li>
-					<li>
-                        <a class="@yield('ondospem')-menu" href="{{ url('mahasiswa/dospem') }}"><i class="fa fa-desktop fa-3x"></i>Dosen pembimbing</a>
+                        <a class="@yield('ondospem')-menu" href="{{ url('mahasiswa/dospem') }}"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_dosen.png')}}" width="50px" height="50px"></i>Dosen pembimbing</a>
                     </li>	
+                    <li class="@yield('onactivetuakmhs')">
+                        <a href="#"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_tuakmhs.png')}}" width="50px" height="50px"></i> Tugas Akhir MAHASISWA <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="@yield('ontamhs')-menu" href="{{ url('mahasiswa/tamhs') }}"><i class="fa fa-3x"></i>Daftar Tugas Akhir Mahasiswa</a>
+                            </li>
+                            <li>
+                                <a class="@yield('onatamhs')-menu" href="{{ url('mahasiswa/atamhs') }}"><i class="fa fa-3x"></i>Ajukan Tugas Akhir</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- <li class="@yield('onactivepengaturanakun')">
+                        <a href="#"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_user.png')}}" width="50px" height="50px"></i> pengaturan akun <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a class="@yield('onubahprofile')-menu" href="{{ url('dosen/ubahprofile') }}">ubah profil</a>
+                            </li>
+                            <li>
+                                <a class="@yield('onubahpassword')-menu" href="{{ url('dosen/ubahpassword') }}">ganti password</a>
+                            </li>
+                        </ul>
+                    </li> -->
                     <li class="@yield('onactivepengaturanakun')">
-                        <a href="#" i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_user.png')}}" width="50px" height="50px"></i> pengaturan akun <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa  fa-3x"><img src="{{asset('tmplt/icon/icon_user.png')}}" width="50px" height="50px"></i>pengaturan akun <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a class="@yield('onubahprofile')-menu" href="{{ url('mahasiswa/ubahprofile') }}">ubah profil</a>

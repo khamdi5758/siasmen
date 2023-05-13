@@ -21,7 +21,6 @@
                              Advanced Tables
                         </div>
                         <div class="panel-body">
-                            <!-- <input type="search" class="searchform-control light-table-filter" data-table="table-hover" placeholder="Mencari..." /> -->
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
@@ -32,7 +31,10 @@
                                             <th>jenkel</th>
                                             <th>status</th>
                                             <th>pendidikan terakhir</th>
+                                            <th>pangkat</th>
                                             <th>foto</th>
+                                            <th>action</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -44,6 +46,7 @@
                                             <td>{{$item->jenkel}}</td>
                                             <td>{{$item->status}}</td>
                                             <td>{{$item->pendidikan_terakhir}}</td>
+                                            <td>{{$item->pangkat}}</td>
                                             <td><img src="{{ asset('images/' . $item->foto) }}" width="75" alt="$item->foto"></td>
                                             <td>
 

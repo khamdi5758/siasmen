@@ -57,15 +57,15 @@ font-size: 16px;">
                         <a class="@yield('ondashboard')-menu" href="{{ url('dosen') }}"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a class="@yield('onmhsbim')-menu" href="{{ url('dosen/mhsbim') }}"><i class="fa fa-desktop fa-3x"></i>Mahasiswa Bimbingan</a>
+                        <a class="@yield('onmhsbim')-menu" href="{{ url('dosen/mhsbim') }}"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_mhs.png')}}" width="50px" height="50px"></i>Mahasiswa Bimbingan</a>
                     </li>
 
                     <li>
-                        <a class="@yield('onpnltdos')-menu" href="{{ url('dosen/pnltdos') }}"><i class="fa fa-desktop fa-3x"></i>penelitian</a>
+                        <a class="@yield('onpnltdos')-menu" href="{{ url('dosen/pnltdos') }}"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_peneliti.png')}}" width="50px" height="50px"></i>penelitian</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a class="@yield('onpnltsaya')-menu" href="{{ url('dosen/pnltsaya') }}/{{auth()->user()->tampilnmuser(auth()->user()->username,auth()->user()->type)->id}}"><i class="fa fa-desktop fa-3x"></i>penelitian saya</a>
-                    </li>
+                    </li> -->
                     <li class="@yield('onactivepengaturanakun')">
                         <a href="#"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_user.png')}}" width="50px" height="50px"></i> pengaturan akun <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">

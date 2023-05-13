@@ -1,6 +1,6 @@
 @extends('mahasiswa.master')
 @section('title', 'daftar mahasiswa')
-@section('onactivemhs','active')
+@section('onactivetuakmhs','active')
 @section('ontamhs','active')
 
 @section('content')
@@ -37,11 +37,23 @@
                             <td>{{ $loop->iteration}}</td>
                             <td>{{$item->mahasiswas->nim}}</td>
                             <td>{{$item->mahasiswas->nama}}</td>
-                            <td>{{$item->judul}}</td>
-                            <td>{{$item->abstrak}}</td>
+                            <!-- <td>{{$item->judul}}</td>
+                            <td>{{$item->abstrak}}</td> -->
+                            <td>
+                                <?php
+                                    $judul_singkat = substr($item->judul, 0, 150) . '...';
+                                    echo $judul_singkat;
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    $abstrak_singkat = substr($item->abstrak, 0, 150) . '...';
+                                    echo $abstrak_singkat;
+                                ?>
+                            </td>
                             <td>{{$item->dosens->nama}}</td>
                             <td>
-                                <a href="{{ route('admtuam.show', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
+                                <a href="{{ route('mhstamhs.show', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
                             </td>
                         </tr>
                     @endforeach

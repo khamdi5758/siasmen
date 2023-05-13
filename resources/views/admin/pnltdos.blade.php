@@ -21,10 +21,10 @@
                              Advanced Tables
                         </div>
                         <div class="panel-body">
-                            <input type="search" class="searchform-control light-table-filter" data-table="table-hover" placeholder="Mencari..." />
+                            <!-- <input type="search" class="searchform-control light-table-filter" data-table="table-hover" placeholder="Mencari..." /> -->
                             <div class="table-responsive">
-                                <!-- <table class="table table-striped table-bordered table-hover" id="dataTables-example"> -->
-                                <table class="table table-striped table-bordered table-hover">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <!-- <table class="table table-striped table-bordered table-hover"> -->
                                 <thead>
                                     <tr>
                                         <th>no</th>
@@ -42,8 +42,19 @@
                                         <td>{{$loop->iteration}}</td>
                                         <td>{{$item->dosens->nip}}</td>
                                         <td>{{$item->dosens->nama}}</td>
-                                        <td>{{$item->judul}}</td>
-                                        <td>{{$item->abstrak}}</td>
+                                        <td>
+                                            <?php
+                                                $judul_singkat = substr($item->judul, 0, 150) . '...';
+                                                echo $judul_singkat;
+                                            ?>
+
+                                        </td>
+                                        <td>
+                                            <?php
+                                                $abstrak_singkat = substr($item->abstrak, 0, 150) . '...';
+                                                echo $abstrak_singkat;
+                                            ?>
+                                        </td>
                                         <td>{{$item->tahun}}</td>
 
                                         <td>
@@ -52,8 +63,8 @@
                                                 @method('delete')
                                                 <a href="#" data-id="{{ $item->id }}" data-toggle="modal" data-target="#modal-edit" class="btn btn-warning btn-sm edit"> Edit </a>
                                                 &nbsp;
-                                                <!-- <a href="{{ route('admpnltdosen.show', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
-                                                &nbsp; -->
+                                                <a href="{{ route('admpnltdosen.show', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
+                                                &nbsp;
                                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda Yakin?')">Delete</button>
                                             </form>
                                         </td>
