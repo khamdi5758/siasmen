@@ -4,12 +4,21 @@ import json
 import re
 import math
 
-# db = mysql.connector.connect(
-#   host="localhost",
-#   user="root",
-#   password="",
-#   database="db_siasmen"
-# )
+db = mysql.connector.connect(
+  host="localhost",
+  user="root",
+  password="",
+  database="db_siasmen"
+)
+
+def selectmrgpnltwtuak():
+    cursor = db.cursor()
+    sql = "SELECT dosens_id, judul, abstrak FROM pnltdosens UNION SELECT dosens_id,judul,abstrak FROM tamhs"
+    cursor.execute(sql)
+    results = "coba"
+    # results = cursor.fetchall()
+    data = json.dumps(results)
+    return data
 
 # def select(paramnim):
 #   cursor = db.cursor()
@@ -174,7 +183,8 @@ def pengajuan():
 # print("##################")
 # print(preprocessingdata())
 # print(selectdos())
-print(pengajuan())
+# print(pengajuan())
+print(selectmrgpnltwtuak())
     
 
 

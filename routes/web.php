@@ -117,7 +117,7 @@ Route::group(['prefix' => 'mahasiswa',  'as' => 'mahasiswa.'], function () {
     Route::get('/tamhs', [MHSTamhsController::class,'index'])->name('mhstamhs');
     Route::post('/rekomdos', [MHSTamhsController::class,'rekomdos']);
     Route::get('/statustuak', [MHSTamhsController::class,'halstatusta'])->name('mhssatusta');
-    Route::get('/coba', [MHSTamhsController::class,'coba']);
+    Route::post('/coba', [MHSTamhsController::class,'coba']);
     Route::get('/cobaaa', [MHSTamhsController::class,'cobaaa']);
     Route::get('/ubahprofile', [MHSUbahProfController::class,'index'])->name('mhsubahprofile');
     Route::get('/ubahpassword', [MHSUbahPasswController::class,'index'])->name('mhsubahpassword');

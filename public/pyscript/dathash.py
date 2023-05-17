@@ -77,9 +77,61 @@ def hashtuakmhs():
                 tahun = tuakmhs[a][b]
         dattuakmhsfrmdb.append([idtuak,mhsid,dosenid,datjud,datstrak,tahun]) 
     return dattuakmhsfrmdb
+
+
+def selectmrgpnltwtuak():
+    cursor = db.cursor()
+    sql = "SELECT dosens_id, judul, abstrak FROM pnltdosens UNION SELECT dosens_id,judul,abstrak FROM tamhs"
+    cursor.execute(sql)
+    results = cursor.fetchall()
+    return results
+
+def hashmrgpnltwtuak():
+    mrgpnltwtuak = selectmrgpnltwtuak()
+    datmrgpnltwtuak = []
+    for a in range(len(mrgpnltwtuak)):
+        judul = rabinkarp()
+        abstrak = rabinkarp()
+        for b in range(len(mrgpnltwtuak[a])):
+            if b == 0 :
+                dosenid = mrgpnltwtuak[a][b]
+            if b == 1 :
+                # judul = mrgpnltwtuak[a][b]
+                judul.inputmethod(mrgpnltwtuak[a][b])
+                judul.preprocessingdata()
+                datjud = judul.datahashs()
+            if b == 2 :
+                abstrak.inputmethod(mrgpnltwtuak[a][b])
+                abstrak.preprocessingdata()
+                datstrak = abstrak.datahashs()
+        datmrgpnltwtuak.append([dosenid,datjud,datstrak]) 
+    return datmrgpnltwtuak
+
+def hashmrgpnltwtuakk():
+    mrgpnltwtuak = selectmrgpnltwtuak()
+    datmrgpnlttuak = []
+    for a in range(len(mrgpnltwtuak)):
+        judtrak = rabinkarp()
+        for b in range(len(mrgpnltwtuak[a])):
+            if b == 0 :
+                dosenid = mrgpnltwtuak[a][b]
+            if b == 1 :
+                judull = mrgpnltwtuak[a][b]
+            if b == 2 :
+                abstrakk = mrgpnltwtuak[a][b]
+        mrgjudtrak = judull+" "+abstrakk
+        judtrak.inputmethod(mrgjudtrak)
+        judtrak.preprocessingdata()
+        datjudtrak = judtrak.datahashs()
+        datmrgpnlttuak.append([dosenid,datjudtrak])
+    return datmrgpnlttuak
+
+
 # hashpnltdos()
 hpnltdos = hashpnltdos()
 htuakmhs = hashtuakmhs()
+hmrgpnltwtuak = hashmrgpnltwtuak()
+hmrgpnltwtuakk = hashmrgpnltwtuakk()
 # print(hpnltdos)
 # with open('hpnltdos.json', 'w') as f:
 #     f.write(hpnltdos)

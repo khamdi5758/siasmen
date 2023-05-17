@@ -72,12 +72,14 @@
                                         @foreach ($row as $item)
                                                 <td>{{$item['nip']}}</td>
                                                 <td>{{$item['nama']}}</td>
-                                                <td>{{$item['foto']}}</td>
+                                                <td>
+                                                    <img src="{{ asset('images/' . $item['foto']) }}" width="80" height="80" alt="$item['foto']">
+                                                </td>
                                                 <td>
                                                     <form method="POST" action="{{ route('mhstamhs.store') }}">
                                                         @csrf
                                                         <!-- <input type="hidden" name="iddos" value="{{$item['id']}}"> -->
-                                                        <input type="hidden" name="mahasiswas_id" value="{{auth()->user()->tampiliduser(auth()->user()->username,auth()->user()->type)->id}}">
+                                                        <input type="hidden" name="mahasiswas_id" value="{{auth()->user()->tampildatuser(auth()->user()->username,auth()->user()->type)->id}}">
                                                         <input type="hidden" name="judul" value="{{$input['judul']}}">
                                                         <input type="hidden" name="deskjudul" value="{{$input['abstrak']}}">
                                                         <input type="hidden" name="dosens_id" value="{{$item['id']}}">

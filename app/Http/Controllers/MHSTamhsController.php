@@ -76,18 +76,20 @@ class MHSTamhsController extends Controller
             $a++;
         }
         $stringg = escapeshellarg($string);
-        $process = shell_exec("C:/Python311/python.exe c:/xampp/htdocs/siasmen/public/pyscript/simtuakmhs.py $stringg");
+        $scriptPath = public_path('pyscript/simmrgpnltwtuak.py');
+        $process = shell_exec("python {$scriptPath} $stringg");
+        // $process = shell_exec("python c:/xampp/htdocs/siasmen/public/pyscript/simmrgpnltwtuak.py $stringg");
         $datajson = json_decode($process,true);
-
+        // return $datajson;
         return view('mahasiswa.rekomdos',['input'=>$input,'data'=> $datajson]);
         
     }
 
     public function coba()
     {
-        $result = shell_exec("C:/Python311/python.exe c:/xampp/htdocs/siasmen/public/pyscript/datpnltdos.py");
+        $result = shell_exec("python c:/xampp/htdocs/siasmen/public/pyscript/simmrgpnltwtuak.py");
         $datajson = json_decode($result,true);
-        return $result;
+        return $datajson;
     }
     
     public function cobaaa()
@@ -96,7 +98,9 @@ class MHSTamhsController extends Controller
         // $process = shell_exec("C:/Python311/python.exe c:/xampp/htdocs/siasmen/public/pyscript/cobaa.py $cob");
         // return $process;
         // return $cob;
-        $result = shell_exec("C:/Python311/python.exe c:/xampp/htdocs/siasmen/public/pyscript/coba.py");
+        $scriptPath = public_path('pyscript/coba.py');
+        $result = shell_exec("python {$scriptPath}");
+        // $result = shell_exec("python c:/xampp/htdocs/siasmen/public/pyscript/coba.py");
         $datajson = json_decode($result,true);
         // return view('mahasiswa.atamhs',['data'=> $datajson]);
         // $keys = array("id","nim","nama","jenkel","perguruan_tinggi","program_studi","jenjang","status","foto");
