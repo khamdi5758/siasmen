@@ -1,5 +1,5 @@
 @extends('mahasiswa.master')
-@section('title', 'daftar mahasiswa')
+@section('title', 'status pengajuan tugas akhir')
 @section('onatamhs','active')
 
 @section('content')

@@ -3,11 +3,12 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	<!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+
+   <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <title>homepage</title>
 	<!-- BOOTSTRAP STYLES-->
-    <link href="{{ asset('tmplthome/css/bootstrap.css') }}" rel="stylesheet" />
-     <!-- FONTAWESOME STYLES-->
+        <link href="{{ asset('tmplthome/css/bootstrap.css') }}" rel="stylesheet" />
     <!-- <link href="{{asset('tmplthome/css/font-awesome.css')}}" rel="stylesheet" /> -->
         <!-- CUSTOM STYLES-->
     <!-- <link href="{{asset('tmplthome/css/custom.css')}}" rel="stylesheet" /> -->

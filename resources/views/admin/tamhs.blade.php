@@ -1,5 +1,5 @@
 @extends('admin.master')
-@section('title', 'daftar mahasiswa')
+@section('title', 'tugas akhir mahasiswa')
 @section('onactivemhs','active')
 @section('ontamhs','active')
 

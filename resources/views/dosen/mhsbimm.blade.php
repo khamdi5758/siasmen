@@ -1,5 +1,5 @@
 @extends('dosen.master')
-@section('title', 'daftar mahasiswa')
+@section('title', 'mahasiswa bimbingan')
 @section('onmhsbim','active')
 
 @section('content')

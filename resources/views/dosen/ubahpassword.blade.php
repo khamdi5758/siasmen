@@ -1,5 +1,5 @@
-@extends('mahasiswa.master')
-@section('title', 'daftar mahasiswa')
+@extends('dosen.master')
+@section('title', 'ubah password')
 @section('onactivepengaturanakun','active')
 @section('onubahpassword','active')
 

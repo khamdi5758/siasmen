@@ -1,5 +1,5 @@
 @extends('dosen.master')
-@section('title', 'daftar dosen')
+@section('title', 'penelitian dosen')
 @section('onactivedos','active')
 @section('onpnltdos','active')
 

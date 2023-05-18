@@ -1,4 +1,4 @@
-@extends('dosen.master')
+@extends('mahasiswa.master')
 @section('title', 'ubah profile')
 @section('onactivepengaturanakun','active')
 @section('onubahprofile','active')
