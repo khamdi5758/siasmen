@@ -3,22 +3,27 @@ import sys
 import json
 import re
 import math
+import base64
 
-db = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="",
-  database="db_siasmen"
-)
+# db = mysql.connector.connect(
+#   host="localhost",
+#   user="root",
+#   password="",
+#   database="db_siasmen"
+# )
 
-def selectmrgpnltwtuak():
-    cursor = db.cursor()
-    sql = "SELECT dosens_id, judul, abstrak FROM pnltdosens UNION SELECT dosens_id,judul,abstrak FROM tamhs"
-    cursor.execute(sql)
-    results = "coba"
-    # results = cursor.fetchall()
-    data = json.dumps(results)
-    return data
+input_data = json.loads(base64.b64decode(sys.argv[1]))
+# input_data = "coba"
+# data = json.dumps(input_data)
+
+# def selectmrgpnltwtuak():
+#     cursor = db.cursor()
+#     sql = "SELECT dosens_id, judul, abstrak FROM pnltdosens UNION SELECT dosens_id,judul,abstrak FROM tamhs"
+#     cursor.execute(sql)
+#     results = "coba"
+#     # results = cursor.fetchall()
+#     data = json.dumps(results)
+#     return data
 
 # def select(paramnim):
 #   cursor = db.cursor()
@@ -68,13 +73,13 @@ def selectmrgpnltwtuak():
 #   data = json.dumps(my_array)
 #   return data
 
-def pengajuan():
-  arrayString = sys.argv[1].split(",")
-  final = []
-  for i in range(len(arrayString)):
-      final.append(arrayString[i].split("-"))
-  data = json.dumps(final[2])
-  return data
+# def pengajuan():
+#   arrayString = sys.argv[1].split(",")
+#   final = []
+#   for i in range(len(arrayString)):
+#       final.append(arrayString[i].split("-"))
+#   data = json.dumps(final[2])
+#   return data
 
 # def param():
 #   arrayString = sys.argv[1].split(",")
@@ -184,7 +189,7 @@ def pengajuan():
 # print(preprocessingdata())
 # print(selectdos())
 # print(pengajuan())
-print(selectmrgpnltwtuak())
+print(input_data)
     
 
 

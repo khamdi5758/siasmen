@@ -87,6 +87,7 @@ class MHSTamhsController extends Controller
 
     public function coba()
     {
+        
         $result = shell_exec("python c:/xampp/htdocs/siasmen/public/pyscript/simmrgpnltwtuak.py");
         $datajson = json_decode($result,true);
         return $datajson;
@@ -94,18 +95,24 @@ class MHSTamhsController extends Controller
     
     public function cobaaa()
     {
+        $data = [
+            'name' => 'John Doe',
+            'age' => 30,
+            'email' => 'johndoe@example.com'
+        ];
+        $jsondataen = base64_encode(json_encode($data));
         // $cob = $this->coba();
         // $process = shell_exec("C:/Python311/python.exe c:/xampp/htdocs/siasmen/public/pyscript/cobaa.py $cob");
         // return $process;
         // return $cob;
         $scriptPath = public_path('pyscript/coba.py');
-        $result = shell_exec("python {$scriptPath}");
+        $result = shell_exec("python {$scriptPath} $jsondataen");
         // $result = shell_exec("python c:/xampp/htdocs/siasmen/public/pyscript/coba.py");
         $datajson = json_decode($result,true);
         // return view('mahasiswa.atamhs',['data'=> $datajson]);
         // $keys = array("id","nim","nama","jenkel","perguruan_tinggi","program_studi","jenjang","status","foto");
         // $my_array = array_combine($keys, $datajson);
-        return $datajson;
+        echo $result;
         // echo $datajson[0][""];
         // for ($i=0; $i < count($datajson); $i++) { 
         //     for ($j=0; $j < count($datajson[$i]); $j++) { 
@@ -115,6 +122,7 @@ class MHSTamhsController extends Controller
         //     echo "==========<br>";
         // }
     }
+
     public function store(Request $request)
     {
         // $input = $request->all();
