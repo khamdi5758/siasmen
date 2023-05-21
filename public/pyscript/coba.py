@@ -12,8 +12,8 @@ import base64
 #   database="db_siasmen"
 # )
 
-input_data = json.loads(base64.b64decode(sys.argv[1]))
-# input_data = "coba"
+# input_data = json.loads(base64.b64decode(sys.argv[1]))
+input_data = "coba"
 # data = json.dumps(input_data)
 
 # def selectmrgpnltwtuak():
