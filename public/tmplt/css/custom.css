@@ -67,7 +67,8 @@ p {
 
 }
    .noti-box {
-min-height: 100px;
+height: 125px;
+/* min-height: 100px; */
 padding: 20px;
 }
 

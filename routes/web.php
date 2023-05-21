@@ -23,6 +23,7 @@ use App\Http\Controllers\MHSUbahProfController;
 use App\Http\Controllers\MHSUbahPasswController;
 use App\Http\Controllers\DOSUbahProfController;
 use App\Http\Controllers\DOSUbahPasswController;
+use App\Http\Controllers\DashboardController;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -42,6 +43,7 @@ use App\Models\Ptuakmhs;
 Route::get('/', function () {
     return view('homepage.index');
 });
+// Route::get('/coba', [DashboardController::class,'dosendash']);
 
 
 //  jika user belum login
@@ -84,12 +86,14 @@ Route::group(['prefix' => 'admin',  'as' => 'admin.'], function () {
 
     // Route::get('/test', [AdminIndexController::class, 'index'])->name('test'); 
     // Route::get('/test/create', [AdminIndexController::class, 'create'])->name('test.create'); 
-    Route::get('/', function () {
-        return view('admin.index');
-    });
-    Route::get('/index', function () {
-        return view('admin.index');
-    });
+    // Route::get('/', function () {
+    //     return view('admin.index');
+    // });
+    // Route::get('/index', function () {
+    //     return view('admin.index');
+    // });
+    Route::get('/', [DashboardController::class,'admindash']);
+    Route::get('/index', [DashboardController::class,'admindash']);
     Route::get('/dftrmhs', [ADMMahasiswaController::class,'index'])->name('dftrmhs');
     Route::get('/admmahasiswa/edit', [ADMMahasiswaController::class, 'edit'])->name('editdftrmhs');
     Route::get('/tamhs', [ADMTuamController::class,'index'])->name('tamhs');
@@ -111,9 +115,11 @@ Route::group(['prefix' => 'mahasiswa',  'as' => 'mahasiswa.'], function () {
     Route::get('/', function () {
         return view('mahasiswa.index');
     });
-    Route::get('/index', function () {
-        return view('mahasiswa.index');
-    })->name('indexmhs');
+    // Route::get('/index', function () {
+    //     return view('mahasiswa.index');
+    // })->name('indexmhs');
+    Route::get('/', [DashboardController::class,'mhsdash']);
+    Route::get('/index', [DashboardController::class,'mhsdash'])->name('indexmhs');
     Route::get('/tamhs', [MHSTamhsController::class,'index'])->name('mhstamhs');
     Route::post('/rekomdos', [MHSTamhsController::class,'rekomdos']);
     Route::get('/statustuak', [MHSTamhsController::class,'halstatusta'])->name('mhssatusta');
@@ -156,9 +162,11 @@ Route::group(['prefix' => 'dosen',  'as' => 'dosen.'], function () {
     Route::get('/', function () {
         return view('dosen.index');
     });
-    Route::get('/index', function () {
-        return view('dosen.index');
-    })->name('indexdos');
+    // Route::get('/index', function () {
+    //     return view('dosen.index');
+    // })->name('indexdos');
+    Route::get('/', [DashboardController::class,'dosendash']);
+    Route::get('/index', [DashboardController::class,'dosendash'])->name('indexdos');
     Route::get('/mhsbim/', [ DOSMhsbmbController::class,'index'])->name('dosmhsbim');
     // Route::get('/mhsbimm/{id}', [ DOSMhsbmbController::class,'show'])->name('dossmhsbim');
     Route::get('/pnltdos', [ DOSPnltdosController::class,'index'])->name('dosspnltdos');

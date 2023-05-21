@@ -11,55 +11,47 @@
 @endif
 <div class="row">
     <div class="col-md-12">
-    <h2>Admin Dashboard</h2>   
-    <h5>Welcome Jhon Deo , Love to see you back. </h5>
+    <h2>Mahasiswa Dashboard</h2>   
+    <!-- <h5>Welcome Jhon Deo , Love to see you back. </h5> -->
     </div>
 </div>              
                  <!-- /. ROW  -->
     <hr />
 <div class="row">
-    <div class="col-md-3 col-sm-6 col-xs-6">           
-			<div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-red set-icon">
-                    <i class="fa fa-envelope-o"></i>
+<div class="col-md-4 col-sm-4 col-xs-4">           
+			<div class="panel noti-box" style="background-color: #ed6900;">
+                <span class="icon-box">
+                        <img src="{{asset('tmplt/icon/icon_dosen.png')}}" width="80px" height="80px">
                 </span>
+                <p class="main-text">{{$dosen}} dosen</p>
                 <div class="text-box" >
-                    <p class="main-text">120 New</p>
-                    <p class="text-muted">Messages</p>
                 </div>
             </div>
 	</div>
 
-    <div class="col-md-3 col-sm-6 col-xs-6">           
-			<div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-green set-icon">
-                    <i class="fa fa-bars"></i>
+    <div class="col-md-4 col-sm-4 col-xs-4">           
+			<div class="panel noti-box" style="background-color: #ed6900;">
+                <span class="icon-box set-icon">
+                    <i class="fa">
+                    <img src="{{asset('tmplt/icon/icon_peneliti.png')}}" width="80px" height="80px">
+                    </i>
                 </span>
                 <div class="text-box" >
-                    <p class="main-text">30 Tasks</p>
-                    <p class="text-muted">Remaining</p>
+                    <p class="main-text">{{$pnltdos}} penelitian dosen</p>
+                    <!-- <p class="text-muted">Notifications</p> -->
                 </div>
             </div>
 	</div>
-    <div class="col-md-3 col-sm-6 col-xs-6">           
-			<div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-blue set-icon">
-                    <i class="fa fa-bell-o"></i>
+    <div class="col-md-4 col-sm-4 col-xs-4">           
+			<div class="panel noti-box" style="background-color: #ed6900;">
+                <span class="icon-box set-icon">
+                    <i class="fa">
+                    <img src="{{asset('tmplt/icon/icon_tuakmhs.png')}}" width="80px" height="80px">
+                    </i>
                 </span>
                 <div class="text-box" >
-                    <p class="main-text">240 New</p>
-                    <p class="text-muted">Notifications</p>
-                </div>
-            </div>
-	</div>
-    <div class="col-md-3 col-sm-6 col-xs-6">           
-			<div class="panel panel-back noti-box">
-                <span class="icon-box bg-color-brown set-icon">
-                    <i class="fa fa-rocket"></i>
-                </span>
-                <div class="text-box" >
-                    <p class="main-text">3 Orders</p>
-                    <p class="text-muted">Pending</p>
+                    <p class="main-text">{{$tuam}} tugas akhir mahasiswa</p>
+                    <!-- <p class="text-muted">Pending</p> -->
                 </div>
             </div>
 	</div>
