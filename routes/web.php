@@ -105,6 +105,12 @@ Route::group(['prefix' => 'admin',  'as' => 'admin.'], function () {
     Route::get('/ubahpass', [ADMPnltdosController::class,'index'])->name('ubahpass');
     // Route::get('/pnltdos/nipdosen', [ADMPnltdosController::class,'nipdosen'])->name('nipdosen');
   });
+  Route::resource('admmahasiswa', ADMMahasiswaController::class);
+  Route::resource('admtuam', ADMTuamController::class);
+  Route::resource('admptuakmhs', ADMPtuakmhsController::class);
+  Route::resource('admdosen', ADMDosenController::class);
+  Route::resource('admpnltdosen', ADMPnltdosController::class);
+  Route::resource('admubahprofile', ADMUbahProfController::class);
 });
 
 // });
@@ -154,6 +160,11 @@ Route::group(['prefix' => 'mahasiswa',  'as' => 'mahasiswa.'], function () {
     // });
     Route::get('/dospem', [MHSDospemController::class,'index'])->name('mhsdospemmhs');
 });
+    Route::resource('mhstamhs', MHSTamhsController::class);
+    Route::resource('mhspnltdos', MHSPnltdosController::class);
+    Route::resource('mhsubahprofile', MHSUbahProfController::class);
+    Route::resource('mhsubahpassword', MHSUbahPasswController::class);
+
 });
 
 Route::group(['middleware' => ['auth', 'checkrole:2']], function() {
@@ -170,31 +181,39 @@ Route::group(['prefix' => 'dosen',  'as' => 'dosen.'], function () {
     Route::get('/mhsbim/', [ DOSMhsbmbController::class,'index'])->name('dosmhsbim');
     // Route::get('/mhsbimm/{id}', [ DOSMhsbmbController::class,'show'])->name('dossmhsbim');
     Route::get('/pnltdos', [ DOSPnltdosController::class,'index'])->name('dosspnltdos');
-    Route::get('/pnltsaya/{id}', [ DOSPnltdosController::class,'pnltsaya']);
+    Route::get('/pnltsaya', [ DOSPnltdosController::class,'pnltsaya']);
     Route::get('/ubahprofile', [DOSUbahProfController::class,'index'])->name('dosubahprofile');
     Route::get('/ubahpassword', [DOSUbahPasswController::class,'index'])->name('dosubahpassword');
 
 });
+    Route::resource('dosmhsbim', DOSMhsbmbController::class);
+    Route::resource('dospnltdos', DOSPnltdosController::class);
+    Route::resource('dosubahprofile',DOSUbahProfController::class);
+    Route::resource('dosubahpassword', DOSUbahPasswController::class);
+
 });
 
 
 Route::get('lapharian/cetak',[LapharianController::class,'cetak']);
 Route::resource('lapharian', LapharianController::class);
 Route::resource('students', StudentController::class);
-Route::resource('admmahasiswa', ADMMahasiswaController::class);
-Route::resource('admtuam', ADMTuamController::class);
-Route::resource('admptuakmhs', ADMPtuakmhsController::class);
-Route::resource('admdosen', ADMDosenController::class);
-Route::resource('admpnltdosen', ADMPnltdosController::class);
-Route::resource('admubahprofile', ADMUbahProfController::class);
-Route::resource('dosmhsbim', DOSMhsbmbController::class);
-Route::resource('dospnltdos', DOSPnltdosController::class);
-Route::resource('mhstamhs', MHSTamhsController::class);
-Route::resource('mhspnltdos', MHSPnltdosController::class);
-Route::resource('mhsubahprofile', MHSUbahProfController::class);
-Route::resource('mhsubahpassword', MHSUbahPasswController::class);
-Route::resource('dosubahprofile',DOSUbahProfController::class);
-Route::resource('dosubahpassword', DOSUbahPasswController::class);
+
+// Route::resource('admmahasiswa', ADMMahasiswaController::class);
+// Route::resource('admtuam', ADMTuamController::class);
+// Route::resource('admptuakmhs', ADMPtuakmhsController::class);
+// Route::resource('admdosen', ADMDosenController::class);
+// Route::resource('admpnltdosen', ADMPnltdosController::class);
+// Route::resource('admubahprofile', ADMUbahProfController::class);
+
+// Route::resource('mhstamhs', MHSTamhsController::class);
+// Route::resource('mhspnltdos', MHSPnltdosController::class);
+// Route::resource('mhsubahprofile', MHSUbahProfController::class);
+// Route::resource('mhsubahpassword', MHSUbahPasswController::class);
+
+// Route::resource('dosmhsbim', DOSMhsbmbController::class);
+// Route::resource('dospnltdos', DOSPnltdosController::class);
+// Route::resource('dosubahprofile',DOSUbahProfController::class);
+// Route::resource('dosubahpassword', DOSUbahPasswController::class);
 
 
 

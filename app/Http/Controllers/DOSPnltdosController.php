@@ -6,6 +6,7 @@ use App\Models\Dosen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Pnltdosen;
+use App\Models\User;
 
 use function GuzzleHttp\Promise\all;
 
@@ -33,9 +34,11 @@ class DOSPnltdosController extends Controller
         //
     }
 
-    public function pnltsaya($id)
+    public function pnltsaya()
     {
-        $data = Pnltdosen::where('dosens_id', $id)->get();
+        $user = auth()->user();
+        $iduser = User::tampildatuser($user->username, $user->type)->id;
+        $data = Pnltdosen::where('dosens_id', $iduser)->get();
         // dd($data);
         return view('dosen.pnltsaya', ['data'=> $data]);
     }
