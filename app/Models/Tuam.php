@@ -12,6 +12,7 @@ class Tuam extends Model
     protected $fillable = [
         'mahasiswas_id',
         'dosens_id',
+        'nama',
         'judul',
         'abstrak',
         'tahun'

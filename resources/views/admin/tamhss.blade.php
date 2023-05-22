@@ -89,7 +89,7 @@
 <!-- modal add data-->
 <div class="modal inmodal fade" id="modal-add" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-xs">
-        <form name="frm_add" id="frm_add" class="form-horizontal" action="{{ route('admtuam.store') }}" method="POST" enctype="multipart/form-data">
+        <form name="frm_add" id="frm_add" class="form-horizontal" action="{{ url('admin/svtamhss') }}" method="POST" enctype="multipart/form-data">
         @csrf
             <div class="modal-content">
             <div class="modal-header">
@@ -100,13 +100,13 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">Nama</label>
                     <div class="col-lg-10">
-                        <!-- <input type="text" name="nim" placeholder="nim" class="form-control"> -->
-                        <select class="form-control" name="mahasiswas_id">
+                        <input type="text" name="nama" placeholder="nama" class="form-control">
+                        <!-- <select class="form-control" name="mahasiswas_id">
                             <option>pilih</option>
                         @foreach($mhs as $mhs)
                             <option value="{{$mhs->id}}">{{$mhs->nim}}-{{$mhs->nama}}</option>
                         @endforeach
-                        </select> 
+                        </select>  -->
                     </div>
                 </div>
                 <div class="form-group">

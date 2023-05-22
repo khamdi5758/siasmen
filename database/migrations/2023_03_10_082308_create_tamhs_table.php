@@ -15,10 +15,11 @@ class CreateTamhsTable extends Migration
     {
         Schema::create('tamhs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('mahasiswas_id');
+            $table->unsignedBigInteger('mahasiswas_id')->nullable();
             $table->foreign('mahasiswas_id')->references('id')->on('mahasiswas')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedBigInteger('dosens_id');
             $table->foreign('dosens_id')->references('id')->on('dosens')->onUpdate('cascade')->onDelete('cascade');
+            $table->string('nama')->nullable();
             $table->string('judul');
             $table->text('abstrak');
             $table->string('tahun');

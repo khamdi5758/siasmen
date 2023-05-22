@@ -25,6 +25,16 @@ class ADMTuamController extends Controller
         return view('admin.tamhs',['data' => $data, 'mhs' => $mhs,'dosens'=>$dosen]);
     }
 
+    public function index2()
+    {
+        // $mhs =  DB::table('mahasiswas')->get();
+        // $dosen =  DB::table('dosens')->get();
+        $mhs = Mahasiswa::all() ;
+        $dosen =  Dosen::all();
+        $data = Tuam::all();
+        return view('admin.tamhss',['data' => $data, 'mhs' => $mhs,'dosens'=>$dosen]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -61,6 +71,22 @@ class ADMTuamController extends Controller
         // $tuam->abstrak = $request->abstrak;
         // $tuam->dosen_pembimbing = $request->dosen_pembimbing;
         // $tuam->save();
+    }
+
+    public function store2(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'dosens_id' => 'required',
+            'judul' => 'required',
+            'abstrak' => 'required',
+            'tahun' => 'required',
+            
+        ]);
+        $input = $request->all();
+        // dd($input);
+        Tuam::create($input);
+        return redirect()->route('admin.tamhss')->with('success', 'Data berhasil dibuat');
     }
 
     /**
@@ -102,7 +128,7 @@ class ADMTuamController extends Controller
     public function update(Request $request, Tuam $tuam)
     {
         $request->validate([
-            'mahasiswas_id' => 'required',
+            // 'mahasiswas_id' => 'required',
             'dosens_id' => 'required',
             'judul' => 'required',
             'abstrak' => 'required',

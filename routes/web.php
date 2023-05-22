@@ -97,6 +97,8 @@ Route::group(['prefix' => 'admin',  'as' => 'admin.'], function () {
     Route::get('/dftrmhs', [ADMMahasiswaController::class,'index'])->name('dftrmhs');
     Route::get('/admmahasiswa/edit', [ADMMahasiswaController::class, 'edit'])->name('editdftrmhs');
     Route::get('/tamhs', [ADMTuamController::class,'index'])->name('tamhs');
+    Route::get('/tamhss', [ADMTuamController::class,'index2'])->name('tamhss');
+    Route::post('/svtamhss', [ADMTuamController::class,'store2'])->name('svtamhss');
     Route::get('/ptuakmhs', [ADMPtuakmhsController::class,'index'])->name('ptuakmhs');
     Route::get('/dftrdos', [ADMDosenController::class,'index'])->name('dftrdos');
     Route::get('/pnltdos', [ADMPnltdosController::class,'index'])->name('pnltdos');
