@@ -73,7 +73,7 @@
                                                 <td>{{$item['nip']}}</td>
                                                 <td>{{$item['nama']}}</td>
                                                 <td>
-                                                    <img src="{{ asset('images/' . $item['foto']) }}" width="80" height="80" alt="$item['foto']">
+                                                    <img src="/images/{{$item['foto']}}" width="80" height="80" alt="$item['foto']">
                                                 </td>
                                                 <td>
                                                     <form method="POST" action="{{ route('mhstamhs.store') }}">

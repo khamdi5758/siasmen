@@ -47,7 +47,7 @@
                                             <td>{{$item->status}}</td>
                                             <td>{{$item->pendidikan_terakhir}}</td>
                                             <td>{{$item->pangkat}}</td>
-                                            <td><img src="{{ asset('images/' . $item->foto) }}" width="75" alt="$item->foto"></td>
+                                            <td><img src="/images/{{ $item->foto }}" width="75" alt="$item->foto"></td>
                                             <td>
 
                                                 <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('admdosen.destroy', $item->id) }}" method="post">

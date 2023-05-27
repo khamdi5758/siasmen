@@ -19,7 +19,7 @@
     <div class="panel-body">
         @foreach($data as $item)
         <div class="card">
-            <img src="{{ asset('images/' . $item->foto) }}" alt="Avatar" style="width:100%">
+            <img src="/images/{{$item->foto}}" alt="Avatar" style="width:100%">
         <div class="containercard">
             <center>
             <h4><b>{{$item->nama}}</b></h4> 

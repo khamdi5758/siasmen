@@ -77,7 +77,7 @@
                     <label class="col-lg-2 control-label">foto</label>
                     <div class="col-lg-10">
                         <input type="file" name="foto" id=foto/>
-                        <img width="100" src="{{ asset('images') }}/{{$datauser->foto}}" id="img" />
+                        <img width="100" src="/images/{{$datauser->foto}}" id="img" />
                         <input type="hidden" name="img" id="foto2" value="{{$datauser->foto}}">
                     </div>
 			    </div>

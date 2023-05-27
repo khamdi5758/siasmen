@@ -6,18 +6,18 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
     <title>mahasiswa | @yield('title')</title>
 	<!-- BOOTSTRAP STYLES-->
-    <link href="{{ asset('tmplt/css/bootstrap.css') }}" rel="stylesheet" />
+    <link href="/tmplt/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
-    <link href="{{asset('tmplt/css/font-awesome.css')}}" rel="stylesheet" />
+    <link href="/tmplt/css/font-awesome.css" rel="stylesheet" />
     <!-- MORRIS CHART STYLES-->
-    <link href="{{asset('tmplt')}}/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="/tmplt/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
-    <link href="{{asset('tmplt/css/custom.css')}}" rel="stylesheet" />
+    <link href="/tmplt/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
    <!-- TABLE STYLES-->
    <!-- @yield('tablestyle') -->
-   <link href="{{asset('tmplt/js/dataTables/dataTables.bootstrap.css')}}" rel="stylesheet" />
+   <link href="/tmplt/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
     <style>
@@ -71,7 +71,7 @@ font-size: 16px;">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
-                    <img src="{{ asset('images') }}/{{auth()->user()->tampilnmuser(auth()->user()->username,auth()->user()->type)->foto}}"  class="user-image img-responsive"/>
+                    <img src="/images/{{auth()->user()->tampilnmuser(auth()->user()->username,auth()->user()->type)->foto}}"  class="user-image img-responsive"/>
 					</li>
 				
 					
@@ -85,13 +85,13 @@ font-size: 16px;">
                         <a class="@yield('onatamhs')-menu" href="{{ url('mahasiswa/atamhs') }}"><i class="fa fa-desktop fa-3x"></i>Ajukan Tugas Akhir</a>
                     </li> -->
                     <li>
-                        <a class="@yield('onpnltdos')-menu" href="{{ url('mahasiswa/mhspnltdos') }}"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_peneliti.png')}}" width="50px" height="50px"></i>penelitian dosen</a>
+                        <a class="@yield('onpnltdos')-menu" href="{{ url('mahasiswa/mhspnltdos') }}"><i class="fa fa-3x"><img src="/tmplt/icon/icon_peneliti.png" width="50px" height="50px"></i>penelitian dosen</a>
                     </li>
                     <li>
-                        <a class="@yield('ondospem')-menu" href="{{ url('mahasiswa/dospem') }}"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_dosen.png')}}" width="50px" height="50px"></i>Dosen pembimbing</a>
+                        <a class="@yield('ondospem')-menu" href="{{ url('mahasiswa/dospem') }}"><i class="fa fa-3x"><img src="/tmplt/icon/icon_dosen.png" width="50px" height="50px"></i>Dosen pembimbing</a>
                     </li>	
                     <li class="@yield('onactivetuakmhs')">
-                        <a href="#"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_tuakmhs.png')}}" width="50px" height="50px"></i> Tugas Akhir MAHASISWA <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-3x"><img src="/tmplt/icon/icon_tuakmhs.png" width="50px" height="50px"></i> Tugas Akhir MAHASISWA <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a class="@yield('ontamhs')-menu" href="{{ url('mahasiswa/tamhs') }}"><i class="fa fa-3x"></i>Daftar Tugas Akhir Mahasiswa</a>
@@ -113,7 +113,7 @@ font-size: 16px;">
                         </ul>
                     </li> -->
                     <li class="@yield('onactivepengaturanakun')">
-                        <a href="#"><i class="fa  fa-3x"><img src="{{asset('tmplt/icon/icon_user.png')}}" width="50px" height="50px"></i>pengaturan akun <span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa  fa-3x"><img src="/tmplt/icon/icon_user.png" width="50px" height="50px"></i>pengaturan akun <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a class="@yield('onubahprofile')-menu" href="{{ url('mahasiswa/ubahprofile') }}">ubah profil</a>
@@ -174,25 +174,25 @@ font-size: 16px;">
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
-    <script src="{{asset('tmplt/js/jquery-1.10.2.js')}}"></script>
+    <script src="/tmplt/js/jquery-1.10.2.js"></script>
       <!-- BOOTSTRAP SCRIPTS -->
-    <script src="{{asset('tmplt/js/bootstrap.min.js')}}"></script>
+    <script src="/tmplt/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
-    <script src="{{asset('tmplt/js/jquery.metisMenu.js')}}"></script>
+    <script src="/tmplt/js/jquery.metisMenu.js"></script>
     <!-- MORRIS CHART SCRIPTS -->
-    <script src="{{asset('tmplt')}}/js/morris/raphael-2.1.0.min.js"></script>
-    <script src="{{asset('tmplt')}}/js/morris/morris.js"></script>
+    <script src="/tmplt/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="/tmplt/js/morris/morris.js"></script>
     <!-- DATA TABLE SCRIPTS -->
     <!-- @yield('Scriptdt') -->
-    <script src="{{asset('tmplt/js/dataTables/jquery.dataTables.js')}}"></script>
-    <script src="{{asset('tmplt/js/dataTables/dataTables.bootstrap.js')}}"></script>
+    <script src="/tmplt/js/dataTables/jquery.dataTables.js"></script>
+    <script src="/tmplt/js/dataTables/dataTables.bootstrap.js"></script>
         <script>
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
             });
     </script>
       <!-- CUSTOM SCRIPTS -->
-    <script src="{{asset('tmplt/js/custom.js')}}"></script>
+    <script src="/tmplt/js/custom.js"></script>
     <script>
         let user;
         user = document.getElementById("username").value;

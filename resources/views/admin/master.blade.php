@@ -6,19 +6,19 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
     <title>Admin | @yield('title')</title>
 	<!-- BOOTSTRAP STYLES-->
-    <link href="{{ asset('tmplt') }}/css/bootstrap.css" rel="stylesheet" />
+    <link href="/tmplt/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
-    <link href="{{asset('tmplt')}}/css/font-awesome.css" rel="stylesheet" />
+    <link href="/tmplt/css/font-awesome.css" rel="stylesheet" />
     <!-- MORRIS CHART STYLES-->
-    <link href="{{asset('tmplt')}}/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="/tmplt/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
-    <link href="{{asset('tmplt')}}/css/custom.css" rel="stylesheet" />
-    <script type="text/javascript" src="{{asset('tmplt')}}/js/search.js"></script>
+    <link href="/tmplt/css/custom.css" rel="stylesheet" />
+    <script type="text/javascript" src="/tmplt/js/search.js"></script>
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
    <!-- TABLE STYLES-->
    <!-- @yield('tablestyle') -->
-   <link href="{{asset('tmplt')}}/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+   <link href="/tmplt/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <div id="wrapper">
@@ -58,7 +58,7 @@ font-size: 16px;">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
-                    <img src="{{asset('tmplt/img/find_user.png')}}" class="user-image img-responsive"/>
+                    <img src="/tmplt/img/find_user.png" class="user-image img-responsive"/>
                     
 					</li>
 				
@@ -84,7 +84,7 @@ font-size: 16px;">
 					
 					                   
                     <li class="@yield('onactivemhs')">
-                        <a href="{{ url('admin/dftrmhs') }}"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_mhs.png')}}" width="50px" height="50px"></i> MAHASISWA <span class="fa arrow"></span></a>
+                        <a href="{{ url('admin/dftrmhs') }}"><i class="fa fa-3x"><img src="/tmplt/icon/icon_mhs.png" width="50px" height="50px"></i> MAHASISWA <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a class="@yield('ondftrmhs')-menu" href="{{ url('admin/dftrmhs') }}">Daftar Mahasiswa</a>
@@ -98,7 +98,7 @@ font-size: 16px;">
                         </ul>
                     </li>
                     <li class="@yield('onactivedos')">
-                        <a href="{{ url('admin/dftrdos') }}"><i class="fa fa-3x"><img src="{{asset('tmplt/icon/icon_dosen.png')}}" width="50px" height="50px"></i> Dosen <span class="fa arrow"></span></a>
+                        <a href="{{ url('admin/dftrdos') }}"><i class="fa fa-3x"><img src="/tmplt/icon/icon_dosen.png" width="50px" height="50px"></i> Dosen <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a class="@yield('ondftrdos')-menu" href="{{ url('admin/dftrdos') }}">Daftar Dosen</a>
@@ -140,25 +140,25 @@ font-size: 16px;">
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
-    <script src="{{asset('tmplt')}}/js/jquery-1.10.2.js"></script>
+    <script src="/tmplt/js/jquery-1.10.2.js"></script>
       <!-- BOOTSTRAP SCRIPTS -->
-    <script src="{{asset('tmplt')}}/js/bootstrap.min.js"></script>
+    <script src="/tmplt/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
-    <script src="{{asset('tmplt')}}/js/jquery.metisMenu.js"></script>
+    <script src="/tmplt/js/jquery.metisMenu.js"></script>
     <!-- MORRIS CHART SCRIPTS -->
-    <script src="{{asset('tmplt')}}/js/morris/raphael-2.1.0.min.js"></script>
-    <script src="{{asset('tmplt')}}/js/morris/morris.js"></script>
+    <script src="/tmplt/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="/tmplt/js/morris/morris.js"></script>
     <!-- DATA TABLE SCRIPTS -->
     <!-- @yield('Scriptdt') -->
-    <script src="{{asset('tmplt')}}/js/dataTables/jquery.dataTables.js"></script>
-    <script src="{{asset('tmplt')}}/js/dataTables/dataTables.bootstrap.js"></script>
+    <script src="/tmplt/js/dataTables/jquery.dataTables.js"></script>
+    <script src="/tmplt/js/dataTables/dataTables.bootstrap.js"></script>
     <script>
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
             });
     </script>
       <!-- CUSTOM SCRIPTS -->
-    <script src="{{asset('tmplt/js/custom.js')}}"></script>
+    <script src="/tmplt/js/custom.js"></script>
     <script>
         let user;
         user = document.getElementById("username").value;
