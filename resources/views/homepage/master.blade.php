@@ -13,7 +13,7 @@
         <!-- CUSTOM STYLES-->
     <!-- <link href="{{asset('tmplthome/css/custom.css')}}" rel="stylesheet" /> -->
 </head>
-<body>
+<body id="page-top">
 
     <!-- membuat menu navigasi -->
 	<nav class="navbar navbar-default">
@@ -26,13 +26,13 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">SIREDOSI</a>
+				<a class="navbar-brand" href="#page-top">SIREDOSI</a>
 			</div>
 			
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="#">HOME <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">PANDUAN</a></li>
+					<li><a href="#page-top">HOME <span class="sr-only">(current)</span></a></li>
+					<li><a href="#panduan">PANDUAN</a></li>
 					<!-- <li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tutorial <span class="caret"></span></a>
 						<ul class="dropdown-menu">

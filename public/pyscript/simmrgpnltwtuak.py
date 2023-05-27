@@ -7,8 +7,9 @@ import json
 
 def pengajuan():
     datmrgpnltwtuakk = dh.hmrgpnltwtuakk
-    arrayString = sys.argv[1].split(";")
-    mrgjuddesk = arrayString[1]+" "+arrayString[2]
+    # arrayString = sys.argv[1].split(";")
+    # mrgjuddesk = arrayString[1]+" "+arrayString[2]
+    mrgjuddesk = "Klasifikasi Bidang Praktek Kerja Industri Menggunakan Algoritma K-Nearest Neighbor di SMK Negeri 2 Sampang","Praktek kerja industri (PRAKERIN) merupakan salah satu program wajib yang harus dijalani bagi peserta didik yang menempuh pendidikan di Sekolah Menengah Kejuruan (SMK). Di jurusan Multimedia pelaksanaan prakerin dibagi menjadi 4 bidang yaitu bidang perkantoran, percetakan, perfilman dan perakitan. Penentuan bidang prakerin untuk menentukan tempat industri bagi masing-masing peserta didik di SMK Negeri 2 Sampang berdasarkan pada keminatan siswa dan pengamatan dalam setiap pembelajaran terutama mata pelajaran produktif, selain itu belum ada sistem untuk mengelompokkan bidang prakerin untuk maisng-masing peserta didik."
     juddeskfromuser = rabinkarp()
     juddeskfromuser.inputmethod(mrgjuddesk)
     juddeskfromuser.preprocessingdata()
@@ -33,8 +34,7 @@ def pengajuan():
                 kondisi1 = rabinkarp()
                 kondisi1.nilaihashygsama(hashjudtrak,dathjuddeskfromuser)
                 hsokond1 = kondisi1.similarity()
-        allsim.append([dosenid,hashjudtrak,hsokond1])  
-
+                allsim.append([dosenid, hashjudtrak, hsokond1])
     ranksim = allsim
     # Mengurutkan array dari terbesar ke terkecil berdasarkan indeks ke-6(simhashabstrak)
     ranksim.sort(key=lambda x: x[2], reverse=True)
@@ -72,7 +72,7 @@ def pengajuan():
         datredos.append(datdos)
 
     data = json.dumps(datredos)
-    # data = json.dumps(ranksim)
+    #data = json.dumps(ranksim)
     return data
     # return dh.hpnltdos
     # print(result[0])

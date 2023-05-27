@@ -21,12 +21,17 @@
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <tr>
-                                        <th>nim</th>
-                                        <td>{{$tuam->mahasiswas->nim}}</td>
-                                    </tr>
-                                    <tr>
                                         <th>nama</th>   
-                                        <td>{{$tuam->mahasiswas->nama}}</td>
+                                        <td>
+                                            <?php
+                                                if ($tuam->nama == null) {
+                                                    echo $tuam->mahasiswas->nama;
+                                                }elseif ($tuam->nama != null) {
+                                                    echo $tuam->nama;
+                                                }
+                                            ?>
+
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th>judul</th>   

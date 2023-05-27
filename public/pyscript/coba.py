@@ -5,25 +5,26 @@ import re
 import math
 import base64
 
-# db = mysql.connector.connect(
-#   host="localhost",
-#   user="root",
-#   password="",
-#   database="db_siasmen"
-# )
+db = mysql.connector.connect(
+  host="103.150.116.249",
+  port="3306",
+  user="root",
+  password="0-opklm,",
+  database="db_siredosi"
+)
 
 # input_data = json.loads(base64.b64decode(sys.argv[1]))
 input_data = "coba"
 # data = json.dumps(input_data)
 
-# def selectmrgpnltwtuak():
-#     cursor = db.cursor()
-#     sql = "SELECT dosens_id, judul, abstrak FROM pnltdosens UNION SELECT dosens_id,judul,abstrak FROM tamhs"
-#     cursor.execute(sql)
-#     results = "coba"
-#     # results = cursor.fetchall()
-#     data = json.dumps(results)
-#     return data
+def selectmrgpnltwtuak():
+    cursor = db.cursor()
+    sql = "SELECT dosens_id, judul, abstrak FROM pnltdosens UNION SELECT dosens_id,judul,abstrak FROM tamhs"
+    cursor.execute(sql)
+    #results = "coba"
+    results = cursor.fetchall()
+    data = json.dumps(results)
+    return results
 
 # def select(paramnim):
 #   cursor = db.cursor()
@@ -189,7 +190,7 @@ input_data = "coba"
 # print(preprocessingdata())
 # print(selectdos())
 # print(pengajuan())
-print(input_data)
+print(selectmrgpnltwtuak())
     
 
 

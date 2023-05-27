@@ -41,7 +41,7 @@ use App\Models\Ptuakmhs;
 */
 
 Route::get('/', function () {
-    return view('homepage.index');
+    return view('homepage.indexx');
 });
 // Route::get('/coba', [DashboardController::class,'dosendash']);
 
@@ -155,7 +155,7 @@ Route::group(['prefix' => 'mahasiswa',  'as' => 'mahasiswa.'], function () {
             return view('mahasiswa.atamhs');
         }
         
-    });
+    })->name('statusta');
     Route::get('/mhspnltdos', [MHSPnltdosController::class,'index'])->name('mhspnltdos');
     // Route::get('/mhspnltdos', function () {
     //     return view('mahasiswa.pnltdos');

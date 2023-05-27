@@ -23,7 +23,7 @@
                                 <thead>
                         <tr>
                             <th>no</th>
-                            <th>nim</th>
+                            <!-- <th>nim</th> -->
                             <th>nama</th>
                             <th>judul</th>
                             <th>abstrak</th>
@@ -35,8 +35,15 @@
                     @foreach($data as $item)
                         <tr class="gradeU">
                             <td>{{ $loop->iteration}}</td>
-                            <td>{{$item->mahasiswas->nim}}</td>
-                            <td>{{$item->mahasiswas->nama}}</td>
+                            <td>
+                                <?php
+                                    if ($item->nama==null) {
+                                        echo $item->mahasiswas->nama;
+                                    }elseif ($item->nama!=null) {
+                                        echo $item->nama;
+                                    }
+                                ?>
+                            </td>
                             <!-- <td>{{$item->judul}}</td>
                             <td>{{$item->abstrak}}</td> -->
                             <td>

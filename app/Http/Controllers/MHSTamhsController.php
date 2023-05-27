@@ -80,7 +80,7 @@ class MHSTamhsController extends Controller
         $process = shell_exec("python {$scriptPath} $stringg");
         // $process = shell_exec("python c:/xampp/htdocs/siasmen/public/pyscript/simmrgpnltwtuak.py $stringg");
         $datajson = json_decode($process,true);
-        // return $datajson;
+        // return $process;
         return view('mahasiswa.rekomdos',['input'=>$input,'data'=> $datajson]);
         
     }
@@ -106,13 +106,14 @@ class MHSTamhsController extends Controller
         // return $process;
         // return $cob;
         $scriptPath = public_path('pyscript/coba.py');
-        $result = shell_exec("python {$scriptPath} $jsondataen");
+        
+        $result = shell_exec("/usr/bin/python3   {$scriptPath} ");
         // $result = shell_exec("python c:/xampp/htdocs/siasmen/public/pyscript/coba.py");
         $datajson = json_decode($result,true);
         // return view('mahasiswa.atamhs',['data'=> $datajson]);
         // $keys = array("id","nim","nama","jenkel","perguruan_tinggi","program_studi","jenjang","status","foto");
         // $my_array = array_combine($keys, $datajson);
-        echo $result;
+        return $datajson;
         // echo $datajson[0][""];
         // for ($i=0; $i < count($datajson); $i++) { 
         //     for ($j=0; $j < count($datajson[$i]); $j++) { 
@@ -137,8 +138,8 @@ class MHSTamhsController extends Controller
         $input = $request->all();
         // dd($input);
         Ptuakmhs::create($input);
-        return redirect()->route('mahasiswa');
-        // return redirect()->route('mahasiswa.tamhs')->with('success', 'Data berhasil dibuat');
+        // return redirect()->route('mahasiswa');
+        return redirect()->route('mahasiswa.statusta')->with('success', 'Data berhasil dibuat');
     }
 
     /**

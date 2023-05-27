@@ -132,7 +132,6 @@ hpnltdos = hashpnltdos()
 htuakmhs = hashtuakmhs()
 hmrgpnltwtuak = hashmrgpnltwtuak()
 hmrgpnltwtuakk = hashmrgpnltwtuakk()
-# print(hpnltdos)
 # with open('hpnltdos.json', 'w') as f:
 #     f.write(hpnltdos)
     

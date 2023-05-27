@@ -50,7 +50,7 @@ class rabinkarp:
         #stopword
         filtered_sentence=[]
         for word_token in word_tokens:
-            if word_token not in stop_words:
+            if word_token not in stopwords:
                 filtered_sentence.append(word_token)
 
         #join words
@@ -58,6 +58,7 @@ class rabinkarp:
         return self.data
     
     def preprocessingdata(self):
+        self.data = str(self.data)
         self.data = self.data.lower()
         self.data = re.sub(r'[^\w\s]', '', self.data)
         return self.data
@@ -113,6 +114,10 @@ class rabinkarp:
     def similarity(self):
         pemb = math.sqrt(len(self.doc1hashh)) * math.sqrt(len(self.doc2hashh))
         cmhl = len(self.common_hash_list)
-        sim = cmhl / pemb * 100 / 100
-        return sim
+
+        if pemb != 0:
+            sim = cmhl / pemb * 100 / 100
+            return sim
+        else:
+            return 0.0
         
