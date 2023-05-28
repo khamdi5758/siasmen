@@ -13,16 +13,16 @@ class CreateSekolahsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sekolah', function (Blueprint $table) {
-            $table->id();
-            $table->string('namasekolah');
-            $table->string('npsn');
-            $table->string('jenjang');
-            $table->string('status');
-            $table->string('alamat');
-            $table->string('fotologo');
-            $table->timestamps();
-        });
+        // Schema::create('sekolah', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('namasekolah');
+        //     $table->string('npsn');
+        //     $table->string('jenjang');
+        //     $table->string('status');
+        //     $table->string('alamat');
+        //     $table->string('fotologo');
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -32,6 +32,6 @@ class CreateSekolahsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sekolah');
+        // Schema::dropIfExists('sekolah');
     }
 }

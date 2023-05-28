@@ -13,14 +13,14 @@ class CreateStudentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('students', function (Blueprint $table) {
-            $table->id();
-            $table->string('student_name');
-            $table->string('student_email');
-            $table->enum('student_gender', ['Male', 'Female']);
-            $table->string('student_image');
-            $table->timestamps();
-        });
+        // Schema::create('students', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('student_name');
+        //     $table->string('student_email');
+        //     $table->enum('student_gender', ['Male', 'Female']);
+        //     $table->string('student_image');
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -30,6 +30,6 @@ class CreateStudentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students');
+        // Schema::dropIfExists('students');
     }
 }

@@ -13,13 +13,13 @@ class CreateLapharianTable extends Migration
      */
     public function up()
     {
-        Schema::create('lapharian', function (Blueprint $table) {
-            $table->id();
-            $table->string('tanggal');
-            $table->string('deskripsi_kegiatan');
-            $table->string('dokumentasi_kegiatan');
-            $table->timestamps();
-        });
+        // Schema::create('lapharian', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('tanggal');
+        //     $table->string('deskripsi_kegiatan');
+        //     $table->string('dokumentasi_kegiatan');
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -29,6 +29,6 @@ class CreateLapharianTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lapharian');
+        // Schema::dropIfExists('lapharian');
     }
 }

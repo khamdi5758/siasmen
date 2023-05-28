@@ -1,5 +1,5 @@
 @extends('homepage.masterr')
-@section('title', 'dashboard')
+@section('title', 'Homepage')
 @section('content')
 @if($message = Session::get('success'))
 <div class="alert alert-success">

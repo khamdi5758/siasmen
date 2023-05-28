@@ -43,6 +43,19 @@ use App\Models\Ptuakmhs;
 Route::get('/', function () {
     return view('homepage.indexx');
 });
+Route::get('/home', function () {
+    $user = auth()->user();
+    $typeuser = $user->type;
+    if ($typeuser === 1) {
+        return redirect('/admin');
+    } else if ($typeuser === 2) {
+        return redirect('/dosen');
+    } else if ($typeuser === 3) {
+        return redirect('/mahasiswa');
+    }
+
+    // return view('homepage.indexx');
+});
 // Route::get('/coba', [DashboardController::class,'dosendash']);
 
 
