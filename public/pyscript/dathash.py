@@ -2,6 +2,7 @@ import mysql.connector
 from algoritma import rabinkarp
 import sys
 import json
+import os
 
 db = mysql.connector.connect(
   host="localhost",
@@ -132,6 +133,14 @@ hpnltdos = hashpnltdos()
 htuakmhs = hashtuakmhs()
 hmrgpnltwtuak = hashmrgpnltwtuak()
 hmrgpnltwtuakk = hashmrgpnltwtuakk()
+
+# Mendapatkan path absolut dari direktori saat ini
+current_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Menggabungkan path absolut dengan nama file data.json
+json_file_path = os.path.join(current_directory, 'data.json')
+with open(json_file_path, 'w') as json_file:
+    json.dump(hmrgpnltwtuakk, json_file)
 # with open('hpnltdos.json', 'w') as f:
 #     f.write(hpnltdos)
     

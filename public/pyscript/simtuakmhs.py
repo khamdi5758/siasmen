@@ -3,10 +3,15 @@ import dathash as dh
 from algoritma import rabinkarp
 import sys
 import json
+import os
 
 
 def pengajuan():
-    dattuakmhsfrmdb = dh.htuakmhs
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    json_file_path = os.path.join(current_directory, 'data.json')
+    with open(json_file_path, 'r') as json_file:
+        dattuakmhsfrmdb = json.load(json_file)
+    # dattuakmhsfrmdb = dh.htuakmhs
     arrayString = sys.argv[1].split(";")
     judulfrmuser = rabinkarp()
     judulfrmuser.inputmethod(arrayString[1])

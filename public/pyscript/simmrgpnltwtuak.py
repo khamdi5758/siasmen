@@ -3,13 +3,18 @@ import dathash as dh
 from algoritma import rabinkarp
 import sys
 import json
+import os
 
 
 def pengajuan():
-    datmrgpnltwtuakk = dh.hmrgpnltwtuakk
-    # arrayString = sys.argv[1].split(";")
-    # mrgjuddesk = arrayString[1]+" "+arrayString[2]
-    mrgjuddesk = "Klasifikasi Bidang Praktek Kerja Industri Menggunakan Algoritma K-Nearest Neighbor di SMK Negeri 2 Sampang","Praktek kerja industri (PRAKERIN) merupakan salah satu program wajib yang harus dijalani bagi peserta didik yang menempuh pendidikan di Sekolah Menengah Kejuruan (SMK). Di jurusan Multimedia pelaksanaan prakerin dibagi menjadi 4 bidang yaitu bidang perkantoran, percetakan, perfilman dan perakitan. Penentuan bidang prakerin untuk menentukan tempat industri bagi masing-masing peserta didik di SMK Negeri 2 Sampang berdasarkan pada keminatan siswa dan pengamatan dalam setiap pembelajaran terutama mata pelajaran produktif, selain itu belum ada sistem untuk mengelompokkan bidang prakerin untuk maisng-masing peserta didik."
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    json_file_path = os.path.join(current_directory, 'data.json')
+    with open(json_file_path, 'r') as json_file:
+        datmrgpnltwtuakk = json.load(json_file)
+    # datmrgpnltwtuakk = dh.hmrgpnltwtuakk
+    arrayString = sys.argv[1].split(";")
+    mrgjuddesk = arrayString[1]+" "+arrayString[2]
+    # mrgjuddesk = "Klasifikasi Bidang Praktek Kerja Industri Menggunakan Algoritma K-Nearest Neighbor di SMK Negeri 2 Sampang","Praktek kerja industri (PRAKERIN) merupakan salah satu program wajib yang harus dijalani bagi peserta didik yang menempuh pendidikan di Sekolah Menengah Kejuruan (SMK). Di jurusan Multimedia pelaksanaan prakerin dibagi menjadi 4 bidang yaitu bidang perkantoran, percetakan, perfilman dan perakitan. Penentuan bidang prakerin untuk menentukan tempat industri bagi masing-masing peserta didik di SMK Negeri 2 Sampang berdasarkan pada keminatan siswa dan pengamatan dalam setiap pembelajaran terutama mata pelajaran produktif, selain itu belum ada sistem untuk mengelompokkan bidang prakerin untuk maisng-masing peserta didik."
     juddeskfromuser = rabinkarp()
     juddeskfromuser.inputmethod(mrgjuddesk)
     juddeskfromuser.preprocessingdata()
