@@ -129,9 +129,9 @@ def hashmrgpnltwtuakk():
 
 
 # hashpnltdos()
-hpnltdos = hashpnltdos()
-htuakmhs = hashtuakmhs()
-hmrgpnltwtuak = hashmrgpnltwtuak()
+# hpnltdos = hashpnltdos()
+# htuakmhs = hashtuakmhs()
+# hmrgpnltwtuak = hashmrgpnltwtuak()
 hmrgpnltwtuakk = hashmrgpnltwtuakk()
 
 # Mendapatkan path absolut dari direktori saat ini

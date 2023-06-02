@@ -63,11 +63,10 @@
                                 <thead>
                                     <tr>
                                         <th>no</th>
-                                        <th>nim</th>
                                         <th>nama</th>
                                         <th>judul</th>
                                         <!-- <th>deskjudul</th>
-                                        <th>dosen pembimbing</th> -->
+                                        <th>abstrak</th> -->
                                         <th>action</th>
                                     </tr>
                                 </thead>
@@ -75,17 +74,16 @@
                                 @foreach($ptuakmhs as $item)
                                     <tr class="gradeU">
                                         <td>{{ $loop->iteration}}</td>
-                                        <td>{{$item->mahasiswas->nim}}</td>
-                                        <td>{{$item->mahasiswas->nama}}</td>
+                                        <td>{{$item->nama}}</td>
                                         <td>{{$item->judul}}</td>
                                         <!-- <td>{{$item->deskjudul}}</td>
-                                        <td>{{$item->dosens->nama}}</td> -->
-                                        <!-- <td>{{$item->abstrak}}</td> -->
-                                        <!-- <td>{{$item->dosens->nama}}</td> -->
+                                        <td>{{$item->abstrak}}</td> -->
                                         <td>
-                                                <!-- <a href="#" data-id="{{ $item->id }}" data-toggle="modal" data-target="#modal-edit" class="btn btn-warning btn-sm edittamhs"> Edit </a> -->
+                                                
                                                 &nbsp;
-                                                <a href="{{ route('dosmhsbim.show', $item->id) }}" class="btn btn-primary btn-sm"> Show </a> 
+                                                <a href="{{ $item->deskjudul == null ? route('dosmhsbim.show', $item->id): url('dosen/sptuakmhs', $item->id)
+                                                }}" class="btn btn-primary btn-sm"> Show </a> 
+                                                
                                                 &nbsp;
                                         </td>
                                     </tr>

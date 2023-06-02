@@ -9,6 +9,7 @@ use App\Models\Tuam;
 use App\Models\Ptuakmhs;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -27,10 +28,12 @@ class DashboardController extends Controller
     {
         $user = auth()->user();
         $iduser = User::tampildatuser($user->username, $user->type)->id;
-        $mhsbimsaya = Tuam::where('dosens_id',$iduser)->get();
+        // $mhsbimsaya = Tuam::where('dosens_id',$iduser)->get();
         $pnltsaya = Pnltdosen::where('dosens_id',$iduser)->get();
         $ptuakmhsbimsaya = Ptuakmhs::all();
-        $data = ['mhsbimsaya'=>count($mhsbimsaya),'pnltsaya'=>count($pnltsaya),'ptuakmhsbimsaya'=>count($ptuakmhsbimsaya)];
+        $mhsontuam = DB::table('tamhs')->where('dosens_id',$iduser);
+        $mhsonptuakmhs = DB::table('ptuakmhs')->where('dosens_id',$iduser)->union($mhsontuam)->get();
+        $data = ['mhsbimsaya'=>count($mhsonptuakmhs),'pnltsaya'=>count($pnltsaya),'ptuakmhsbimsaya'=>count($ptuakmhsbimsaya)];
         return view('dosen.index',$data);
     }
 

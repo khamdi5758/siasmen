@@ -194,6 +194,8 @@ Route::group(['prefix' => 'dosen',  'as' => 'dosen.'], function () {
     Route::get('/', [DashboardController::class,'dosendash']);
     Route::get('/index', [DashboardController::class,'dosendash'])->name('indexdos');
     Route::get('/mhsbim/', [ DOSMhsbmbController::class,'index'])->name('dosmhsbim');
+    Route::get('/sptuakmhs/{id}', [ DOSMhsbmbController::class,'sptuakmhs'])->name('showptuakmhs');
+
     // Route::get('/mhsbimm/{id}', [ DOSMhsbmbController::class,'show'])->name('dossmhsbim');
     Route::get('/pnltdos', [ DOSPnltdosController::class,'index'])->name('dosspnltdos');
     Route::get('/pnltsaya', [ DOSPnltdosController::class,'pnltsaya']);

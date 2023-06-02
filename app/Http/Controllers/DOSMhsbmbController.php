@@ -27,7 +27,12 @@ class DOSMhsbmbController extends Controller
         // $data = Tuam::all();
         $user = auth()->user();
         $iddos = User::tampildatuser($user->username, $user->type)->id;
-        $ptuakmhs = Ptuakmhs::where('dosens_id', $iddos)->whereNotNull('konfdospil')->get();
+        $ptuakmhs = Ptuakmhs::where('dosens_id', $iddos)->whereNotNull('konfdospil')->whereNotNull('konfadmin')->get();
+        $tamhs = Tuam::where('dosens_id', $iddos)->get();
+        $query = DB::table('ptuakmhs')->join('mahasiswas', 'ptuakmhs.mahasiswas_id', '=', 'mahasiswas.id')->select('ptuakmhs.id as id','mahasiswas.nama as nama', 'ptuakmhs.judul as judul', 'ptuakmhs.deskjudul as deskjudul', DB::raw('NULL as abstrak'))->where('ptuakmhs.dosens_id', '=', $iddos)->whereNotNull('konfdospil')->whereNotNull('konfadmin');
+        
+        $query2 = DB::table('tamhs')->select('tamhs.id as id','tamhs.nama as nama', 'tamhs.judul as judul', DB::raw('NULL as deskjudul'), 'tamhs.abstrak as abstrak')->where('tamhs.dosens_id', '=', $iddos);
+        $results = $query->union($query2)->get();
         $data = Ptuakmhs::where('dosens_id', $iddos)->whereNull('konfdospil')->get();
         // $jsonData = json_decode($data, true); // true digunakan untuk mengembalikan array asosiatif
         // for ($i=0; $i < count($jsonData); $i++) { 
@@ -41,7 +46,7 @@ class DOSMhsbmbController extends Controller
         // }
         // echo $data;
         // $calmhsbim = 
-        return view('dosen.mhsbimm',['data' => $data, 'mhs' => $mhs,'dosens'=>$dosen,'ptuakmhs'=>$ptuakmhs]);
+        return view('dosen.mhsbimm',['data' => $data, 'mhs' => $mhs,'dosens'=>$dosen,'ptuakmhs'=>$results]);
     }
 
     /**
@@ -79,8 +84,18 @@ class DOSMhsbmbController extends Controller
     // }
     public function show($id)
     {
+        // $data = ptuakmhs::where('id', $id)->get();
+        $data = Tuam::where('id', $id)->get();
+        // $data = $results;
+        return view('dosen.showmhsbim',compact('data'));
+    }
+    public function sptuakmhs($id)
+    {
+        // echo $id;
         $data = ptuakmhs::where('id', $id)->get();
-        return view('dosen.mhsbim',compact('data'));
+        
+        // $data = $results;
+        return view('dosen.showmhsbimm',compact('data'));
     }
 
     /**
@@ -91,7 +106,9 @@ class DOSMhsbmbController extends Controller
      */
     public function edit($id)
     {
-        $data = ptuakmhs::where('id', $id)->get();
+
+
+        // $data = ptuakmhs::where('id', $id)->get();
         return view('dosen.clnmhsbim',compact('data'));
     }
 

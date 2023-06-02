@@ -1,5 +1,6 @@
 # from dathash import hashpnltdos
-import dathash as dh
+# import dathash as dh
+from dathash import db
 from algoritma import rabinkarp
 import sys
 import json
@@ -61,7 +62,7 @@ def pengajuan():
     for a in range(len(unique_arr)):
         datdos = []
         idredos = unique_arr[a]
-        db = dh.db
+        # db = dh.db
         cursor = db.cursor()
         sql = "SELECT * FROM dosens WHERE id = %s"
         param = (idredos, )
