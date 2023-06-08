@@ -218,7 +218,8 @@
 <script>
     $(function() {
             // edit ajax request
-            $('.edittamhs').on('click', function() {
+            $('#dataTables-example').on('click','.edittamhs', function() {
+            // $('.edittamhs').on('click', function() {
                 let id = $(this).data('id');
                 $.ajax({
                     data: {id : id},

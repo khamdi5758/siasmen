@@ -73,9 +73,9 @@ class ADMPnltdosController extends Controller
      * @param  \App\Models\Pnltdosen  $pnltdosen
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pnltdosen $pnltdosen)
+    public function edit($id)
     {
-        $id = $_GET['id'];
+        // $id = $_GET['id'];
         // echo $id;
         $data = Pnltdosen::find($id);
         $datadosen = $data->dosens;

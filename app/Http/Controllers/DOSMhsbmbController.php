@@ -108,7 +108,7 @@ class DOSMhsbmbController extends Controller
     {
 
 
-        // $data = ptuakmhs::where('id', $id)->get();
+        $data = ptuakmhs::where('id', $id)->get();
         return view('dosen.clnmhsbim',compact('data'));
     }
 
@@ -124,7 +124,8 @@ class DOSMhsbmbController extends Controller
         $dataptuakmhs = Ptuakmhs::find($id);
         $dataptuakmhs->konfdospil = $request->status;
         $dataptuakmhs->save();
-        return redirect('dosmhsbim');
+        // return redirect('dosmhsbim');
+        return redirect()->route('dosen.dosmhsbim')->with('success', 'Data berhasil disimpan');
     }
 
     /**

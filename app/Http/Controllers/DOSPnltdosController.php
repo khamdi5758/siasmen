@@ -59,7 +59,7 @@ class DOSPnltdosController extends Controller
         ]);
         $input = $request->all();
         Pnltdosen::create($input);
-        return redirect()->route('dosen.dosspnltdos')->with('success', 'Data berhasil dibuat');
+        return redirect()->route('dosen.dosspnltdoss')->with('success', 'Data berhasil dibuat');
     }
 
     /**
@@ -86,6 +86,7 @@ class DOSPnltdosController extends Controller
         $data = Pnltdosen::find($id);
         $datadosen = $data->dosens;
         return json_encode([$data,$datadosen]);
+        // return json_encode([$data]);
     }
 
     /**
@@ -108,7 +109,7 @@ class DOSPnltdosController extends Controller
         $data = Pnltdosen::find($id);
         // dd($data);
         $data->update($input);
-        return redirect()->route('dosen.dosspnltdos')->with('success', 'Data berhasil diupdate');
+        return redirect()->route('dosen.dosspnltdoss')->with('success', 'Data berhasil diupdate');
     }
 
     /**
@@ -121,6 +122,6 @@ class DOSPnltdosController extends Controller
     {
         $data = Pnltdosen::find($id);
         $data->delete();
-        return redirect()->route('dosen.dosspnltdos')->with('success', 'Data berhasil dihapus');
+        return redirect()->route('dosen.dosspnltdoss')->with('success', 'Data berhasil dihapus');
     }
 }

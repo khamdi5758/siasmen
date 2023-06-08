@@ -61,7 +61,7 @@ font-size: 16px;">
                     </li>
 
                     <li>
-                        <a class="@yield('onpnltdos')-menu" href="{{ url('dosen/pnltdos') }}"><i class="fa fa-3x"><img src="/tmplt/icon/icon_peneliti.png" width="50px" height="50px"></i>penelitian</a>
+                        <a class="@yield('onpnltdos')-menu" href="{{ url('dosen/pnltsaya') }}"><i class="fa fa-3x"><img src="/tmplt/icon/icon_peneliti.png" width="50px" height="50px"></i>penelitian</a>
                     </li>
                     <!-- <li>
                         <a class="@yield('onpnltsaya')-menu" href="{{ url('dosen/pnltsaya') }}/{{auth()->user()->tampilnmuser(auth()->user()->username,auth()->user()->type)->id}}"><i class="fa fa-desktop fa-3x"></i>penelitian saya</a>

@@ -186,12 +186,16 @@
 <script>
     $(function() {
             // edit ajax request
-            $('.edit').on('click', function() {
+            // $('.edit').on('click', function() {
+            $('#dataTables-example').on('click','.edit', function() {
+                // $('#dataTables-example').dataTable();
                 let id = $(this).data('id');
+                console.log(id);
                 $.ajax({
-                    data: {id : id},
+                    // data: {id : id},
+                    data:{"_token":"{{ csrf_token() }}"},
                     // url : "{{route('admpnltdosen.edit',"+data.id+")}}",
-                    url : "{{ route('admpnltdosen.index') }}" +'/' + id +'/edit',
+                    url : `{{ url('admpnltdosen')}}/${id}/edit`,
                     type: 'get',
                     dataType: 'json',
                     success: function([data,datadosen])
