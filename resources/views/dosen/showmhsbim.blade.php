@@ -14,7 +14,7 @@
 
 <div class="panel panel-default">
                         <div class="panel-heading">
-                             Advanced Tables
+                            Detail tugas akhir 
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">

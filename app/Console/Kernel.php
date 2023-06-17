@@ -15,8 +15,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->exec('C:/Python311/python.exe C:/xampp/htdocs/siasmen/public/pyscript/dathash.py')->hourly();
-        // $schedule->command('inspire')->hourly();
+        // $schedule->exec('C:/Python311/python.exe C:/xampp/htdocs/siasmen/public/pyscript/dathash.py')->hourly();
+        $schedule->command('CheckFileCount')->hourly();
     }
 
     /**

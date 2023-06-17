@@ -7,6 +7,8 @@ use App\Http\Controllers\ADMMahasiswaController;
 use App\Http\Controllers\ADMTuamController;
 use App\Http\Controllers\ADMDosenController;
 use App\Http\Controllers\ADMPnltdosController;
+use App\Http\Controllers\ADMUbahPassUserController;
+
 use App\Http\Controllers\MHSTamhsController;
 use App\Http\Controllers\MHSDospemController;
 use App\Http\Controllers\MHSPnltdosController;
@@ -41,8 +43,12 @@ use App\Models\Ptuakmhs;
 */
 
 Route::get('/', function () {
-    return view('homepage.indexx');
+    return view('homepage.indexxx');
 });
+
+// Route::get('/cob', function () {
+//     return view('homepage.indexxx');
+// });
 Route::get('/home', function () {
     $user = auth()->user();
     $typeuser = $user->type;
@@ -116,8 +122,13 @@ Route::group(['prefix' => 'admin',  'as' => 'admin.'], function () {
     Route::get('/dftrdos', [ADMDosenController::class,'index'])->name('dftrdos');
     Route::get('/pnltdos', [ADMPnltdosController::class,'index'])->name('pnltdos');
     Route::get('/pnltdos/nipdosen', [ADMPnltdosController::class,'nipdosen'])->name('nipdosen');
-    Route::get('/ubahprofile', [ADMUbahProfController::class,'index'])->name('admubahprofile');
-    Route::get('/ubahpass', [ADMPnltdosController::class,'index'])->name('ubahpass');
+    // Route::get('/ubahprofile', [ADMUbahProfController::class,'index'])->name('admubahprofile');
+    // Route::get('/ubahpass', [ADMPnltdosController::class,'index'])->name('ubahpass');
+    Route::get('/halubahpassdos/{id}', [ADMUbahPassUserController::class,'halubahpassdos'])->name('halubahpassdos');
+    Route::get('/halubahpassmhs/{id}', [ADMUbahPassUserController::class,'halubahpassmhs'])->name('halubahpassmhs');
+    Route::post('/ubahpassdos', [ADMUbahPassUserController::class,'ubahpassdosen'])->name('ubahpassdos');
+    Route::post('/ubahpassmhs', [ADMUbahPassUserController::class,'ubahpassmhs'])->name('ubahpassmhs');
+    // Route::post('/ubahpassmhs', [ADMUbahPassUserController::class,'index'])->name('ubahpassmhs');
     // Route::get('/pnltdos/nipdosen', [ADMPnltdosController::class,'nipdosen'])->name('nipdosen');
   });
   Route::resource('admmahasiswa', ADMMahasiswaController::class);
@@ -212,8 +223,8 @@ Route::group(['prefix' => 'dosen',  'as' => 'dosen.'], function () {
 
 
 Route::get('lapharian/cetak',[LapharianController::class,'cetak']);
-Route::resource('lapharian', LapharianController::class);
-Route::resource('students', StudentController::class);
+// Route::resource('lapharian', LapharianController::class);
+// Route::resource('students', StudentController::class);
 
 // Route::resource('admmahasiswa', ADMMahasiswaController::class);
 // Route::resource('admtuam', ADMTuamController::class);

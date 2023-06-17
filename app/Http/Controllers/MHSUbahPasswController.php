@@ -72,6 +72,9 @@ class MHSUbahPasswController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'password'          =>  'required'
+        ]);
         $datauser = User::find($id);
         $datauser->password = bcrypt($request->password);
         $datauser->save();

@@ -74,6 +74,9 @@ class DOSUbahPasswController extends Controller
     {
         // echo $id;
         // dd($request);
+        $request->validate([
+            'password'          =>  'required'
+        ]);
         $datauser = User::find($id);
         $datauser->password = bcrypt($request->password);
         $datauser->save();

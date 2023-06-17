@@ -43,14 +43,14 @@ class ADMMahasiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nim'          =>  'required',
+            'nim'          =>  'required|numeric',
             'nama'         =>  'required',
             'jenkel'         =>  'required',
             'perguruan_tinggi'         =>  'required',
             'program_studi'         =>  'required',
             'jenjang'         =>  'required',
             'status'         =>  'required',
-            'foto'         =>  'required'
+            'foto'         =>  'required|image'
         ]);
         $input =$request->all();
         if ($image = $request->file('foto')) {
@@ -123,7 +123,8 @@ class ADMMahasiswaController extends Controller
             'perguruan_tinggi'         =>  'required',
             'program_studi'         =>  'required',
             'jenjang'         =>  'required',
-            'status'         =>  'required'
+            'status'         =>  'required',
+            'foto' => 'image'
         ]);
         $id = $request->hidid;
         $input =$request->all();

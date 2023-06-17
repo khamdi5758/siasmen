@@ -1,5 +1,6 @@
 @extends('mahasiswa.master')
-@section('title', 'daftar mahasiswa')
+@section('title', 'pengajuan tugas akhir')
+@section('onactivetuakmhs','active')
 @section('onatamhs','active')
 
 @section('content')
@@ -11,16 +12,24 @@
 </div>
 
 @endif
+
+<div class="row">
+    <div class="col-md-12">
+    <h2>Halaman Ajukan Tugas Akhir</h2>   
+    <!-- <h5>Welcome Jhon Deo , Love to see you back. </h5> -->
+    </div>
+</div>
+<hr>
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Form Element Examples
+                Ajukan Tugas Akhir
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <h3>Basic Form Examples</h3>
+                        <h3>Penelitian Yag Mau Anda Ambil</h3>
                             <form role="form">
                                 <div class="form-group">
                                     <label>judul</label>
@@ -51,7 +60,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
                         <div class="panel-heading">
-                             Advanced Tables
+                             Daftar Rekomendasi Dosen Pembimbing
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -66,10 +75,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($data as $row)
+                                    @foreach($data as $item)
                                         <tr>
                                                 <td>{{$loop->iteration}}</td>
-                                        @foreach ($row as $item)
                                                 <td>{{$item['nip']}}</td>
                                                 <td>{{$item['nama']}}</td>
                                                 <td>
@@ -91,8 +99,6 @@
                                                         <button type="submit" class="btn btn-primary btn-sm"> Pilih </button>
                                                     </form>
                                                 </td>
-                                            
-                                        @endforeach
                                         </tr>
                                     @endforeach
                                     </tbody>

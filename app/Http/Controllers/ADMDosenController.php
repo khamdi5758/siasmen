@@ -38,13 +38,13 @@ class ADMDosenController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nip'          =>  'required',
+            'nip'          =>  'required|numeric',
             'nama'         =>  'required',
             'jenkel'         =>  'required',
             'status'         =>  'required',
             'pendidikan_terakhir'         =>  'required',
             'pangkat'         =>  'required',
-            'foto'         =>  'required'
+            'foto'         =>  'required|image'
         ]);
         $input =$request->all();
         // dd($input);
@@ -80,7 +80,10 @@ class ADMDosenController extends Controller
     {
         $id=  $_GET['id'];
         $data = Dosen::find($id);
-		return json_encode($data);
+        // $data = DB::table('dosens')->where('id',1)->get();
+        
+		// return json_encode($data);
+        return $data->toJson();
     }
 
     /**
@@ -99,7 +102,8 @@ class ADMDosenController extends Controller
             'jenkel'         =>  'required',
             'status'         =>  'required',
             'pendidikan_terakhir'         =>  'required',
-            'pangkat'         =>  'required'
+            'pangkat'         =>  'required',
+            'foto' => 'image'
 
         ]);
         $id = $request->hidid;

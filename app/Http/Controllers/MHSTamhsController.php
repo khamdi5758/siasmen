@@ -63,6 +63,10 @@ class MHSTamhsController extends Controller
     public function rekomdos(Request $request)
     {
         // return $request;
+        $request->validate([
+            'judul'          =>  'required',
+            'abstrak' => 'required'
+        ]);
         $input = $request->all();
         $count = count($input);
         $a = 1;
@@ -77,10 +81,21 @@ class MHSTamhsController extends Controller
         }
         $stringg = escapeshellarg($string);
         $scriptPath = public_path('pyscript/simmrgpnltwtuak.py');
-        $process = shell_exec("python {$scriptPath} $stringg");
-        // $process = shell_exec("python c:/xampp/htdocs/siasmen/public/pyscript/simmrgpnltwtuak.py $stringg");
+        $convjsontoexclpyPath = public_path('pyscript/convjsontoexcl.py');
+        $process = shell_exec("/bin/python3 {$scriptPath} $stringg");
+        // $process = shell_exec("/bin/python3 {$cobapyPath}");
+        // if ($process === null) {
+            //     // Shell_exec gagal dijalankan
+            //     echo "Error executing command.";
+            // } else {
+                //     // Shell_exec berhasil dijalankan
+                //     echo "Command executed successfully.";
+                // }
+                // $process = shell_exec("python c:/xampp/htdocs/siasmen/public/pyscript/simmrgpnltwtuak.py $stringg");
         $datajson = json_decode($process,true);
-        // return $process;
+        shell_exec("/bin/python3 {$convjsontoexclpyPath}");
+        // return $datajson;
+        // return $stringg;
         return view('mahasiswa.rekomdos',['input'=>$input,'data'=> $datajson]);
         
     }
@@ -105,15 +120,25 @@ class MHSTamhsController extends Controller
         // $process = shell_exec("C:/Python311/python.exe c:/xampp/htdocs/siasmen/public/pyscript/cobaa.py $cob");
         // return $process;
         // return $cob;
-        $scriptPath = public_path('pyscript/coba.py');
+        $scriptPath = public_path('pyscript/dathash.py');
+        $result = shell_exec("/bin/python3   {$scriptPath}");
         
-        $result = shell_exec("/usr/bin/python3   {$scriptPath} ");
+        // $result = shell_exec("/usr/bin/python3   {$scriptPath} ");
         // $result = shell_exec("python c:/xampp/htdocs/siasmen/public/pyscript/coba.py");
         $datajson = json_decode($result,true);
         // return view('mahasiswa.atamhs',['data'=> $datajson]);
         // $keys = array("id","nim","nama","jenkel","perguruan_tinggi","program_studi","jenjang","status","foto");
         // $my_array = array_combine($keys, $datajson);
-        return $datajson;
+
+        if ($result === null) {
+            // Shell_exec gagal dijalankan
+            echo "Error executing command.";
+        } else {
+            // Shell_exec berhasil dijalankan
+            echo "Command executed successfully.";
+        }
+
+        return $result;
         // echo $datajson[0][""];
         // for ($i=0; $i < count($datajson); $i++) { 
         //     for ($j=0; $j < count($datajson[$i]); $j++) { 

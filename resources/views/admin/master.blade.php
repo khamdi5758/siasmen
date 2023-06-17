@@ -163,6 +163,46 @@ font-size: 16px;">
         let user;
         user = document.getElementById("username").value;
         console.log(user);
+        
+        
+        // @if (count($errors) > 0)
+        //     $('#modal-adddftrmhs').modal('show');
+        //     $('#modal-adddftrdos').modal('show');
+        //     $('#modal-addtamhs').modal('show');
+        //     $('#modal-addpnltdos').modal('show');
+        //     $('#modal-ubahpasswddos').modal('show');
+        // @endif
+            
+        // @error('ubahpassdos')
+        //     @if (count($errors) > 0)
+        //         $('#modal-ubahpasswddos').modal('show');
+        //     @endif
+        // @enderror
+        // @if ($errors->has('password'))
+        // @endif
+        // function countValidationErrors(formId) {
+        //     let form = document.getElementById(formId);
+        //     if (form) {
+        //         let errorCount = form.getElementsByClassName('is-invalid').length;
+        //         return errorCount;
+        //     }
+        //         return 0;
+        // }
+
+        // // Contoh penggunaan
+        // let formId = 'formubahpassdos';
+        // let errorCount = countValidationErrors(formId);
+        // console.log('Jumlah kesalahan validasi pada form ' + formId + ': ' + errorCount);
+        // $(function() {
+        //     $('#dataTables-example').on('click','.ubahpsswddos', function() {
+        //     // $('.edit').on('click', function() {
+        //         let idnip = $(this).data('id');
+        //         // let idedit ;
+        //         // $('#idnip').val(idnip);
+        //         console.log(idnip);
+                
+        //     });
+        // });
     </script>
 </body>
 </html>

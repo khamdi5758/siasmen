@@ -61,7 +61,7 @@ font-size: 16px;">
                     </li>
 
                     <li>
-                        <a class="@yield('onpnltdos')-menu" href="{{ url('dosen/pnltsaya') }}"><i class="fa fa-3x"><img src="/tmplt/icon/icon_peneliti.png" width="50px" height="50px"></i>penelitian</a>
+                        <a class="@yield('onpnltdos')-menu" href="{{ url('dosen/pnltsaya') }}"><i class="fa fa-3x"><img src="/tmplt/icon/icon_peneliti.png" width="50px" height="50px"></i>Penelitian Saya</a>
                     </li>
                     <!-- <li>
                         <a class="@yield('onpnltsaya')-menu" href="{{ url('dosen/pnltsaya') }}/{{auth()->user()->tampilnmuser(auth()->user()->username,auth()->user()->type)->id}}"><i class="fa fa-desktop fa-3x"></i>penelitian saya</a>
@@ -154,6 +154,10 @@ font-size: 16px;">
         let user;
         user = document.getElementById("username").value;
         console.log(user);
+
+        @if (count($errors) > 0)
+            $('#modal-add').modal('show');
+        @endif
     </script>
 </body>
 </html>

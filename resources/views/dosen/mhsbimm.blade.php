@@ -12,6 +12,14 @@
 
 @endif
 
+
+<div class="row">
+    <div class="col-md-12">
+    <h2>Halaman Mahasiswa Bimbingan</h2>   
+    <!-- <h5>Welcome Jhon Deo , Love to see you back. </h5> -->
+    </div>
+</div>
+<hr>
 <div class="panel panel-default">
                         <div class="panel-heading">
                              calon mahasiswa bimbingan
@@ -37,6 +45,7 @@
                                         <td>{{$item->mahasiswas->nim}}</td>
                                         <td>{{$item->mahasiswas->nama}}</td>
                                         <td>{{$item->judul}}</td>
+                                        
                                         <!-- <td>{{$item->abstrak}}</td> -->
                                         <!-- <td>{{$item->dosens->nama}}</td> -->
                                         <td>
@@ -65,9 +74,11 @@
                                         <th>no</th>
                                         <th>nama</th>
                                         <th>judul</th>
+                                        <th>status</th>
                                         <!-- <th>deskjudul</th>
                                         <th>abstrak</th> -->
                                         <th>action</th>
+                                        <!-- <th></th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -76,6 +87,7 @@
                                         <td>{{ $loop->iteration}}</td>
                                         <td>{{$item->nama}}</td>
                                         <td>{{$item->judul}}</td>
+                                        <td>{{$item->status}}</td>
                                         <!-- <td>{{$item->deskjudul}}</td>
                                         <td>{{$item->abstrak}}</td> -->
                                         <td>

@@ -1,14 +1,21 @@
-# !pip install textblob 
-# !pip install nltk
 import re
 import string
 import math
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
+import mysql.connector
+# from nltk.tokenize import word_tokenize
+# from nltk.corpus import stopwords
 from textblob import TextBlob
 
+db = mysql.connector.connect(
+  host="103.150.116.249",
+  port="3306",
+  user="userdb",
+  password="0-opklm,",
+  database="dbsiredosi"
+)
 
 class rabinkarp:
+
     def __init__(self):
         self.data = ''
         self.num = ''
@@ -23,39 +30,6 @@ class rabinkarp:
         self.num = 1
         self.k = 4
 #         print(self.num)
-
-    def clean(self):
-        #casefolding
-        #lower text
-        self.data = self.data.lower()
-        #menghapus html tag
-        self.data = re.sub('<[^>]*>','',self.data)
-        #menghapus email
-        self.data = re.sub('\S*@\S*\s?','',self.data)
-        #menghapus url
-        self.data = re.sub('https?://[A-Za-z0-9]','',self.data)
-        #removing number
-        self.data = re.sub('[^a-zA-Z]',' ',self.data)
-        #menghapus angka
-#         self.data = re.sub(r"\d+", "", self.data)
-        #menghapus tanda baca
-        self.data = self.data.translate(str.maketrans("","",string.punctuation))
-        #menghapus karakter kosong
-        self.data = self.data.strip()
-        
-
-        #tokenization
-        word_tokens = word_tokenize(self.data)
-
-        #stopword
-        filtered_sentence=[]
-        for word_token in word_tokens:
-            if word_token not in stopwords:
-                filtered_sentence.append(word_token)
-
-        #join words
-        self.data = (' '. join(filtered_sentence))
-        return self.data
     
     def preprocessingdata(self):
         self.data = str(self.data)
@@ -120,4 +94,4 @@ class rabinkarp:
             return sim
         else:
             return 0.0
-        
+    

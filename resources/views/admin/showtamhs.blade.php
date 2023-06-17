@@ -12,10 +12,17 @@
 </div>
 @endif
 
+<div class="row">
+    <div class="col-md-12">
+    <h2>Halaman Detail Tugas Akhir Mahasiswa</h2>   
+    <!-- <h5>Welcome Jhon Deo , Love to see you back. </h5> -->
+    </div>
+</div>
+<hr>
 
 <div class="panel panel-default">
                         <div class="panel-heading">
-                             Advanced Tables
+                            Detail Tugas Akhir mahasiswa
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">

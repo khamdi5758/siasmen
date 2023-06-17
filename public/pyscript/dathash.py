@@ -1,15 +1,17 @@
-import mysql.connector
+# import mysql.connector
 from algoritma import rabinkarp
+from algoritma import db
 import sys
 import json
 import os
 
-db = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="",
-  database="db_siasmen"
-)
+# db = mysql.connector.connect(
+#   host="103.150.116.249",
+#   port="3306",
+#   user="userdb",
+#   password="0-opklm,",
+#   database="dbsiredosi"
+# )
 
 def selectpnltdos():
     cursor = db.cursor()
@@ -133,7 +135,7 @@ def hashmrgpnltwtuakk():
 # htuakmhs = hashtuakmhs()
 # hmrgpnltwtuak = hashmrgpnltwtuak()
 hmrgpnltwtuakk = hashmrgpnltwtuakk()
-
+# print(hmrgpnltwtuakk)
 # Mendapatkan path absolut dari direktori saat ini
 current_directory = os.path.dirname(os.path.abspath(__file__))
 

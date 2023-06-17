@@ -29,9 +29,15 @@ class DOSMhsbmbController extends Controller
         $iddos = User::tampildatuser($user->username, $user->type)->id;
         $ptuakmhs = Ptuakmhs::where('dosens_id', $iddos)->whereNotNull('konfdospil')->whereNotNull('konfadmin')->get();
         $tamhs = Tuam::where('dosens_id', $iddos)->get();
-        $query = DB::table('ptuakmhs')->join('mahasiswas', 'ptuakmhs.mahasiswas_id', '=', 'mahasiswas.id')->select('ptuakmhs.id as id','mahasiswas.nama as nama', 'ptuakmhs.judul as judul', 'ptuakmhs.deskjudul as deskjudul', DB::raw('NULL as abstrak'))->where('ptuakmhs.dosens_id', '=', $iddos)->whereNotNull('konfdospil')->whereNotNull('konfadmin');
+        $query = DB::table('ptuakmhs')
+        ->join('mahasiswas', 'ptuakmhs.mahasiswas_id', '=', 'mahasiswas.id')
+        ->select('ptuakmhs.id as id','mahasiswas.nama as nama', 'ptuakmhs.judul as judul', 'ptuakmhs.deskjudul as deskjudul', DB::raw('NULL as abstrak'),'mahasiswas.status as status')
+        ->where('ptuakmhs.dosens_id', '=', $iddos)
+        ->whereNotNull('konfdospil')
+        ->whereNotNull('konfadmin');
         
-        $query2 = DB::table('tamhs')->select('tamhs.id as id','tamhs.nama as nama', 'tamhs.judul as judul', DB::raw('NULL as deskjudul'), 'tamhs.abstrak as abstrak')->where('tamhs.dosens_id', '=', $iddos);
+        $query2 = DB::table('tamhs')->select('tamhs.id as id','tamhs.nama as nama', 'tamhs.judul as judul', DB::raw('NULL as deskjudul'), 'tamhs.abstrak as abstrak',DB::raw("'lulus' as status"))->where('tamhs.dosens_id', '=', $iddos);
+        
         $results = $query->union($query2)->get();
         $data = Ptuakmhs::where('dosens_id', $iddos)->whereNull('konfdospil')->get();
         // $jsonData = json_decode($data, true); // true digunakan untuk mengembalikan array asosiatif

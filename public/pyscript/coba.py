@@ -8,9 +8,9 @@ import base64
 db = mysql.connector.connect(
   host="103.150.116.249",
   port="3306",
-  user="root",
+  user="userdb",
   password="0-opklm,",
-  database="db_siredosi"
+  database="dbsiredosi"
 )
 
 # input_data = json.loads(base64.b64decode(sys.argv[1]))

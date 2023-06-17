@@ -1,7 +1,7 @@
 # from dathash import hashpnltdos
 # import dathash as dh
-from dathash import db
 from algoritma import rabinkarp
+from algoritma import db
 import sys
 import json
 import os
@@ -69,17 +69,22 @@ def pengajuan():
         cursor.execute(sql,param)
         results = cursor.fetchall()
         for row in results:
-            datdos.append({
+            datredos.append({
             "id": row[0],
             "nip": row[1],
             "nama": row[2],
             "foto": row[7]
             })
-        datredos.append(datdos)
+        # datredos.append(datdos)
 
     data = json.dumps(datredos)
-    #data = json.dumps(ranksim)
-    return data
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    json_file_path = os.path.join(current_directory, 'hasil.json')
+    with open(json_file_path, 'w', encoding='utf-8') as json_file:
+        json.dump(datredos, json_file,ensure_ascii=False)
+    # data = json.dumps(ranksim)
+    return data 
+    # return datredos
     # return dh.hpnltdos
     # print(result[0])
     

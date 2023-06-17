@@ -79,8 +79,9 @@ class DOSUbahProfController extends Controller
             'nama'         =>  'required',
             'jenkel'         =>  'required',
             'status'         =>  'required',
-            'pendidikan_terakhir'         =>  'required',
-            'pangkat'         =>  'required'
+            'pendidikan_terakhir' =>  'required',
+            'pangkat'         =>  'required',
+            'foto' => 'image'
 
         ]);
         $id = $request->hidid;

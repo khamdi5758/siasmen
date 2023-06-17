@@ -59,7 +59,6 @@ class ADMTuamController extends Controller
             'judul' => 'required',
             'abstrak' => 'required',
             'tahun' => 'required',
-            
         ]);
         $input = $request->all();
         // dd($input);

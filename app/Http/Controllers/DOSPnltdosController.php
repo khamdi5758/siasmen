@@ -52,11 +52,12 @@ class DOSPnltdosController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'dosens_id' => 'required',
+            // 'dosens_id' => 'required',
             'judul' => 'required',
             'abstrak' => 'required',
             'tahun' => 'required'
         ]);
+
         $input = $request->all();
         Pnltdosen::create($input);
         return redirect()->route('dosen.dosspnltdoss')->with('success', 'Data berhasil dibuat');

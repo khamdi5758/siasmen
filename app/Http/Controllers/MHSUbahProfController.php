@@ -79,7 +79,8 @@ class MHSUbahProfController extends Controller
             'perguruan_tinggi'         =>  'required',
             'program_studi'         =>  'required',
             'jenjang'         =>  'required',
-            'status'         =>  'required'
+            'status'         =>  'required',
+            'foto' => 'image'
         ]);
         $id = $request->hidid;
         $input =$request->all();

@@ -15,7 +15,7 @@
 
 <div class="panel panel-default">
                         <div class="panel-heading">
-                             Advanced Tables
+                             Penelitian Dosen
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">

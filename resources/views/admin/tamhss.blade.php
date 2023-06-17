@@ -13,12 +13,26 @@
 
 @endif
 
-<div class="panel panel-default">
-    <div class="ibox-tools">
-        <button class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#modal-add"><i class="fa fa-plus"></i>Tambah</button>
+@php
+    $currentYear = date('Y');
+    $startYear = 2000;
+@endphp
+
+<div class="row">
+    <div class="col-md-12">
+    <h2>Halaman Tugas Akhir Mahasiswa</h2>   
+    <!-- <h5>Welcome Jhon Deo , Love to see you back. </h5> -->
     </div>
+</div>
+<hr>
+<div class="ibox-tools">
+    <button class="btn btn-primary btn-sm btn-flat" data-toggle="modal" data-target="#modal-addtamhs"><i class="fa fa-plus"></i>Tambah</button>
+</div>
+<br>
+
+<div class="panel panel-default">
     <div class="panel-heading">
-        Advanced Tables
+        Daftar Tugas Akhir Mahasiswa
     </div>
         <div class="panel-body">
             <div class="table-responsive">
@@ -87,20 +101,25 @@
 </div>
 
 <!-- modal add data-->
-<div class="modal inmodal fade" id="modal-add" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal inmodal fade" id="modal-addtamhs" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-xs">
         <form name="frm_add" id="frm_add" class="form-horizontal" action="{{ url('admin/svtamhss') }}" method="POST" enctype="multipart/form-data">
         @csrf
             <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">Tambah Data</h4>
+                <h4 class="modal-title">Tambah Data Tugas Akhir Mahasiswa</h4>
             </div>
             <div class="modal-body">
                 <div class="form-group">
                     <label class="col-lg-2 control-label">Nama</label>
                     <div class="col-lg-10">
-                        <input type="text" name="nama" placeholder="nama" class="form-control">
+                        <input type="text" name="nama" placeholder="nama" class="form-control @error('nama') is-invalid @enderror" value="{{old('nama')}}" >
+                        @error('nama')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                         <!-- <select class="form-control" name="mahasiswas_id">
                             <option>pilih</option>
                         @foreach($mhs as $mhs)
@@ -113,20 +132,41 @@
                     <label class="col-lg-2 control-label">judul</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="judul" placeholder="judul" class="form-control"> -->
-                        <textarea name="judul" rows="3" cols="56%" placeholder="judul"></textarea>
+                        <textarea name="judul" rows="3" cols="56%" placeholder="judul" class="form-control @error('judul') is-invalid @enderror"> {{old('judul')}} </textarea>
+                        @error('judul')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">abstrak</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="abstrak" placeholder="abstrak" class="form-control"> -->
-                        <textarea name="abstrak" rows="10" cols="56%" placeholder="abstrak"></textarea>
+                        <textarea name="abstrak" rows="10" cols="56%" placeholder="abstrak" class="form-control @error('abstrak') is-invalid @enderror">{{old('abstrak')}}</textarea>
+                        @error('abstrak')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">tahun</label>
                     <div class="col-lg-10">
-                        <input type="text" name="tahun" placeholder="tahun" class="form-control"> 
+                        <select name="tahun" class="form-control @error('tahun') is-invalid @enderror">
+                            <!-- <option>------</option> -->
+                        @for($year = $currentYear; $year >= $startYear; $year--)
+                            <option value="{{ $year }}">{{ $year }}</option>
+                        @endfor
+                        </select>
+                        @error('tahun')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                        <!-- <input type="text" name="tahun" placeholder="tahun" class="form-control">  -->
                     </div>
                 </div>
                 <div class="form-group">
@@ -157,7 +197,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h4 class="modal-title">Edit Data</h4>
+                <h4 class="modal-title">Edit Data Tugas Akhir Mahasiswa</h4>
             </div>
             <form name="frm_edit" id="editform" class="form-horizontal" action="#" method="POST" >
             @csrf
@@ -176,32 +216,60 @@
                     <label class="col-lg-2 control-label">judul</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="judul" placeholder="judul" class="form-control"> -->
-                        <textarea name="judul" rows="3" cols="56%" id="judul" placeholder="judul"></textarea>
+                        <!-- <textarea name="judul" rows="3" cols="56%" id="judul" placeholder="judul"></textarea> -->
+                        <textarea name="judul" rows="3" cols="56%" id="judul" placeholder="judul" class="form-control @error('judul') is-invalid @enderror"></textarea>
+                        @error('judul')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">abstrak</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="abstrak" placeholder="abstrak" class="form-control"> -->
-                        <textarea name="abstrak" rows="10" cols="56%" id="abstrak" placeholder="abstrak"></textarea>
+                        <!-- <textarea name="abstrak" rows="10" cols="56%" id="abstrak" placeholder="abstrak"></textarea> -->
+                        <textarea name="abstrak" rows="10" cols="56%" id="abstrak" placeholder="abstrak" class="form-control @error('abstrak') is-invalid @enderror"></textarea>
+                        @error('abstrak')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">tahun</label>
                     <div class="col-lg-10">
-                        <input type="text" name="tahun" id="tahun" placeholder="tahun" class="form-control"> 
+                        <!-- <input type="text" name="tahun" id="tahun" placeholder="tahun" class="form-control">  -->
+                        <select name="tahun" id="tahun" class="form-control @error('tahun') is-invalid @enderror">
+                            <!-- <option>------</option> -->
+                        @for($year = $currentYear; $year >= $startYear; $year--)
+                            <option value="{{ $year }}">{{ $year }}</option>
+                        @endfor
+                        </select>
+                        @error('tahun')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">dosen pembimbing</label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="dosen_pembimbing" id="dosen_pembimbing" placeholder="dosen_pembimbing" class="form-control"> -->
-                        <select class="form-control" name="dosens_id" id="iddosen">
+                        <select class="form-control @error('dosens_id') is-invalid @enderror" name="dosens_id" id="iddosen">
                             <option>pilih</option>
                         @foreach($dosens as $dos)
                             <option value="{{$dos->id}}">{{$dos->nip}}-{{$dos->nama}}</option> 
                         @endforeach
                         </select> 
+                        @error('dosens_id')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                 </div>
             </div>
