@@ -120,6 +120,7 @@ Route::group(['prefix' => 'admin',  'as' => 'admin.'], function () {
     Route::post('/svtamhss', [ADMTuamController::class,'store2'])->name('svtamhss');
     Route::get('/ptuakmhs', [ADMPtuakmhsController::class,'index'])->name('ptuakmhs');
     Route::get('/dftrdos', [ADMDosenController::class,'index'])->name('dftrdos');
+    Route::get('/dftrdoss', [ADMDosenController::class,'indexx'])->name('dftrdoss');
     Route::get('/pnltdos', [ADMPnltdosController::class,'index'])->name('pnltdos');
     Route::get('/pnltdos/nipdosen', [ADMPnltdosController::class,'nipdosen'])->name('nipdosen');
     // Route::get('/ubahprofile', [ADMUbahProfController::class,'index'])->name('admubahprofile');
@@ -212,8 +213,8 @@ Route::group(['prefix' => 'dosen',  'as' => 'dosen.'], function () {
     Route::get('/pnltsaya', [ DOSPnltdosController::class,'pnltsaya'])->name('dosspnltdoss');
     Route::get('/ubahprofile', [DOSUbahProfController::class,'index'])->name('dosubahprofile');
     Route::get('/ubahpassword', [DOSUbahPasswController::class,'index'])->name('dosubahpassword');
-
 });
+
     Route::resource('dosmhsbim', DOSMhsbmbController::class);
     Route::resource('dospnltdos', DOSPnltdosController::class);
     Route::resource('dosubahprofile',DOSUbahProfController::class);

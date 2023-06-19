@@ -16,10 +16,10 @@ class CreatePnltdosensTable extends Migration
         Schema::create('pnltdosens', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('dosens_id');
-            $table->string('judul');
+            $table->text('judul');
             $table->text('abstrak');
             $table->string('tahun');
-            $table->foreign('dosens_id')->references('id')->on('dosens');
+            $table->foreign('dosens_id')->references('id')->on('dosens')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

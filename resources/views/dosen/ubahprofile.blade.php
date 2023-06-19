@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">nama</label>
+                    <label class="col-lg-2 control-label">nama<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="nama" id="nama" placeholder="nama" class="form-control" value="{{$datauser->nama}}" class="form-control @error('nama') is-invalid @enderror">
                         @error('nama')
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">jenkel</label>
+                    <label class="col-lg-2 control-label">jenkel<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                     <div class="radio">
 
@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">status</label>
+                    <label class="col-lg-2 control-label">status<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <select class="form-control @error('status') is-invalid @enderror" name="status" id="status">
                             <option value="aktif" <?php echo $datauser->status == 'aktif' ? 'selected' : ''; ?> >aktif</option>
@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">pendidikan terakhir</label>
+                    <label class="col-lg-2 control-label">pendidikan terakhir<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="pendidikan_terakhir" placeholder="perguruan tinggi" id="pendidikan_terakhir" class="form-control @error('pendidikan_terakhir') is-invalid @enderror" value="{{$datauser->pendidikan_terakhir}}">
                         @error('pendidikan_terakhir')
@@ -91,7 +91,7 @@
                     </div>
                 </div>              
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">pangkat</label>
+                    <label class="col-lg-2 control-label">pangkat<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="pangkat" placeholder="pangkat" id="pangkat" class="form-control @error('pangkat') is-invalid @enderror" value="{{$datauser->pangkat}}">
                         @error('pangkat')

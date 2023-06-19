@@ -92,7 +92,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">NIM</label>
+                    <label class="col-lg-2 control-label">NIM <span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="nim" placeholder="nim" class="form-control @error('nim') is-invalid @enderror" value="{{old('nim')}}">
                         @error('nim')
@@ -104,7 +104,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">nama</label>
+                    <label class="col-lg-2 control-label">nama<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="nama" placeholder="nama" class="form-control" class="form-control @error('nama') is-invalid @enderror" value="{{old('nama')}}">
                         @error('nama')
@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">jenkel</label>
+                    <label class="col-lg-2 control-label">jenkel<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                     <div class="radio">
                         <label>
@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">perguruan tinggi</label>
+                    <label class="col-lg-2 control-label">perguruan tinggi<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="perguruan_tinggi" placeholder="perguruan tinggi" class="form-control @error('perguruan_tinggi') is-invalid @enderror" value="{{old('perguruan_tinggi')}}">
                         @error('perguruan_tinggi')
@@ -146,7 +146,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">program studi</label>
+                    <label class="col-lg-2 control-label">program studi<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="program_studi" placeholder="program studi" class="form-control @error('program_studi') is-invalid @enderror" value="{{old('program_studi')}}">
                         @error('program_studi')
@@ -157,7 +157,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">jenjang</label>
+                    <label class="col-lg-2 control-label">jenjang<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="jenjang" placeholder="Jenjang" class="form-control @error('jenjang') is-invalid @enderror" value="{{old('jenjang')}}">
                         @error('jenjang')
@@ -168,7 +168,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">status</label>
+                    <label class="col-lg-2 control-label">status<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <select class="form-control @error('status') is-invalid @enderror" name="status">
                             <option value="belum lulus" {{ old('status') == 'belum lulus' ? 'selected' : '' }}>belum lulus</option>
@@ -182,7 +182,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">foto</label>
+                    <label class="col-lg-2 control-label">foto<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="file" name="foto" class="form-control @error('foto') is-invalid @enderror"/>
                         @error('foto')
@@ -223,7 +223,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">nama</label>
+                    <label class="col-lg-2 control-label">nama<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="nama" id="nama" placeholder="nama" class="form-control"> -->
                         <input type="text" name="nama" id="nama" placeholder="nama" class="form-control" class="form-control @error('nama') is-invalid @enderror">
@@ -235,7 +235,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">jenkel</label>
+                    <label class="col-lg-2 control-label">jenkel<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                     <div class="radio">
 
@@ -256,7 +256,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">perguruan tinggi</label>
+                    <label class="col-lg-2 control-label">perguruan tinggi<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" id="perguruan_tinggi" name="perguruan_tinggi" placeholder="perguruan tinggi" class="form-control @error('perguruan_tinggi') is-invalid @enderror">
                         @error('perguruan_tinggi')
@@ -267,7 +267,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">program studi</label>
+                    <label class="col-lg-2 control-label">program studi<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" id="program_studi" name="program_studi" placeholder="program studi" class="form-control @error('program_studi') is-invalid @enderror" >
                         @error('program_studi')
@@ -278,7 +278,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">jenjang</label>
+                    <label class="col-lg-2 control-label">jenjang<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" id="jenjang" name="jenjang" placeholder="Jenjang" class="form-control @error('jenjang') is-invalid @enderror">
                         @error('jenjang')
@@ -289,7 +289,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">status</label>
+                    <label class="col-lg-2 control-label">status<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <select id="status" class="form-control @error('status') is-invalid @enderror" name="status">
                             <option value="belum lulus">belum lulus</option>

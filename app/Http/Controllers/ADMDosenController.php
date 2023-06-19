@@ -18,6 +18,11 @@ class ADMDosenController extends Controller
         $data = DB::table('dosens')->get();
         return view('admin.daftardos',compact('data'));
     }
+    public function indexx()
+    {
+        $data = DB::table('dosens')->get();
+        return view('admin.daftardos',compact('data'));
+    }
 
     /**
      * Show the form for creating a new resource.

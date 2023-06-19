@@ -34,7 +34,7 @@
                             <form role="form" action="{{ url('mahasiswa/rekomdos') }}" method="POST">
                             @csrf
                                 <div class="form-group">
-                                    <label>judul</label>
+                                    <label>judul<span class="text-danger">*</span></label>
                                     <input class="form-control @error('judul') is-invalid @enderror" name="judul"  value="{{old('judul')}}"/>
                                     @error('judul')
                                         <div class="invalid-feedback">
@@ -43,7 +43,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>deskripsi judul</label>
+                                    <label>deskripsi judul<span class="text-danger">*</span></label>
                                     <textarea class="form-control @error('abstrak') is-invalid @enderror" name="abstrak" rows="3">{{old('abstrak')}}</textarea>
                                     @error('abstrak')
                                         <div class="invalid-feedback">

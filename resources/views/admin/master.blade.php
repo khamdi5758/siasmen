@@ -90,7 +90,7 @@ font-size: 16px;">
                                 <a class="@yield('ondftrmhs')-menu" href="{{ url('admin/dftrmhs') }}">Daftar Mahasiswa</a>
                             </li>
                             <li>
-                                <a class="@yield('ontamhs')-menu" href="{{ url('admin/tamhss') }}">Tugas Akhir Mahasiswa</a>
+                                <a class="@yield('ontamhs')-menu" href="{{ url('admin/tamhs') }}">Tugas Akhir Mahasiswa</a>
                             </li>
                             <li>
                                 <a class="@yield('onptuakmhs')-menu" href="{{ url('admin/ptuakmhs') }}">Pengajuan Tugas Akhir Mahasiswa</a>
@@ -165,13 +165,14 @@ font-size: 16px;">
         console.log(user);
         
         
-        // @if (count($errors) > 0)
-        //     $('#modal-adddftrmhs').modal('show');
-        //     $('#modal-adddftrdos').modal('show');
-        //     $('#modal-addtamhs').modal('show');
-        //     $('#modal-addpnltdos').modal('show');
-        //     $('#modal-ubahpasswddos').modal('show');
-        // @endif
+        @if (count($errors) > 0)
+            $('#modal-adddftrmhs').modal('show');
+            // $('#formmodaldftrdos').modal('show');
+            $('#modal-adddftrdos').modal('show');
+            $('#modal-addtamhs').modal('show');
+            $('#modal-addpnltdos').modal('show');
+            // $('#modal-ubahpasswddos').modal('show');
+        @endif
             
         // @error('ubahpassdos')
         //     @if (count($errors) > 0)

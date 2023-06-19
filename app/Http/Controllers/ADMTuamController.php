@@ -22,7 +22,7 @@ class ADMTuamController extends Controller
         $mhs = Mahasiswa::all() ;
         $dosen =  Dosen::all();
         $data = Tuam::all();
-        return view('admin.tamhs',['data' => $data, 'mhs' => $mhs,'dosens'=>$dosen]);
+        return view('admin.tamhss',['data' => $data, 'mhs' => $mhs,'dosens'=>$dosen]);
     }
 
     public function index2()
@@ -32,7 +32,7 @@ class ADMTuamController extends Controller
         $mhs = Mahasiswa::all() ;
         $dosen =  Dosen::all();
         $data = Tuam::all();
-        return view('admin.tamhss',['data' => $data, 'mhs' => $mhs,'dosens'=>$dosen]);
+        return view('admin.tamhs',['data' => $data, 'mhs' => $mhs,'dosens'=>$dosen]);
     }
 
     /**
@@ -85,7 +85,7 @@ class ADMTuamController extends Controller
         $input = $request->all();
         // dd($input);
         Tuam::create($input);
-        return redirect()->route('admin.tamhss')->with('success', 'Data berhasil dibuat');
+        return redirect()->route('admin.tamhs')->with('success', 'Data berhasil dibuat');
     }
 
     /**

@@ -93,7 +93,7 @@
                     </div>
                 </div> -->
                 <div class="form-group">
-                        <label class="col-lg-2 control-label">judul</label>
+                        <label class="col-lg-2 control-label">judul<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                             <input type="hidden" id="iddosenadd" name="dosens_id" class="form-control">
                             <!-- <input type="text" name="judul" placeholder="judul" class="form-control"> -->
@@ -107,7 +107,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">abstrak</label>
+                    <label class="col-lg-2 control-label">abstrak<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="abstrak" placeholder="abstrak" class="form-control"> -->
                         <textarea name="abstrak" rows="10" cols="55%" placeholder="abstrak" class="form-control @error('abstrak') is-invalid @enderror">{{old('abstrak')}}</textarea>
@@ -119,7 +119,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">tahun</label>
+                    <label class="col-lg-2 control-label">tahun<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <select name="tahun" class="form-control @error('tahun') is-invalid @enderror">
                             <!-- <option>------</option> -->
@@ -166,7 +166,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">judul</label>
+                    <label class="col-lg-2 control-label">judul<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="judul" placeholder="judul" class="form-control"> -->
                         <textarea name="judul" rows="3" cols="55%" id="judul" placeholder="judul" class="form-control @error('judul') is-invalid @enderror"></textarea>
@@ -178,7 +178,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">abstrak</label>
+                    <label class="col-lg-2 control-label">abstrak<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="abstrak" placeholder="abstrak" class="form-control"> -->
                         <textarea name="abstrak" rows="10" cols="55%" id="abstrak" placeholder="abstrak" class="form-control @error('abstrak') is-invalid @enderror"></textarea>
@@ -190,7 +190,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">tahun</label>
+                    <label class="col-lg-2 control-label">tahun<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                     <select name="tahun" id="tahun" class="form-control @error('tahun') is-invalid @enderror">
                             <!-- <option>------</option> -->

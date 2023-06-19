@@ -20,7 +20,7 @@ class CreateTamhsTable extends Migration
             $table->unsignedBigInteger('dosens_id');
             $table->foreign('dosens_id')->references('id')->on('dosens')->onUpdate('cascade')->onDelete('cascade');
             $table->string('nama')->nullable();
-            $table->string('judul');
+            $table->text('judul');
             $table->text('abstrak');
             $table->string('tahun');
             $table->timestamps();

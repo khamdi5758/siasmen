@@ -98,7 +98,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">NIP</label>
+                    <label class="col-lg-2 control-label">NIP<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="nip" placeholder="nip" class="form-control @error('nip') is-invalid @enderror" value="{{old('nip')}}">
                         @error('nip')
@@ -109,7 +109,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">nama</label>
+                    <label class="col-lg-2 control-label">nama<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="nama" placeholder="nama" class="form-control @error('nama') is-invalid @enderror" value="{{old('nama')}}">
                         @error('nama')
@@ -120,7 +120,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">jenkel</label>
+                    <label class="col-lg-2 control-label">jenkel<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                     <div class="radio">
                         <label>
@@ -135,7 +135,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">status</label>
+                    <label class="col-lg-2 control-label">status<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <select class="form-control @error('status') is-invalid @enderror" name="status">
                             <option value="aktif" {{ old('status') == 'aktif' ? 'selected' : '' }}>aktif</option>
@@ -144,7 +144,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">pendidikan terakhir</label>
+                    <label class="col-lg-2 control-label">pendidikan terakhir<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="pendidikan_terakhir" placeholder="pendidikan terakhir" class="form-control @error('pendidikan_terakhir') is-invalid @enderror" value="{{old('pendidikan_terakhir')}}">
                         @error('pendidikan_terakhir')
@@ -155,7 +155,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">pangkat</label>
+                    <label class="col-lg-2 control-label">pangkat<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="pangkat" placeholder="pangkat" class="form-control @error('pangkat') is-invalid @enderror" value="{{old('pangkat')}}">
                         @error('pangkat')
@@ -166,7 +166,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">foto</label>
+                    <label class="col-lg-2 control-label">foto<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="file" name="foto" class="form-control @error('foto') is-invalid @enderror" />
                         @error('foto')
@@ -208,7 +208,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">nama</label>
+                    <label class="col-lg-2 control-label">nama<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="nama" id="nama" placeholder="nama" class="form-control @error('nama') is-invalid @enderror">
                         @error('nama')
@@ -219,7 +219,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">jenkel</label>
+                    <label class="col-lg-2 control-label">jenkel<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                     <div class="radio">
 
@@ -240,7 +240,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">status</label>
+                    <label class="col-lg-2 control-label">status<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <select class="form-control @error('status') is-invalid @enderror" name="status" id="status">
                             <option value="aktif">aktif</option>
@@ -254,7 +254,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">pendidikan terakhir</label>
+                    <label class="col-lg-2 control-label">pendidikan terakhir<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="pendidikan_terakhir" placeholder="perguruan tinggi" id="pendidikan_terakhir" class="form-control @error('pendidikan_terakhir') is-invalid @enderror">
                         @error('pendidikan_terakhir')
@@ -265,7 +265,7 @@
                     </div>
                 </div>              
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">pangkat</label>
+                    <label class="col-lg-2 control-label">pangkat<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="pangkat" placeholder="pangkat" id="pangkat" class="form-control @error('pangkat') is-invalid @enderror">
                         @error('pangkat')

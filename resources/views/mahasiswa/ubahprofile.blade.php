@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">nama</label>
+                    <label class="col-lg-2 control-label">nama<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="nama" id="nama" placeholder="nama" class="form-control @error('nama') is-invalid @enderror" value="{{$datauser->nama}}">
                         @error('nama')
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">jenkel</label>
+                    <label class="col-lg-2 control-label">jenkel<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                     <div class="radio">
 
@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">perguruan tinggi</label>
+                    <label class="col-lg-2 control-label">perguruan tinggi<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="perguruan_tinggi" placeholder="perguruan tinggi" id="perguruan_tinggi" class="form-control @error('perguruan_tinggi') is-invalid @enderror" value="{{$datauser->perguruan_tinggi}}">
                         @error('perguruan_tinggi')
@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">program studi</label>
+                    <label class="col-lg-2 control-label">program studi<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="program_studi" placeholder="program studi" id="program_studi" class="form-control @error('program_studi') is-invalid @enderror" value="{{$datauser->program_studi}}">
                         @error('program_studi')
@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">jenjang</label>
+                    <label class="col-lg-2 control-label">jenjang<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="text" name="jenjang" placeholder="Jenjang" id="jenjang" class="form-control @error('jenjang') is-invalid @enderror" value="{{$datauser->jenjang}}" >
                         @error('jenjang')
@@ -100,7 +100,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">status</label>
+                    <label class="col-lg-2 control-label">status<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
                             <option value="belum lulus" <?php echo $datauser->status == 'belum lulus' ? 'selected' : ''; ?> >belum lulus</option>

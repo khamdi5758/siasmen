@@ -103,7 +103,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">Nama</label>
+                    <label class="col-lg-2 control-label">Nama<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="nip" placeholder="nip" class="form-control"> -->
                         <select name="dosens_id" class="form-control @error('dosens_id') is-invalid @enderror">
@@ -120,7 +120,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">judul</label>
+                    <label class="col-lg-2 control-label">judul<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="judul" placeholder="judul" class="form-control"> -->
                         <textarea name="judul" rows="3" cols="56%" placeholder="judul" class="form-control @error('judul') is-invalid @enderror">{{old('judul')}}</textarea>
@@ -133,7 +133,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">abstrak</label>
+                    <label class="col-lg-2 control-label">abstrak<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="abstrak" placeholder="abstrak" class="form-control"> -->
                         <textarea name="abstrak" rows="10" cols="56%" placeholder="abstrak" class="form-control @error('abstrak') is-invalid @enderror">{{old('abstrak')}}</textarea>
@@ -145,7 +145,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">tahun</label>
+                    <label class="col-lg-2 control-label">tahun<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <select name="tahun" class="form-control @error('tahun') is-invalid @enderror">
                             <!-- <option>------</option> -->
@@ -184,13 +184,13 @@
             @method('PUT')
             <div class="modal-body">
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">nama</label>
+                    <label class="col-lg-2 control-label">nama<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="hidden" name="hidid" id="idedit" class="form-control">
-                        <!-- <input type="hidden" name="dosens_id" placeholder="dosensid" id="dosens_id" class="form-control"> -->
+                        <input type="hidden" name="dosens_id" placeholder="dosensid" id="dosens_id" class="form-control">
                         <!-- <input type="text"  placeholder="nip" id="nip" class="form-control"> -->
                         <!-- <input type="text"  placeholder="nama" id="nama" class="form-control">     -->
-                        <select id="dosens_id" name="dosens_id" class="form-control @error('dosens_id') is-invalid @enderror">
+                        <select id="dosens_id" name="dosens_id" class="form-control @error('dosens_id') is-invalid @enderror" disabled>
                             <!-- <option>pilih</option> -->
                         @foreach($dosen as $dos)
                             <option value="{{$dos->id}}">{{$dos->nip}}-{{$dos->nama}}</option> 
@@ -204,7 +204,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">judul</label>
+                    <label class="col-lg-2 control-label">judul<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="judul" placeholder="judul" class="form-control"> -->
                         <textarea name="judul" rows="3" cols="56%" id="judul" placeholder="judul" class="form-control @error('judul') is-invalid @enderror"></textarea>
@@ -216,7 +216,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">abstrak</label>
+                    <label class="col-lg-2 control-label">abstrak<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="abstrak" placeholder="abstrak" class="form-control"> -->
                         <textarea name="abstrak" rows="10" cols="56%" id="abstrak" placeholder="abstrak" class="form-control @error('abstrak') is-invalid @enderror"></textarea>
@@ -228,7 +228,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">tahun</label>
+                    <label class="col-lg-2 control-label">tahun<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <!-- <input type="text" name="tahun" id="tahun" placeholder="tahun" class="form-control"> -->
                         <select name="tahun" id="tahun" class="form-control @error('tahun') is-invalid @enderror">

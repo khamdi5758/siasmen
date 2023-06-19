@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">password baru</label>
+                    <label class="col-lg-2 control-label">password baru <span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <input type="hidden" name="username" id="username" placeholder="username" class="form-control" value={{$idnim}} >
                         <input type="password" name="password" id="password" placeholder="password" class="form-control @error('password') is-invalid @enderror" >
