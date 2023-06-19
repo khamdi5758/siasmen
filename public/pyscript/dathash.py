@@ -252,6 +252,3 @@ with open(json_file_path, 'w') as json_file:
 # coba()
 
 # print(hashpnltdos())
-
-
-

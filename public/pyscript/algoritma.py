@@ -35,6 +35,8 @@ class rabinkarp:
         self.data = str(self.data)
         self.data = self.data.lower()
         self.data = re.sub(r'[^\w\s]', '', self.data)
+        self.data = re.sub('[^a-zA-Z]','',self.data)
+        self.data = re.sub(r'\s+','', self.data)
         return self.data
 
     def n_gram(self):
