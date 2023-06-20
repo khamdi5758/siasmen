@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -15,8 +16,23 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->exec('C:/Python311/python.exe C:/xampp/htdocs/siasmen/public/pyscript/dathash.py')->hourly();
-        $schedule->command('CheckFileCount')->hourly();
+        $schedule->call(function () {
+            $mhsontuam = DB::table('tamhs')->get();
+            $pnltdos = DB::table('pnltdosens')->get();
+            $jmltamhspnltdos = count($mhsontuam) + count($pnltdos);
+            $pathdatajson = public_path('pyscript/data.json');
+            $jsonCount = count(json_decode(file_get_contents($pathdatajson), true)); 
+    
+            if ($jmltamhspnltdos !== $jsonCount) {
+                $scriptPath = public_path('pyscript/dathash.py');
+                shell_exec("/bin/python3   {$scriptPath}");
+                // echo "jumlah file berbeda ";
+            } 
+        })->hourly();
+        // $schedule->exec('C:/Python311/python.exe C:/xampp/htdocs/siasmen/public/pyscript/dathash.py')->everyTenMinutes();
+        // $schedule->exec("/bin/python3 {$scriptPath}")->daily();
+            // shell_exec("/bin/python3   {$scriptPath}");
+        // $schedule->command('CheckFileCount')->everyTenMinutes();
     }
 
     /**
