@@ -137,7 +137,8 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">perguruan tinggi<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
-                        <input type="text" name="perguruan_tinggi" placeholder="perguruan tinggi" class="form-control @error('perguruan_tinggi') is-invalid @enderror" value="{{old('perguruan_tinggi')}}">
+                        <!-- <input type="text" name="perguruan_tinggi" placeholder="perguruan tinggi" class="form-control @error('perguruan_tinggi') is-invalid @enderror" value="{{old('perguruan_tinggi')}}"> -->
+                        <input type="text" name="perguruan_tinggi" placeholder="perguruan tinggi" class="form-control @error('perguruan_tinggi') is-invalid @enderror" value="universitas trunojoyo">
                         @error('perguruan_tinggi')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -148,7 +149,8 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">program studi<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
-                        <input type="text" name="program_studi" placeholder="program studi" class="form-control @error('program_studi') is-invalid @enderror" value="{{old('program_studi')}}">
+                        <!-- <input type="text" name="program_studi" placeholder="program studi" class="form-control @error('program_studi') is-invalid @enderror" value="{{old('program_studi')}}"> -->
+                        <input type="text" name="program_studi" placeholder="program studi" class="form-control @error('program_studi') is-invalid @enderror" value="pendidikan informatika">
                         @error('program_studi')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -159,7 +161,8 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">jenjang<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
-                        <input type="text" name="jenjang" placeholder="Jenjang" class="form-control @error('jenjang') is-invalid @enderror" value="{{old('jenjang')}}">
+                        <!-- <input type="text" name="jenjang" placeholder="Jenjang" class="form-control @error('jenjang') is-invalid @enderror" value="{{old('jenjang')}}"> -->
+                        <input type="text" name="jenjang" placeholder="Jenjang" class="form-control @error('jenjang') is-invalid @enderror" value="S1">
                         @error('jenjang')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -171,7 +174,8 @@
                     <label class="col-lg-2 control-label">status<span class="text-danger">*</span></label>
                     <div class="col-lg-10">
                         <select class="form-control @error('status') is-invalid @enderror" name="status">
-                            <option value="belum lulus" {{ old('status') == 'belum lulus' ? 'selected' : '' }}>belum lulus</option>
+                            <!-- <option value="belum lulus" {{ old('status') == 'belum lulus' ? 'selected' : '' }}>belum lulus</option> -->
+                            <option value="belum lulus" selected>belum lulus</option>
                             <option value="lulus" {{ old('status') == 'lulus' ? 'selected' : '' }}>lulus</option>
                         </select>
                         @error('status')

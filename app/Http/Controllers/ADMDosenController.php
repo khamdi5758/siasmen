@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Dosen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class ADMDosenController extends Controller
 {
@@ -21,7 +23,7 @@ class ADMDosenController extends Controller
     public function indexx()
     {
         $data = DB::table('dosens')->get();
-        return view('admin.daftardos',compact('data'));
+        return view('admin.daftardoss',compact('data'));
     }
 
     /**
@@ -64,15 +66,63 @@ class ADMDosenController extends Controller
         return redirect()->route('admin.dftrdos')->with('success', 'data berhasil dibuat');
     }
 
+    public function storee(Request $request)
+    {
+        $rules = [
+            'nip'          =>  'required|numeric',
+            'nama'         =>  'required',
+            'jenkel'         =>  'required',
+            'status'         =>  'required',
+            'pendidikan_terakhir'   =>  'required',
+            'pangkat'         =>  'required',
+            'keahlian'         =>  'required',
+            'foto'         =>  'required|image'
+        ];
+    
+        $validator = Validator::make($request->all(), $rules);
+    
+        if ($validator->fails()) {
+            $errors = $validator->errors();
+            return response()->json([
+                'success' => false,
+                'lblform' => 'tambah data dosen',
+                'btnform' => 'tambah data',
+                'errors' => $errors->toArray()
+            ]);
+        }
+
+        $input =$request->all();
+        // dd($input);
+        if ($image = $request->file('foto')) {
+            $destinationPath = 'images/';
+            $file_name = time() . '.' . request()->foto->getClientOriginalExtension();
+            $image->move($destinationPath,$file_name);
+            $input['foto'] = $file_name;
+        }
+
+        Dosen::create($input);
+        return response()->json([
+            'success' => true,
+            'pesan' => 'data berhasil dimasukkan'
+        ]);
+
+
+
+
+
+    }
+
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Dosen  $dosen
      * @return \Illuminate\Http\Response
      */
-    public function show(Dosen $dosen)
+    public function show($id)
     {
-        //
+        $data = Dosen::find($id);
+        // return $data;
+        return view('mahasiswa.showprofiledos',['data'=>$data]);
     }
 
     /**
@@ -108,6 +158,7 @@ class ADMDosenController extends Controller
             'status'         =>  'required',
             'pendidikan_terakhir'         =>  'required',
             'pangkat'         =>  'required',
+            'keahlian'         =>  'required',
             'foto' => 'image'
 
         ]);

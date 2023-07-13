@@ -25,14 +25,16 @@
     </div>
     <div class="panel-body">
         @foreach($data as $item)
-        <div class="card">
-            <img src="/images/{{$item->foto}}" alt="Avatar" style="width:100%">
-        <div class="containercard">
-            <center>
-            <h4><b>{{$item->nama}}</b></h4> 
-            </center>
-        </div>
-        </div>
+        <a href="{{ url('mahasiswa/halshowprofdos/'. $item->id)}}">
+            <div class="card">
+                <img src="/images/{{$item->foto}}" alt="Avatar" style="width:100%">
+            <div class="containercard">
+                <center>
+                <h4><b>{{$item->nama}}</b></h4> 
+                </center>
+            </div>
+            </div>
+        </a>
         @endforeach
     </div>
 </div>

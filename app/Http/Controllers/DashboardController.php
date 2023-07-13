@@ -31,9 +31,9 @@ class DashboardController extends Controller
         // $mhsbimsaya = Tuam::where('dosens_id',$iduser)->get();
         $pnltsaya = Pnltdosen::where('dosens_id',$iduser)->get();
         $ptuakmhsbimsaya = Ptuakmhs::all();
-        $mhsontuam = DB::table('tamhs')->where('dosens_id',$iduser);
-        $mhsonptuakmhs = DB::table('ptuakmhs')->where('dosens_id',$iduser)->union($mhsontuam)->get();
-        $data = ['mhsbimsaya'=>count($mhsonptuakmhs),'pnltsaya'=>count($pnltsaya),'ptuakmhsbimsaya'=>count($ptuakmhsbimsaya)];
+        $mhsontuam = DB::table('mhabim')->where('dosenid',$iduser)->get();
+        // $mhsonptuakmhs = DB::table('ptuakmhs')->where('dosens_id',$iduser)->union($mhsontuam)->get();
+        $data = ['mhsbimsaya'=>count($mhsontuam),'pnltsaya'=>count($pnltsaya),'ptuakmhsbimsaya'=>count($ptuakmhsbimsaya)];
         return view('dosen.index',$data);
     }
 

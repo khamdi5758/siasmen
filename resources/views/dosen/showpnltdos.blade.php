@@ -15,7 +15,7 @@
 
 <div class="panel panel-default">
                         <div class="panel-heading">
-                             Advanced Tables
+                            detail penelitian saya
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -40,9 +40,13 @@
                                         <th>tahun</th>  
                                         <td>{{$data->tahun}}</td> 
                                     </tr>
+                                    <tr>
+                                        <th>link</th>  
+                                        <td><a href="{{$data->link}}" target="_blank">klik disini</a></td> 
+                                    </tr>
                                 </table>
                                 <div class="modal-footer">
-                                    <a href="{{route('dospnltdos.index')}}" class="btn btn-danger">Kembali</a>
+                                    <a href="{{route('dosen.dosspnltdoss')}}" class="btn btn-danger">Kembali</a>
                                 </div>
                             </div>
                                         

@@ -18,8 +18,14 @@ def pengajuan():
     # mrgjuddesk = "Klasifikasi Bidang Praktek Kerja Industri Menggunakan Algoritma K-Nearest Neighbor di SMK Negeri 2 Sampang","Praktek kerja industri (PRAKERIN) merupakan salah satu program wajib yang harus dijalani bagi peserta didik yang menempuh pendidikan di Sekolah Menengah Kejuruan (SMK). Di jurusan Multimedia pelaksanaan prakerin dibagi menjadi 4 bidang yaitu bidang perkantoran, percetakan, perfilman dan perakitan. Penentuan bidang prakerin untuk menentukan tempat industri bagi masing-masing peserta didik di SMK Negeri 2 Sampang berdasarkan pada keminatan siswa dan pengamatan dalam setiap pembelajaran terutama mata pelajaran produktif, selain itu belum ada sistem untuk mengelompokkan bidang prakerin untuk maisng-masing peserta didik."
     juddeskfromuser = rabinkarp()
     juddeskfromuser.inputmethod(mrgjuddesk)
-    juddeskfromuser.preprocessingdata()
-    dathjuddeskfromuser = juddeskfromuser.datahashs()
+    juddeskfromuser.cflower()
+    juddeskfromuser.cfrmnum()
+    juddeskfromuser.cfrmpunc()
+    juddeskfromuser.cfrmwhitespace()
+    juddeskfromuser.filtering()
+    juddeskfromuser.stemming()
+    # juddeskfromuser.preprocessingdata()
+    dathjuddeskfromuser = juddeskfromuser.datahashss()
     # judulfrmuser = rabinkarp()
     # judulfrmuser.inputmethod(arrayString[1])
     # judulfrmuser.preprocessingdata()
@@ -38,12 +44,13 @@ def pengajuan():
             if b == 1 :
                 hashjudtrak = datmrgpnltwtuakk[a][b]
                 kondisi1 = rabinkarp()
-                kondisi1.nilaihashygsama(hashjudtrak,dathjuddeskfromuser)
-                hsokond1 = kondisi1.similarity()
-                allsim.append([dosenid, hashjudtrak, hsokond1])
+                kondisi1.inhash(hashjudtrak,dathjuddeskfromuser)
+                # kondisi1.nilaihashygsama(hashjudtrak,dathjuddeskfromuser)
+                hsokond1 = kondisi1.cosim()
+                allsim.append([dosenid, hsokond1])
     ranksim = allsim
-    # Mengurutkan array dari terbesar ke terkecil berdasarkan indeks ke-6(simhashabstrak)
-    ranksim.sort(key=lambda x: x[2], reverse=True)
+    # Mengurutkan array dari terbesar ke terkecil berdasarkan indeks ke-1(hasilsimilarity)
+    ranksim.sort(key=lambda x: x[1], reverse=True)
 
     #mengambil id dosen 
     dosid = []
@@ -73,7 +80,7 @@ def pengajuan():
             "id": row[0],
             "nip": row[1],
             "nama": row[2],
-            "foto": row[7]
+            "foto": row[8]
             })
         # datredos.append(datdos)
 

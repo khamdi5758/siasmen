@@ -145,7 +145,13 @@
 
     checkbox.addEventListener('change', function() {
         if (this.checked) {
-            btnsubmit.removeAttribute('disabled');
+            if (nextdosen.value == prevdosen) {
+                document.getElementById("submit-btn").disabled = true;
+                // alert("Anda belum melakukan perubahan pada pilihan dosen");
+            } else {
+                document.getElementById("submit-btn").disabled = false;
+            }
+            // btnsubmit.removeAttribute('disabled');
         } else {
             btnsubmit.setAttribute('disabled', '');
         }

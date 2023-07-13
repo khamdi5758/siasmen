@@ -47,7 +47,9 @@ class MHSDospemController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Dosen::find($id);
+        // return $data;
+        return view('mahasiswa.showprofiledos',['data'=>$data]);
     }
 
     /**

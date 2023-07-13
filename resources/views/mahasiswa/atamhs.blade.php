@@ -54,7 +54,7 @@
                                     <!-- <a href="#tabel" class="btn btn-primary" data-toggle="collapse">Klik Disini</a> -->
                                     <!-- <button type="submit" class="btn btn-default">Submit Button</button> -->
                                     <button type="reset" class="btn btn-default">Reset</button>
-                                    <button type="submit" class="btn btn-primary" data-toggle="collapse" data-target="#tabel" >Ajukan</button>
+                                    <button type="submit" class="btn btn-primary" data-toggle="collapse" data-target="#tabel">Ajukan</button>
                             </form>
                             <br/>
                     </div>

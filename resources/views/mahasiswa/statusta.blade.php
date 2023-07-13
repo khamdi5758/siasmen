@@ -44,6 +44,9 @@
                                             <th>dosen pembimbing</th><td>{{$item->dosens->nama}}</td>
                                         </tr>
                                         <tr>
+                                            <th>catatan dosen pilihan</th><td>{{$item['catatan_dos']}}</td>
+                                        </tr>
+                                        <tr>
                                             <th>status</th>
                                             <td>
                                                 <?php

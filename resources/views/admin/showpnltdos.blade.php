@@ -46,6 +46,10 @@
                                         <th>tahun</th>  
                                         <td>{{$data->tahun}}</td> 
                                     </tr>
+                                    <tr>
+                                        <th>link</th>  
+                                        <td><a href="{{$data->link}}" target="__blank">klik disini</a></td> 
+                                    </tr>
                                 </table>
                                 <div class="modal-footer">
                                     <a href="{{route('admpnltdosen.index')}}" class="btn btn-danger">Kembali</a>

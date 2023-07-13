@@ -81,7 +81,6 @@ class MHSTamhsController extends Controller
         }
         $stringg = escapeshellarg($string);
         $scriptPath = public_path('pyscript/simmrgpnltwtuak.py');
-        $convjsontoexclpyPath = public_path('pyscript/convjsontoexcl.py');
         $process = shell_exec("/bin/python3 {$scriptPath} $stringg");
         // $process = shell_exec("/bin/python3 {$cobapyPath}");
         // if ($process === null) {
@@ -93,7 +92,8 @@ class MHSTamhsController extends Controller
                 // }
                 // $process = shell_exec("python c:/xampp/htdocs/siasmen/public/pyscript/simmrgpnltwtuak.py $stringg");
         $datajson = json_decode($process,true);
-        shell_exec("/bin/python3 {$convjsontoexclpyPath}");
+        // $convjsontoexclpyPath = public_path('pyscript/convjsontoexcl.py');
+        // $kenvtoexcl = shell_exec("/bin/python3 {$convjsontoexclpyPath}");
         // return $datajson;
         // return $stringg;
         return view('mahasiswa.rekomdos',['input'=>$input,'data'=> $datajson]);

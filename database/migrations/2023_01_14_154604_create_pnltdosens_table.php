@@ -19,6 +19,7 @@ class CreatePnltdosensTable extends Migration
             $table->text('judul');
             $table->text('abstrak');
             $table->string('tahun');
+            $table->string('link');
             $table->foreign('dosens_id')->references('id')->on('dosens')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

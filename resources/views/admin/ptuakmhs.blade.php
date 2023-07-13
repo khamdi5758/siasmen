@@ -49,6 +49,7 @@
                                             <?php
                                                 $judul_singkat = substr($item->judul, 0, 150) . '...';
                                                 echo $judul_singkat;
+                                                // echo $item->judul;
                                             ?>
 
                                         </td>
@@ -56,6 +57,7 @@
                                             <?php
                                                 $abstrak_singkat = substr($item->deskjudul, 0, 150) . '...';
                                                 echo $abstrak_singkat;
+                                                // echo $item->deskjudul;
                                             ?>
                                         </td>
                                         <!-- <td>{{$item->abstrak}}</td> -->

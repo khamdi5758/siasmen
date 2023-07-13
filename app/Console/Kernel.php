@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
                 shell_exec("/bin/python3   {$scriptPath}");
                 // echo "jumlah file berbeda ";
             } 
-        })->hourly();
+        })->daily();
         // $schedule->exec('C:/Python311/python.exe C:/xampp/htdocs/siasmen/public/pyscript/dathash.py')->everyTenMinutes();
         // $schedule->exec("/bin/python3 {$scriptPath}")->daily();
             // shell_exec("/bin/python3   {$scriptPath}");

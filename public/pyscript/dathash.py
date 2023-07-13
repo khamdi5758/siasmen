@@ -5,14 +5,6 @@ import sys
 import json
 import os
 
-# db = mysql.connector.connect(
-#   host="103.150.116.249",
-#   port="3306",
-#   user="userdb",
-#   password="0-opklm,",
-#   database="dbsiredosi"
-# )
-
 def selectpnltdos():
     cursor = db.cursor()
     sql = "SELECT `id`, `dosens_id`, `judul`, `abstrak`, `tahun` FROM `pnltdosens`;"
@@ -124,8 +116,13 @@ def hashmrgpnltwtuakk():
                 abstrakk = mrgpnltwtuak[a][b]
         mrgjudtrak = judull+" "+abstrakk
         judtrak.inputmethod(mrgjudtrak)
-        judtrak.preprocessingdata()
-        datjudtrak = judtrak.datahashs()
+        judtrak.cflower()
+        judtrak.cfrmnum()
+        judtrak.cfrmpunc()
+        judtrak.cfrmwhitespace()
+        judtrak.filtering()
+        judtrak.stemming()
+        datjudtrak = judtrak.datahashss()
         datmrgpnlttuak.append([dosenid,datjudtrak])
     return datmrgpnlttuak
 

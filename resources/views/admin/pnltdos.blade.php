@@ -163,6 +163,18 @@
                         <!-- <input type="text" name="tahun" placeholder="tahun" > -->
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">link<span class="text-danger">*</span></label>
+                    <div class="col-lg-10">
+                        <input type="text" name="link" class="form-control @error('link') is-invalid @enderror" placeholder="link">
+                        @error('link')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                        <!-- <input type="text" name="tahun" placeholder="tahun" class="form-control"> -->
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button>
@@ -192,7 +204,7 @@
                         <input type="hidden" name="dosens_id" placeholder="dosensid" id="dosens_id" class="form-control">
                         <!-- <input type="text"  placeholder="nip" id="nip" class="form-control"> -->
                         <!-- <input type="text"  placeholder="nama" id="nama" class="form-control">     -->
-                        <select id="dosens_id" name="dosens_id" class="form-control @error('dosens_id') is-invalid @enderror" disabled>
+                        <select id="dosens_idd" class="form-control @error('dosens_id') is-invalid @enderror" disabled>
                             <!-- <option>pilih</option> -->
                         @foreach($dosen as $dos)
                             <option value="{{$dos->id}}">{{$dos->nip}}-{{$dos->nama}}</option> 
@@ -246,6 +258,18 @@
                         @enderror
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">link<span class="text-danger">*</span></label>
+                    <div class="col-lg-10">
+                        <input type="text" name="link" id="link" class="form-control @error('link') is-invalid @enderror" placeholder="link">
+                        @error('link')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                        <!-- <input type="text" name="tahun" placeholder="tahun" class="form-control"> -->
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button>
@@ -277,11 +301,13 @@
                         console.log(data);
                         $('#idedit').val(data.id);
                         $('#dosens_id').val(data.dosens_id);
+                        $('#dosens_idd').val(data.dosens_id);
                         $('#nama').val(datadosen.nama);
                         $('#judul').val(data.judul);
                         $('#abstrak').val(data.abstrak);
                         $('#tahun').val(data.tahun);
                         $('#table').dataTable();
+                        $('#link').val(data.link);
                         let idedit = data.id; 
                         document.getElementById("editform").action="{{ url('admpnltdosen') }}/"+idedit;
                                                

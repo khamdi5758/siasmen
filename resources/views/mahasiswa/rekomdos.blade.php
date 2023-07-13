@@ -76,6 +76,7 @@
                                     </thead>
                                     <tbody>
                                     @foreach($data as $item)
+                                        @if($loop->iteration <= 5)
                                         <tr>
                                                 <td>{{$loop->iteration}}</td>
                                                 <td>{{$item['nip']}}</td>
@@ -100,6 +101,7 @@
                                                     </form>
                                                 </td>
                                         </tr>
+                                        @endif
                                     @endforeach
                                     </tbody>
                                 </table>

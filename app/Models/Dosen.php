@@ -10,5 +10,5 @@ class Dosen extends Model
     use HasFactory;
     protected $table = "dosens";
 
-    protected $fillable = ['nip','nama','jenkel','status','pendidikan_terakhir','pangkat','foto'];
+    protected $fillable = ['nip','nama','jenkel','status','pendidikan_terakhir','pangkat','keahlian','foto'];
 }

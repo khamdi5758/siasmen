@@ -121,11 +121,13 @@ Route::group(['prefix' => 'admin',  'as' => 'admin.'], function () {
     Route::get('/ptuakmhs', [ADMPtuakmhsController::class,'index'])->name('ptuakmhs');
     Route::get('/dftrdos', [ADMDosenController::class,'index'])->name('dftrdos');
     Route::get('/dftrdoss', [ADMDosenController::class,'indexx'])->name('dftrdoss');
+    Route::post('/svdftrdoss', [ADMDosenController::class,'storee'])->name('svdftrdoss');
     Route::get('/pnltdos', [ADMPnltdosController::class,'index'])->name('pnltdos');
     Route::get('/pnltdos/nipdosen', [ADMPnltdosController::class,'nipdosen'])->name('nipdosen');
     // Route::get('/ubahprofile', [ADMUbahProfController::class,'index'])->name('admubahprofile');
     // Route::get('/ubahpass', [ADMPnltdosController::class,'index'])->name('ubahpass');
     Route::get('/halubahpassdos/{id}', [ADMUbahPassUserController::class,'halubahpassdos'])->name('halubahpassdos');
+    Route::get('/halshowprofdos/{id}', [ADMDosenController::class,'show'])->name('halshowprofdos');
     Route::get('/halubahpassmhs/{id}', [ADMUbahPassUserController::class,'halubahpassmhs'])->name('halubahpassmhs');
     Route::post('/ubahpassdos', [ADMUbahPassUserController::class,'ubahpassdosen'])->name('ubahpassdos');
     Route::post('/ubahpassmhs', [ADMUbahPassUserController::class,'ubahpassmhs'])->name('ubahpassmhs');
@@ -186,6 +188,7 @@ Route::group(['prefix' => 'mahasiswa',  'as' => 'mahasiswa.'], function () {
     //     return view('mahasiswa.pnltdos');
     // });
     Route::get('/dospem', [MHSDospemController::class,'index'])->name('mhsdospemmhs');
+    Route::get('/halshowprofdos/{id}', [MHSDospemController::class,'show'])->name('halshowprofdos');
 });
     Route::resource('mhstamhs', MHSTamhsController::class);
     Route::resource('mhspnltdos', MHSPnltdosController::class);

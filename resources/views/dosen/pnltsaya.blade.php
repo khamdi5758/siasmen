@@ -135,6 +135,18 @@
                         <!-- <input type="text" name="tahun" placeholder="tahun" class="form-control"> -->
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">link<span class="text-danger">*</span></label>
+                    <div class="col-lg-10">
+                        <input type="text" name="link" class="form-control @error('link') is-invalid @enderror" placeholder="link">
+                        @error('link')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                        <!-- <input type="text" name="tahun" placeholder="tahun" class="form-control"> -->
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button>
@@ -206,6 +218,19 @@
                         <!-- <input type="text" name="tahun" id="tahun" placeholder="tahun" class="form-control"> -->
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">link<span class="text-danger">*</span></label>
+                    <div class="col-lg-10">
+                        <input type="text" name="link" id="link" class="form-control @error('link') is-invalid @enderror" placeholder="link">
+                        @error('link')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                        <!-- <input type="text" name="tahun" placeholder="tahun" class="form-control"> -->
+                    </div>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button>
@@ -236,6 +261,7 @@
                         $('#judul').val(data.judul);
                         $('#abstrak').val(data.abstrak);
                         $('#tahun').val(data.tahun);
+                        $('#link').val(data.link);
                         console.log(data);
                         let idedit = data.id; 
                         document.getElementById("editform").action="{{ url('dospnltdos') }}/"+idedit;

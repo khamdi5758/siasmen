@@ -15,7 +15,8 @@ class Ptuakmhs extends Model
         'deskjudul',
         'dosens_id',
         'konfdospil',
-        'konfadmin'
+        'konfadmin',
+        'catatan_dos'
     ];
 
     public function mahasiswas()

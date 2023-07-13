@@ -23,6 +23,7 @@ class CreatePtuakmhsTable extends Migration
             $table->foreign('dosens_id')->references('id')->on('dosens')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('konfdospil')->nullable();
             $table->integer('konfadmin')->nullable();
+            $table->text('catatan_dos')->nullable();
             $table->timestamps();
         });
     }

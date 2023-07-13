@@ -18,8 +18,12 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
+                                
                                 <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     @foreach($data as $item)
+                                    <form name="frm_edit" id="editform" class="form-horizontal" action="{{ route('dosmhsbim.update', $item->id) }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('PUT')
                                     <tr>
                                         <th>no</th>
                                         <td>{{$loop->iteration}}</td>
@@ -40,20 +44,30 @@
                                         <th>deskripsi judul</th>   
                                         <td>{{$item->deskjudul}}</td>
                                     </tr>
+                                    
                                     <tr>
                                         <th>terima sebagai pembimbing ?</th>   
                                         <td>
-                                        <form name="frm_edit" id="editform" class="form-horizontal" action="{{ route('dosmhsbim.update', $item->id) }}" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        @method('PUT')
+                                        
                                             <div class="form-group">
                                                 <div class="col-lg-2">
                                                     <input type="hidden" name="idptuakmhs"  value="{{$item->id}}">
                                                     <select class="form-control" name="status" id="status">
-                                                        <option>.....</option>
+                                                        <option value="">.....</option>
                                                         <option value="1">ya</option>
                                                         <option value="0">tidak</option>
                                                     </select>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>catatan</th>   
+                                        <td>
+                                        
+                                            <div class="form-group">
+                                                <div class="col-lg-2">
+                                                    <textarea name="catatan_dos" rows="10" cols="55%" placeholder="catatan"></textarea>
                                                 </div>
                                             </div>
                                         </td>

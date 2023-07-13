@@ -13,7 +13,8 @@ class Pnltdosen extends Model
         'dosens_id',
         'judul',
         'abstrak',
-        'tahun'
+        'tahun',
+        'link'
     ];
 
     public function dosens()

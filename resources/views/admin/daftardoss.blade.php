@@ -66,7 +66,7 @@
                                                 </div>
 
                                                 <div class="ibox-tools">
-                                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('admdosen.destroy', $item->id) }}" method="post">
+                                                <form onsubmit="return confirm('Jika dihapus maka data yang berkaitan akan ikut terhapus. Apakah Anda Yakin ?');" action="{{ route('admdosen.destroy', $item->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
 
@@ -98,27 +98,22 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
+                    <div id="errorMessages"></div>
+                </div>
+                <div class="form-group">
                     <label class="col-lg-2 control-label">NIP</label>
                     <div class="col-lg-10">
                         <input type="hidden" name="hidid" id = "idedit" placeholder="id" class="form-control">
                         <input type="hidden" name="_method" id = "method">
-                        <input type="text" name="nip" id = "nip" placeholder="nip" class="form-control @error('nip') is-invalid @enderror" value="{{old('nip')}}">
-                        @error('nip')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <input type="text" name="nip" id = "nip" placeholder="nip" class="form-control">
+                        <span class="text-danger error-text nip_err"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">nama</label>
                     <div class="col-lg-10">
-                        <input type="text" name="nama" placeholder="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{old('nama')}}">
-                        @error('nama')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <input type="text" name="nama" placeholder="nama" id="nama" class="form-control">
+                        <span class="text-danger error-text nama_err"></span>
                     </div>
                 </div>
                 <div class="form-group">
@@ -126,71 +121,56 @@
                     <div class="col-lg-10">
                     <div class="radio">
                         <label>
-                            <input type="radio" name="jenkel" id="jkl" value="Laki-Laki" class=" @error('jenkel') is-invalid @enderror" {{ old('jenkel') == 'Laki-Laki' ? 'checked' : '' }}  />Laki-Laki
+                            <input type="radio" name="jenkel" id="jkl" value="Laki-Laki" />Laki-Laki
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input type="radio" name="jenkel" id="jkp" value="Perempuan" class=" @error('jenkel') is-invalid @enderror" {{ old('jenkel') == "Perempuan" ? 'checked' : '' }} />Perempuan
+                            <input type="radio" name="jenkel" id="jkp" value="Perempuan" />Perempuan
                         </label>
                     </div>
-                        @error('jenkel')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <span class="text-danger error-text jenkel_err"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">status</label>
                     <div class="col-lg-10">
-                        <select class="form-control @error('status') is-invalid @enderror" id="status" name="status">
-                            <option value="aktif" {{ old('status') == 'aktif' ? 'selected' : '' }}>aktif</option>
-                            <option value="tidak aktif" {{ old('status') == 'tidak aktif' ? 'selected' : '' }}>tidak aktif</option>
+                        <select class="form-control" id="status" name="status">
+                            <option value="aktif">aktif</option>
+                            <option value="tidak aktif">tidak aktif</option>
                         </select>
+                        <span class="text-danger error-text status_err"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">pendidikan terakhir</label>
                     <div class="col-lg-10">
-                        <input type="text" name="pendidikan_terakhir" placeholder="pendidikan terakhir" id="pendidikan_terakhir" class="form-control @error('pendidikan_terakhir') is-invalid @enderror" value="{{old('pendidikan_terakhir')}}">
-                        @error('pendidikan_terakhir')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <input type="text" name="pendidikan_terakhir" placeholder="pendidikan terakhir" id="pendidikan_terakhir" class="form-control">
+                        <span class="text-danger error-text pendidikan_terakhir_err"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">pangkat</label>
                     <div class="col-lg-10">
-                        <input type="text" name="pangkat" placeholder="pangkat" id="pangkat" class="form-control @error('pangkat') is-invalid @enderror" value="{{old('pangkat')}}">
-                        @error('pangkat')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <input type="text" name="pangkat" placeholder="pangkat" id="pangkat" class="form-control">
+                        <span class="text-danger error-text pangkat_err"></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label">foto</label>
                     <div class="col-lg-10">
-                        <input type="file" name="foto" class="form-control @error('foto') is-invalid @enderror" />
+                        <input type="file" name="foto" class="form-control" id="foto" />
+                        <span class="text-danger error-text foto_err"></span>
                         <div id="imageContainer">
                             <img width="100" src="#" id="img" />
                         </div>
                         <input type="hidden" name="img" id="foto2">
-                        @error('foto')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
                     </div>
 			    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-white" data-dismiss="modal">Tutup</button>
-                <button type="submit" class="btn btn-primary">Simpan</button>
+                <button type="submit" class="btn btn-primary" id="submitButton">Simpan</button>
             </div>
             </div>
         </form>
@@ -203,11 +183,8 @@
 <script>
     $(function() {
         let form = $('#frmdftrdos');
-        let hasErrors = {{ count($errors) > 0 ? 'true' : 'false' }};
+        // let hasErrors = { count($errors) > 0 ? 'true' : 'false' };
         let formidd;
-        
-        
-
             $('.tambahdata').on('click', function() {
                 $('.modal-title').html('tambah data dosen');
                 $('.modal-footer button[type=submit]').html('tambah data');
@@ -224,9 +201,9 @@
                 $('#pangkat').val('');
                 $('#method').val('POST');
                 $('#foto').val('');
-                $('#frmdftrdos').attr("action", "{{ route('admdosen.store') }}");
+                // $('#frmdftrdos').attr("action", "{{ route('admin.svdftrdoss') }}");
                 $('#img').hide();
-                $('form').attr('id', 'tmbhdatdos');
+                // $('form').attr('id', 'tmbhdatdos');
                 // document.getElementById("img").src="#";
             });
 
@@ -279,6 +256,52 @@
                     }
                 });
             });
+
+            $("#submitButton").click(function(e){
+                e.preventDefault();
+                let nip = $("#nip").val();
+                let nama = $("#nama").val();
+                let jenkel = $("input[name='jenkel']").val();
+                let status = $("#status").val();
+                let pendidikan_terakhir = $("#pendidikan_terakhir").val();
+                let pangkat = $("#pangkat").val();
+                let foto = $("#foto").val();
+                let formData = $(form).serialize();
+                let _token = $("input[name='_token']").val();
+                $.ajax({
+                    url: "{{ route('admin.svdftrdoss') }}",
+                    type:'POST',
+                    data: formData,
+                    dataType: "json",
+                    success: function(response){
+                        if (response.success === false) {
+                            printErrorMsg(response.errors);
+                            console.log(response.errors);
+                        } else if(response.success === true){
+                            toastr.success('Data berhasil dimasukkan');
+                            setTimeout(function() {
+                                window.location.href = "{{route('admin.dftrdos')}}";
+                            }, 2000);
+                        }
+                        // console.log(response)
+
+                    }
+                    // success: function(data) {
+                    //     // if($.isEmptyObject(data.error)){
+                    //     //     alert(data.success);
+                    //     // }else{
+                    //     //     printErrorMsg(data.error);
+                    //     // }
+                    // }
+                });
+            }); 
+
+            function printErrorMsg (msg) {
+                $.each( msg, function( key, value ) {
+                    console.log(key);
+                    $('.'+key+'_err').text(value);
+                });
+            }
 
             // $('#dataTables-example').on('click','.ubahpsswddos', function() {
             // // $('.edit').on('click', function() {

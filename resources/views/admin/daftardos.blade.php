@@ -31,7 +31,7 @@
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example" style="overflow-x: auto;">
                                     <thead>
                                         <tr>
                                             <th>no</th>
@@ -41,6 +41,7 @@
                                             <th>status</th>
                                             <th>pendidikan terakhir</th>
                                             <th>pangkat</th>
+                                            <th>keahlian</th>
                                             <th>foto</th>
                                             <th>action</th>
 
@@ -56,6 +57,7 @@
                                             <td>{{$item->status}}</td>
                                             <td>{{$item->pendidikan_terakhir}}</td>
                                             <td>{{$item->pangkat}}</td>
+                                            <td>{{$item->keahlian}}</td>
                                             <td><img src="/images/{{ $item->foto }}" width="75" alt="$item->foto"></td>
                                             <td>
                                                 <div class="ibox-tools">
@@ -64,9 +66,12 @@
                                                 <div class="ibox-tools">
                                                     <a href="{{ url('admin/halubahpassdos/'. $item->id)}}" class="btn btn-primary ubahpsswddos" style="color: white;"><i class="bi bi-pencil-square"></i>ubah password</a>
                                                 </div>
+                                                <!-- <div class="ibox-tools">
+                                                    <a href="{{ url('admin/halshowprofdos/'. $item->id)}}" class="btn btn-primary ubahpsswddos" style="color: white;"><i class="bi bi-pencil-square"></i>show profile</a>
+                                                </div> -->
 
                                                 <div class="ibox-tools">
-                                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('admdosen.destroy', $item->id) }}" method="post">
+                                                <form onsubmit="return confirm('Jika dihapus maka data yang berkaitan akan ikut terhapus. Apakah Anda Yakin ?');" action="{{ route('admdosen.destroy', $item->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
 
@@ -159,6 +164,17 @@
                     <div class="col-lg-10">
                         <input type="text" name="pangkat" placeholder="pangkat" class="form-control @error('pangkat') is-invalid @enderror" value="{{old('pangkat')}}">
                         @error('pangkat')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">keahlian<span class="text-danger">*</span></label>
+                    <div class="col-lg-10">
+                        <input type="text" name="keahlian" placeholder="keahlian" class="form-control @error('keahlian') is-invalid @enderror" value="{{old('keahlian')}}">
+                        @error('keahlian')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -269,6 +285,17 @@
                     <div class="col-lg-10">
                         <input type="text" name="pangkat" placeholder="pangkat" id="pangkat" class="form-control @error('pangkat') is-invalid @enderror">
                         @error('pangkat')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                </div>              
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">keahlian<span class="text-danger">*</span></label>
+                    <div class="col-lg-10">
+                        <input type="text" name="keahlian" placeholder="keahlian" id="keahlian" class="form-control @error('keahlian') is-invalid @enderror">
+                        @error('keahlian')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>

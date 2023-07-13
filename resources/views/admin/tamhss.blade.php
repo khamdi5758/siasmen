@@ -67,17 +67,17 @@
                             </td>
                             <td>
                                 <?php
-                                    // echo $item->judul;
                                     $judul_singkat = substr($item->judul, 0, 150) . '...';
-                                    echo $judul_singkat;
+                                    // echo $judul_singkat;
+                                    echo $item->judul;
                                 ?>
 
                             </td>
                             <td>
                                 <?php
-                                    // echo $item->abstrak;
                                     $abstrak_singkat = substr($item->abstrak, 0, 150) . '...';
-                                    echo $abstrak_singkat;
+                                    // echo $abstrak_singkat;
+                                    echo $item->abstrak;
                                 ?>
                             </td>
                             <td>{{$item->tahun}}</td>
